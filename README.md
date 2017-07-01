@@ -5,6 +5,8 @@ Projetos de aplicações multiplataforma com html, js e css, usando o ELECTRON
 
 Configuração minima permitida para rodar uma aplicação electron.
 
+Ter o node.js instalado globalmente em sua máquina juntamente com o electron.
+
 package.json
 ```
 {
