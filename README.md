@@ -118,7 +118,7 @@ Para melhor configuração do sistema acessar o https://electron.atom.io/
 
 ### Formulario
 
-Está aplicação represeta um sistema de lojas, disponibilizando armazenamento e controle do fluxo de informação.
+Está aplicação represeta um pequeno sistema para lojas, disponibilizando armazenamento e controle do fluxo de informação.
 Aplicação ainda em processo de construção.
 
 
