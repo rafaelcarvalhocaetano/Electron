@@ -1,5 +1,6 @@
 # Electron
 Projetos de aplicações multiplataforma com html, js e css, usando o ELECTRON
+Para estilização dos projetos será utilizado Materialize, Bootstrap e JQuery.
 
 ### Configuração do sistema
 
