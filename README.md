@@ -1,9 +1,12 @@
 # Electron
 Projetos de aplicações multiplataforma com html, js e css, usando o ELECTRON
+Para estilização dos projetos será utilizado Materialize, Bootstrap e JQuery.
 
 ### Configuração do sistema
 
 Configuração minima permitida para rodar uma aplicação electron.
+
+Ter o node.js instalado globalmente em sua máquina juntamente com o electron.
 
 package.json
 ```
@@ -116,7 +119,7 @@ Para melhor configuração do sistema acessar o https://electron.atom.io/
 
 ### Formulario
 
-Está aplicação represeta um sistema de lojas, disponibilizando armazenamento e controle do fluxo de informação.
+Está aplicação represeta um pequeno sistema para lojas, disponibilizando armazenamento e controle do fluxo de informação.
 Aplicação ainda em processo de construção.
 
 
