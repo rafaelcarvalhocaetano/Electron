@@ -1,14 +1,16 @@
 {
-  "name": "projeto-electron",
+  "name": "formulario",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "Um aplicativo simples com electron e photon",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron main.js",
+    "win32": "electron-packager . myApp --platform=win32 --arch=ia32",
+    "win64": "electron-packager . myApp --platform=win32 --arch=x64",
+    "build": "electron-packager . --all"
   },
-  "author": "Rafael Carvalho",
-  "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "~1.6.2"
+    "electron-prebuilt": "^0.36.0",
+    "electron-packager":"^6.0.0"
   }
 }
