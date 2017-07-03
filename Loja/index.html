@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <title>Loja Electron</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/photon.css">
+  <link rel="stylesheet" href="css/estilo.css">
+
+  <!-- Electron Javascript -->
+  <!-- <script src="app.js" charset="utf-8"></script> -->
+</head>
+
+<body>
+  <div class="window">
+    <!--HEADER -->
+    <header class="toolbar toolbar-header">
+      <h1 class="title">Loja</h1>
+      <div class="toolbar-actions">
+        <div class="btn-group">
+          <button class="btn btn-default">
+        <span class="icon icon-home"></span>
+      </button>
+          <button class="btn btn-default">
+        <span class="icon icon-folder"></span>
+      </button>
+          <button class="btn btn-default active">
+        <span class="icon icon-cloud"></span>
+      </button>
+          <button class="btn btn-default">
+        <span class="icon icon-popup"></span>
+      </button>
+          <button class="btn btn-default">
+        <span class="icon icon-shuffle"></span>
+      </button>
+        </div>
+
+        <button class="btn btn-default">
+      <span class="icon icon-home icon-text"></span>
+      Filters
+    </button>
+
+        <button class="btn btn-default btn-dropdown pull-right">
+      <span class="icon icon-megaphone"></span>
+    </button>
+      </div>
+    </header>
+
+
+    <div class="window-content">
+      <div class="pane-group">
+        <div class="pane-sm sidebar">Lorem ipsun de malta</div>
+        <div class="pane">
+          <!-- formulario-->
+          <form action="" class="pane-body">
+            <h3>Cadastro de Clientes</h3>
+            <div class="form-group">
+              <input id="nome" type="text" class="form-control" placeholder="Nome">
+            </div>
+            <div class="form-group">
+              <input id="cpf" type="text" class="form-control" placeholder="CPF">
+            </div>
+            <div class="form-group">
+              <input id="telefone" type="text" class="form-control" placeholder="TELEFONE">
+            </div>
+
+            <button id="salvar" type="button" class="btn btn-positive">Salvar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- FOOTER-->
+    <footer class="toolbar toolbar-footer">
+      <h1 class="title">Desenvolvido por Rafael Carvalho</h1>
+    </footer>
+  </div>
+</body>
+<script>
+  require('./renderer.js')
+</script>
+
+</html>
