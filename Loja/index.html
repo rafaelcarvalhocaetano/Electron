@@ -54,6 +54,7 @@
         <div class="pane-sm sidebar">Teste de preenchimento de campo</div>
         <div class="pane">
           <!-- tabela-->
+          <button class="btn btn-primary" @click="createClient()">Cadastrar</button>
           <table class="table table-striped">
             <thead>
               <tr>
@@ -146,7 +147,15 @@
           this.mode = 'edicao';
           this.openModal = true;
           this.client = client;
-
+        },
+        createClient:function(){
+          this.mode = 'cadastro';
+          this.openModal = true;
+          this.client={
+            nome:'',
+            cpf:'',
+            telefone:''
+          };
         }
       }
    })
