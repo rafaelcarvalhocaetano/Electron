@@ -8,13 +8,14 @@
     left: 0;
     top: 0;
     background: rgba(0, 0, 0, 0.7);
+    z-index: 9000;
 }
 #modal input{
     color: #333;
 }
 #modal .wrap{
     width: 60%;
-    height: 60%;
+    min-height: 60%;
     margin-left: 20%;
     margin-top: 10%;
     background: #FFF;

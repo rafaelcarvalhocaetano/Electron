@@ -60,13 +60,19 @@
                 <th>NOME</th>
                 <th>CPF</th>
                 <th>TELEFONE</th>
+                <th>OPÇÕES</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="cliente in clientes">
-                <th>{{cliente.nome}}</th>
-                <th>{{cliente.cpf}}</th>
-                <th>{{cliente.telefone}}</th>
+                <td>{{cliente.nome}}</td>
+                <td>{{cliente.cpf}}</td>
+                <td>{{cliente.telefone}}</td>
+                <td>
+                  <button class="btn btn-primary" @click="editClient(cliente)">Editar</button>
+                </td>
+          
+      
               </tr>
             </tbody>
           </table>
@@ -78,7 +84,7 @@
       <h1 class="title">Desenvolvido por Rafael Carvalho</h1>
     </footer>
   </div>
-  <div id="modal">
+  <div id="modal" v-if="openModal">
     <div class="wrap">
        <form id="cadastro" action="" class="pane-body">
             <h3>Cadastro de Clientes</h3>
@@ -115,11 +121,18 @@
   new Vue({
       el: 'body',
       data: {
-         clientes:[]
+         clientes:[],
+         openModal: false
+
       },
       ready: function (){
          this.clientes = clientes.data;
          console.log(this.clientes);
+      },
+      methods:{
+        editClient:function(){
+          this.openModal = true;
+        }
       }
    })
 </script>
