@@ -53,8 +53,23 @@
       <div class="pane-group">
         <div class="pane-sm sidebar">Teste de preenchimento de campo</div>
         <div class="pane">
-          <!-- formulario-->
-          
+          <!-- tabela-->
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>NOME</th>
+                <th>CPF</th>
+                <th>TELEFONE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="cliente in clientes">
+                <th>{{cliente.nome}}</th>
+                <th>{{cliente.cpf}}</th>
+                <th>{{cliente.telefone}}</th>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -62,6 +77,24 @@
     <footer class="toolbar toolbar-footer">
       <h1 class="title">Desenvolvido por Rafael Carvalho</h1>
     </footer>
+  </div>
+  <div id="modal">
+    <div class="wrap">
+       <form id="cadastro" action="" class="pane-body">
+            <h3>Cadastro de Clientes</h3>
+            <div class="form-group">
+              <input id="nome" type="text" class="form-control" placeholder="Nome">
+            </div>
+            <div class="form-group">
+              <input id="cpf" type="text" class="form-control" placeholder="CPF">
+            </div>
+            <div class="form-group">
+              <input id="telefone" type="text" class="form-control" placeholder="TELEFONE">
+            </div>
+
+            <button id="salvar" type="button" class="btn btn-positive">Salvar</button>
+          </form>
+    </div>
   </div>
 </body>
 <script>
@@ -87,7 +120,7 @@
          this.clientes = clientes.data;
          console.log(this.clientes);
       }
-   })s
+   })
 </script>
 
 </html>
