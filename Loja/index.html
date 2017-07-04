@@ -126,8 +126,9 @@
   var clientes = db.getCollection('children');
 
   console.log(db);
+  //Configurando sistema com VUE.JS
   new Vue({
-      el: 'body',
+      el: 'body', //recebe o conteúdo do body
       data: {
          clientes:[],
          mode:'',
@@ -138,17 +139,17 @@
          },
          openModal: false
       },
-      ready: function (){
+      ready: function (){ //função responsável por exibir as infos
          this.clientes = clientes.data;
          console.log(this.clientes);
       },
-      methods:{
+      methods:{// metodos que conterá funções
         editClient:function(client){
-          this.mode = 'edicao';
-          this.openModal = true;
+          this.mode = 'edicao'; //possui um if se for edição ou cadastro
+          this.openModal = true; //tira a tela de cadastro
           this.client = client;
         },
-        createClient:function(){
+        createClient:function(){ //func responsavel pelo cadastro
           this.mode = 'cadastro';
           this.openModal = true;
           this.client={
