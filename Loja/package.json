@@ -14,6 +14,7 @@
     "electron-packager": "^6.0.0"
   },
   "dependencies": {
-    "lokijs": "^1.5.0"
+    "lokijs": "^1.5.0",
+    "read-file-utf8": "^1.1.1"
   }
 }
