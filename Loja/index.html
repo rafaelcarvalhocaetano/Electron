@@ -81,9 +81,9 @@
   var read = require('read-file-utf8')
   var loki = require('lokijs')
   var db = new loki('db.json')
-  console.log(read(__dirname+'/db.json'));
-  //db.loadJSON(db);
-  console.log(db);
+  var data = read(__dirname+'/db.json');
+  db.loadJSON(data);
+  console.log(db); //mostrando no console
   var clientes = db.addCollection('children')
 </script>
 
