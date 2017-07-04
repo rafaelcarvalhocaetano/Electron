@@ -69,7 +69,7 @@
                 <td>{{cliente.cpf}}</td>
                 <td>{{cliente.telefone}}</td>
                 <td>
-                  <button class="btn btn-primary" @click="editClient(cliente)">Editar</button>
+                 <button class="btn btn-primary" @click="editClient(cliente)">Editar</button>
                 </td>
           
       
@@ -87,19 +87,26 @@
   <div id="modal" v-if="openModal">
     <div class="wrap">
        <form id="cadastro" action="" class="pane-body">
-            <h3>Cadastro de Clientes</h3>
+
+            <h3 v-if="mode=='cadastro'">
+              Cadastro de Clientes
+            </h3>
+            <h3 v-if="mode=='edicao'">
+              Edição de Clientes 
+            </h3>
+
             <div class="form-group">
-              <input id="nome" type="text" class="form-control" placeholder="Nome">
+              <input id="nome" type="text" v-model="client.nome" class="form-control" placeholder="Nome">
             </div>
             <div class="form-group">
-              <input id="cpf" type="text" class="form-control" placeholder="CPF">
+              <input id="cpf" type="text" v-modal="client.cpf" class="form-control" placeholder="CPF">
             </div>
             <div class="form-group">
-              <input id="telefone" type="text" class="form-control" placeholder="TELEFONE">
+              <input id="telefone" type="text" v-modal="client.telefone" class="form-control" placeholder="TELEFONE">
             </div>
 
             <button class="btn btn-large btn-positive">Salvar</button>
-            <button class="btn btn-large btn-negative">Fechar</button>
+            <button class="btn btn-large btn-negative" @click="openModal = false">Fechar</button>
           </form>
     </div>
   </div>
@@ -122,16 +129,24 @@
       el: 'body',
       data: {
          clientes:[],
+         mode:'',
+         client:{
+           nome: '',
+           cpf: '',
+           telefone: ''
+         },
          openModal: false
-
       },
       ready: function (){
          this.clientes = clientes.data;
          console.log(this.clientes);
       },
       methods:{
-        editClient:function(){
+        editClient:function(client){
+          this.mode = 'edicao';
           this.openModal = true;
+          this.client = client;
+
         }
       }
    })
