@@ -56,7 +56,7 @@
           <!-- tabela-->
          
           <button type="button" class="btn btn-primary" @click="createSale()">
-            Cadastrar de Produtos
+            Cadastro de Produtos
           </button>
           <a href="index.html" class="btn btn-primary" style="text-decoration: none;">Cliente</a>
           <a href="produtos.html" class="btn btn-primary" style="text-decoration: none;">Produtos</a>
@@ -99,7 +99,7 @@
   <div id="modal" v-if="openModal">
     <div class="wrap">
        <form id="cadastro" action="" class="pane-body">
-            <h3 v-if="mode=='vendas'">
+            <h3 v-if="mode=='cadastro'">
               Cadastro de Vendas
             </h3>
             <h3 v-if="mode=='edicao'">
