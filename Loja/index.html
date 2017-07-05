@@ -127,10 +127,13 @@
     db.loadJSON(data);
   }else{
     //vendas
+   
     db.addCollection('vendas'); //adicionando itens de vendas
     db.addCollection('children'); //adicionando itens de clientes
     db.addCollection('produto'); //adiciona os itens contido dentro de produtos a var produtos
+    db.addCollection('children');
     db.save();  
+    
   }
 
   window.Vue =require('vue');

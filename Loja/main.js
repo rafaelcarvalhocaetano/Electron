@@ -1,6 +1,7 @@
 const electron = require('electron')
 // Module to control application life.
 const app = electron.app
+const Tray = electron.Tray
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
 
@@ -12,8 +13,13 @@ const url = require('url')
 let mainWindow
 
 function createWindow () {
+  //criando icone do aplicativo
+  const appIcon = new Tray(__dirname+'./pessoas.png')
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 800})
+  mainWindow = new BrowserWindow({width: 800, height: 800, icon:__dirname+'./pessoas.png'}) //setando tamanho e icone do aplicativo
+
+  
+
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
