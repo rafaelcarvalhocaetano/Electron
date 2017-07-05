@@ -55,7 +55,7 @@
         <div class="pane">
           <!-- tabela-->
           <button class="btn btn-primary" @click="createClient()">Cadastrar</button>
-          <a href="produtos.html" class="btn btn-primary">Produtos</a>
+          <a href="produtos.html" class="btn btn-primary"  style="text-decoration: none;">Produtos</a>
           <table class="table table-striped">
             <thead>
               <tr>
@@ -111,17 +111,17 @@
   </div>
 </body>
 <script>
+  
   var read = require('read-file-utf8');
-
   var loki = require('lokijs');
-
   var db = new loki('db.json');
-
   var data = read(__dirname+'/db.json');
 
   db.loadJSON(data);
   window.Vue =require('vue');
+  //var clientes = db.addCollection('children');
   var clientes = db.getCollection('children');
+  //db.save();
 
   console.log(db);
   //Configurando sistema com VUE.JS
