@@ -55,7 +55,7 @@
         <div class="pane">
           <!-- tabela-->
          
-          <button type="button" class="btn btn-primary" @click="createProduct()">
+          <button type="button" class="btn btn-primary" @click="createSale()">
             Cadastrar de Produtos
           </button>
           <a href="index.html" class="btn btn-primary" style="text-decoration: none;">Cliente</a>
@@ -71,6 +71,8 @@
                 <th>Produto</th>
                 <th>Preço Unitário</th>
                 <th>Quantidade</th>
+                <th>Total</th>
+                <th>Opções</th>
               </tr>
             </thead>
             <tbody>
@@ -79,6 +81,7 @@
                 <td>{{venda.produto}}</td>
                 <td>{{venda.preco}}</td>
                 <td>{{venda.qtd}}</td>
+                <td>{{venda.qtd * venda.preco}}</td>
                 <td>
                  <button class="btn btn-primary" @click="editSale(venda)">Editar</button>
                 </td>
@@ -96,7 +99,7 @@
   <div id="modal" v-if="openModal">
     <div class="wrap">
        <form id="cadastro" action="" class="pane-body">
-            <h3 v-if="mode=='cadastro'">
+            <h3 v-if="mode=='vendas'">
               Cadastro de Vendas
             </h3>
             <h3 v-if="mode=='edicao'">
@@ -109,13 +112,18 @@
               </select>
             </div>
             <div class="form-group">
-              <input id="cpf" type="text" v-model="sale.preco" class="form-control" placeholder="Preço">
+              <select v-model="sale.produto" class="form-control">
+                <option value="{{p.nome}}" v-for="p in produtos">{{p.nome}}</option>
+              </select>
+            </div>
+             <div class="form-group" v-if="mode=='edicao'">
+              <input type="text" id="preco" type="text" v-model="sale.preco" class="form-control" placeholder="Preço">
             </div>
             <div class="form-group">
-              <input id="telefone" type="text" v-model="sale.qtd" class="form-control" placeholder="Quantidade">
+              <input id="qtd" type="text" v-model="sale.qtd" class="form-control" placeholder="Quantidade">
             </div>
 
-            <button type="button" class="btn btn-large btn-positive" @click="productStoreOrUpdate">
+            <button type="button" class="btn btn-large btn-positive" @click="saleStoreOrUpdate">
               Salvar
             </button>
             <button type="button" class="btn btn-large btn-negative" @click="openModal = false">
@@ -152,7 +160,7 @@
       cliente:'',
       produto:'',
       preco:0,
-      qtd:0
+      qtd:1
     }
   },
     ready:function(){
@@ -162,25 +170,28 @@
     console.log(this.vendas, this.clientes, this.produtos);
   },
   methods:{// metodos que conterá funções
-    editProduct:function(product){
+    editSale:function(sale){
     this.mode = 'edicao'; //possui um if se for edição ou cadastro
     this.openModal = true; //tira a tela de cadastro
-    this.v = product;
+    this.sale = sale;
   },
-    createProduct:function(){ //func responsavel pelo cadastro
+    createSale:function(){ //func responsavel pelo cadastro
     this.mode = 'cadastro';
     this.openModal = true;
-    this.product={
-      nome:'',
-      preco:'',
-      qtd:''
+    this.sale={
+      cliente:'',
+      produto:'',
+      preco:0,
+      qtd:1
     };
   },
-    productStoreOrUpdate:function(){
-      if(typeof this.product.$loki != 'undefined'){
-        produtos.update(this.product);
+    saleStoreOrUpdate:function(){
+      if(typeof this.sale.$loki != 'undefined'){
+        vendas.update(this.sale);
       }else{
-        produtos.insert(this.product);
+        //console.log(produtos.find({ nome:this.sale.produto })[0].preco);
+        this.sale.preco =produtos.find({nome: this.sale.produto})[0].preco;
+        vendas.insert(this.sale);
       }
       db.save();
       this.openModal = false;
