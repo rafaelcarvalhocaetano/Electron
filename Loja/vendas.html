@@ -104,7 +104,7 @@
             </h3>
 
             <div class="form-group">
-              <select v-model="sale.cliente">
+              <select v-model="sale.cliente" class="form-control">
                 <option value="{{c.nome}}" v-for="c in clientes">{{c.nome}}</option>
               </select>
             </div>
@@ -132,56 +132,61 @@
   var data = read(__dirname+'/db.json');
   db.loadJSON(data);
   window.Vue =require('vue');
-  var vendas = db.addCollection('vendas');
-  var vendas = db.getCollection('vendas');
-  db.save();
+  //var vendas = db.addCollection('vendas');
+  var vendas = db.getCollection('vendas'); //adicionando itens de vendas
+  var clientes = db.getCollection('children'); //adicionando itens de clientes
+  var produtos = db.getCollection('produto'); //adiciona os itens contido dentro de produtos a var produtos
+  //db.save();
 
   console.log(db);
   //Configurando sistema com VUE.JS
   new Vue({
-      el: 'body', //recebe o conteúdo do body
-      data: {
-        modal:'',
-        openModal: false,
-        vendas:[],
-        sale:{
-          cliente:'',
-          produto:'',
-          preco:0,
-          qtd:0
-        }
-      },
-      ready:function(){
-        this.vendas =vendas.data;
-        console.log(this.vendas);
-      },
-       methods:{// metodos que conterá funções
-        editProduct:function(product){
-          this.mode = 'edicao'; //possui um if se for edição ou cadastro
-          this.openModal = true; //tira a tela de cadastro
-          this.v = product;
-        },
-        createProduct:function(){ //func responsavel pelo cadastro
-          this.mode = 'cadastro';
-          this.openModal = true;
-          this.product={
-            nome:'',
-            preco:'',
-            qtd:''
-          };
-        },
-        
-        productStoreOrUpdate:function(){
-          if(typeof this.product.$loki != 'undefined'){
-            produtos.update(this.product);
-          }else{
-            produtos.insert(this.product);
-          }
-          db.save();
-          this.openModal = false;
-        }
+    el: 'body', //recebe o conteúdo do body
+    data: {
+    modal:'',
+    openModal: false,
+    vendas:[],
+    clientes:[],
+    produtos:[],
+    sale:{
+      cliente:'',
+      produto:'',
+      preco:0,
+      qtd:0
+    }
+  },
+    ready:function(){
+    this.vendas = vendas.data;
+    this.clientes = clientes.data;
+    this.produtos = produtos.data;
+    console.log(this.vendas, this.clientes, this.produtos);
+  },
+  methods:{// metodos que conterá funções
+    editProduct:function(product){
+    this.mode = 'edicao'; //possui um if se for edição ou cadastro
+    this.openModal = true; //tira a tela de cadastro
+    this.v = product;
+  },
+    createProduct:function(){ //func responsavel pelo cadastro
+    this.mode = 'cadastro';
+    this.openModal = true;
+    this.product={
+      nome:'',
+      preco:'',
+      qtd:''
+    };
+  },
+    productStoreOrUpdate:function(){
+      if(typeof this.product.$loki != 'undefined'){
+        produtos.update(this.product);
+      }else{
+        produtos.insert(this.product);
       }
-   })
+      db.save();
+      this.openModal = false;
+      }
+    }
+  })
 </script>
 
 </html>
