@@ -103,7 +103,7 @@
               <input id="telefone" type="text" v-model="client.telefone" class="form-control" placeholder="TELEFONE">
             </div>
 
-            <button class="btn btn-large btn-positive">Salvar</button>
+            <button class="btn btn-large btn-positive" @click="clientStoreOrUpdate">Salvar</button>
             <button class="btn btn-large btn-negative" @click="openModal = false">Fechar</button>
           </form>
     </div>
@@ -154,10 +154,13 @@
             cpf:'',
             telefone:''
           };
-        }
-      },
-      newMethods:{
+        },
         
+        clientStoreOrUpdate:function(){
+          clientes.insert(this.client);
+          db.save();
+          this.openModal = false;
+        }
       }
    })
 </script>
