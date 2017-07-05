@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <title>Loja Electron</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/photon.css">
+  <link rel="stylesheet" href="css/estilo.css">
+
+  <!-- Electron Javascript -->
+  <!-- <script src="app.js" charset="utf-8"></script> -->
+</head>
+
+<body>
+  <div class="window">
+    <!--HEADER -->
+    <header class="toolbar toolbar-header">
+      <h1 class="title">Loja</h1>
+      <div class="toolbar-actions">
+        <div class="btn-group">
+          <button class="btn btn-default">
+        <span class="icon icon-home"></span>
+      </button>
+          <button class="btn btn-default">
+        <span class="icon icon-folder"></span>
+      </button>
+          <button class="btn btn-default active">
+        <span class="icon icon-cloud"></span>
+      </button>
+          <button class="btn btn-default">
+        <span class="icon icon-popup"></span>
+      </button>
+          <button class="btn btn-default">
+        <span class="icon icon-shuffle"></span>
+      </button>
+        </div>
+
+    <button class="btn btn-default">
+    <span class="icon icon-home icon-text"></span>
+      Filters
+    </button>
+
+       <button class="btn btn-default btn-dropdown pull-right">
+      <span class="icon icon-megaphone"></span>
+    </button>
+      </div>
+    </header>
+
+
+    <div class="window-content">
+      <div class="pane-group">
+        <div class="pane-sm sidebar">Teste de preenchimento de campo</div>
+        <div class="pane">
+          <!-- tabela-->
+         
+          <button type="button" class="btn btn-primary" @click="createProduct()">
+            Cadastrar de Produtos
+          </button>
+          <a href="index.html" class="btn btn-primary" style="text-decoration: none;">Cliente</a>
+          <a href="produtos.html" class="btn btn-primary" style="text-decoration: none;">Produtos</a>
+          <a href="vendas.html" class="btn btn-primary" style="text-decoration: none;">Vendas</a>
+          <!-- 
+          <button class="btn btn-primary" @click="createClient()">Produtos</button>
+          -->
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Cliente</th>
+                <th>Produto</th>
+                <th>Preço Unitário</th>
+                <th>Quantidade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="venda in vendas">
+                <td>{{venda.nome}}</td>
+                <td>{{venda.produto}}</td>
+                <td>{{venda.preco}}</td>
+                <td>{{venda.qtd}}</td>
+                <td>
+                 <button class="btn btn-primary" @click="editSale(venda)">Editar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- FOOTER-->
+    <footer class="toolbar toolbar-footer">
+      <h1 class="title">Desenvolvido por Rafael Carvalho</h1>
+    </footer>
+  </div>
+  <div id="modal" v-if="openModal">
+    <div class="wrap">
+       <form id="cadastro" action="" class="pane-body">
+            <h3 v-if="mode=='cadastro'">
+              Cadastro de Produtos
+            </h3>
+            <h3 v-if="mode=='edicao'">
+              Edição de Produtos 
+            </h3>
+
+            <div class="form-group">
+              <input id="nome" type="text" v-model="product.nome" class="form-control" placeholder="Nome">
+            </div>
+            <div class="form-group">
+              <input id="cpf" type="text" v-model="product.preco" class="form-control" placeholder="Preço">
+            </div>
+            <div class="form-group">
+              <input id="telefone" type="text" v-model="product.qtd" class="form-control" placeholder="Quantidade">
+            </div>
+
+            <button type="button" class="btn btn-large btn-positive" @click="productStoreOrUpdate">
+              Salvar
+            </button>
+            <button type="button" class="btn btn-large btn-negative" @click="openModal = false">
+              Fechar
+            </button>
+          </form>
+    </div>
+  </div>
+</body>
+<script>
+  var read = require('read-file-utf8')
+  var loki = require('lokijs');
+  var db = new loki('db.json')
+  var data = read(__dirname+'/db.json');
+  db.loadJSON(data);
+  window.Vue =require('vue');
+  //var produto = db.addCollection('produto');
+  var produtos = db.getCollection('produto');
+  //db.save();
+
+  console.log(db);
+  //Configurando sistema com VUE.JS
+  new Vue({
+      el: 'body', //recebe o conteúdo do body
+      data: {
+        modal:'',
+        openModal: false,
+        produtos:[],
+        product:{
+          nome:'',
+          preco:'',
+          qtd:0
+        }
+      },
+      ready:function(){
+        this.produtos =produtos.data;
+        console.log(this.produtos);
+      },
+       methods:{// metodos que conterá funções
+        editProduct:function(product){
+          this.mode = 'edicao'; //possui um if se for edição ou cadastro
+          this.openModal = true; //tira a tela de cadastro
+          this.product = product;
+        },
+        createProduct:function(){ //func responsavel pelo cadastro
+          this.mode = 'cadastro';
+          this.openModal = true;
+          this.product={
+            nome:'',
+            preco:'',
+            qtd:''
+          };
+        },
+        
+        productStoreOrUpdate:function(){
+          if(typeof this.product.$loki != 'undefined'){
+            produtos.update(this.product);
+          }else{
+            produtos.insert(this.product);
+          }
+          db.save();
+          this.openModal = false;
+        }
+      }
+   })
+</script>
+
+</html>
