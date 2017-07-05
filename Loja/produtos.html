@@ -54,8 +54,11 @@
         <div class="pane-sm sidebar">Teste de preenchimento de campo</div>
         <div class="pane">
           <!-- tabela-->
-         <!-- 
-          <button type="button" class="btn btn-primary" @click="createClient()">Cadastrar</button>
+         
+          <button type="button" class="btn btn-primary" @click="createProduct()">
+            Cadastrar de Produtos
+          </button>
+          <!-- 
           <button class="btn btn-primary" @click="createClient()">Produtos</button>
           -->
           <table class="table table-striped">
@@ -64,15 +67,16 @@
                 <th>Nome</th>
                 <th>Preço</th>
                 <th>Quantidade</th>
+                <th>Opções</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="cliente in clientes">
-                <td>{{cliente.nome}}</td>
-                <td>{{cliente.cpf}}</td>
-                <td>{{cliente.telefone}}</td>
+              <tr v-for="produto in produtos">
+                <td>{{produto.nome}}</td>
+                <td>{{produto.preco}}</td>
+                <td>{{produto.qtd}}</td>
                 <td>
-                 <button class="btn btn-primary" @click="editClient(cliente)">Editar</button>
+                 <button class="btn btn-primary" @click="editProduct(produto)">Editar</button>
                 </td>
               </tr>
             </tbody>
@@ -89,80 +93,82 @@
     <div class="wrap">
        <form id="cadastro" action="" class="pane-body">
             <h3 v-if="mode=='cadastro'">
-              Cadastro de Clientes
+              Cadastro de Produtos
             </h3>
             <h3 v-if="mode=='edicao'">
-              Edição de Clientes 
+              Edição de Produtos 
             </h3>
 
             <div class="form-group">
-              <input id="nome" type="text" v-model="client.nome" class="form-control" placeholder="Nome">
+              <input id="nome" type="text" v-model="product.nome" class="form-control" placeholder="Nome">
             </div>
             <div class="form-group">
-              <input id="cpf" type="text" v-model="client.cpf" class="form-control" placeholder="CPF">
+              <input id="cpf" type="text" v-model="product.preco" class="form-control" placeholder="Preço">
             </div>
             <div class="form-group">
-              <input id="telefone" type="text" v-model="client.telefone" class="form-control" placeholder="TELEFONE">
+              <input id="telefone" type="text" v-model="product.qtd" class="form-control" placeholder="Quantidade">
             </div>
 
-            <button class="btn btn-large btn-positive" @click="clientStoreOrUpdate">Salvar</button>
-            <button class="btn btn-large btn-negative" @click="openModal = false">Fechar</button>
+            <button type="button" class="btn btn-large btn-positive" @click="productStoreOrUpdate">
+              Salvar
+            </button>
+            <button type="button" class="btn btn-large btn-negative" @click="openModal = false">
+              Fechar
+            </button>
           </form>
     </div>
   </div>
 </body>
 <script>
-  var read = require('read-file-utf8');
-
+  var read = require('read-file-utf8')
   var loki = require('lokijs');
-
-  var db = new loki('db.json');
-
+  var db = new loki('db.json')
   var data = read(__dirname+'/db.json');
-
   db.loadJSON(data);
   window.Vue =require('vue');
-  var clientes = db.getCollection('children');
+  //var produto = db.addCollection('produto');
+  var produtos = db.getCollection('produto');
+  //db.save();
 
   console.log(db);
   //Configurando sistema com VUE.JS
   new Vue({
       el: 'body', //recebe o conteúdo do body
       data: {
-         clientes:[],
-         mode:'',
-         client:{
-           nome:'',
-           cpf:'',
-           telefone:''
-         },
-         openModal: false
+        modal:'',
+        openModal: false,
+        produtos:[],
+        product:{
+          nome:'',
+          preco:'',
+          qtd:0
+        }
       },
-      ready: function (){ //função responsável por exibir as infos
-         this.clientes = clientes.data;
-         console.log(this.clientes);
+      ready:function(){
+        this.produtos =produtos.data;
+        console.log(this.produtos);
       },
-      methods:{// metodos que conterá funções
-        editClient:function(client){
+       methods:{// metodos que conterá funções
+        editProduct:function(product){
           this.mode = 'edicao'; //possui um if se for edição ou cadastro
           this.openModal = true; //tira a tela de cadastro
-          this.client = client;
+          this.product = product;
         },
-        createClient:function(){ //func responsavel pelo cadastro
+        createProduct:function(){ //func responsavel pelo cadastro
           this.mode = 'cadastro';
           this.openModal = true;
-          this.client={
+          this.product={
             nome:'',
-            cpf:'',
-            telefone:''
+            preco:'',
+            qtd:''
           };
         },
         
-        clientStoreOrUpdate:function(){
-          if(typeof this.client.$loki != 'undefined'){
-            clientes.update(this.client);
+        productStoreOrUpdate:function(){
+          if(typeof this.product.$loki != 'undefined'){
+            produtos.update(this.product);
           }else{
-            clientes.insert(this.client);
+            produtos.insert(this.product);
           }
           db.save();
           this.openModal = false;
