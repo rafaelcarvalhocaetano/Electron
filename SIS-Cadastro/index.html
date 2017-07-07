@@ -1,47 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-  <meta charset="utf-8">
-  <title>PRINCIPAL</title>
+  <title>Photon</title>
 
-  <!-- Stylesheets PHOTON-->
+    <!-- Stylesheets -->
   <link rel="stylesheet" href="css/photon.css">
-</head>
-<body>
 
-<div class="window">
+<!-- Electron Javascript
+<script src="app.js" charset="utf-8"></script>
+-->
+
+<meta charset="utf-8">
+</head>
+
+<body>
+  <div class="window">
+    
   <header class="toolbar toolbar-header">
-    <p class="title">Sistema de Cadastro - Portária</p>
-  </header>
+    <p class="title">Cadastro - Portaria</p>
+  <div class="toolbar-actions">
+    <div class="btn-group">
+      <button class="btn btn-default">
+        <span class="icon icon-home"></span>
+      </button>
+      <button class="btn btn-default">
+        <span class="icon icon-folder"></span>
+      </button>
+      <button class="btn btn-default active">
+        <span class="icon icon-cloud"></span>
+      </button>
+      <button class="btn btn-default">
+        <span class="icon icon-popup"></span>
+      </button>
+      <button class="btn btn-default">
+        <span class="icon icon-shuffle"></span>
+      </button>
+    </div>
+
+    <button class="btn btn-default">
+      <span class="icon icon-home icon-text"></span>
+      Filters
+    </button>
+
+    <button class="btn btn-default btn-dropdown pull-right">
+      <span class="icon icon-megaphone"></span>
+    </button>
+  </div>
+</header>
+
+
   <div class="window-content">
     <div class="pane-group">
-      <div class="pane-mini sidebar">
-          icones
+      <div class="pane-sm sidebar">
+        <nav class="nav-group">
+          <h5 class="nav-group-title">Favorites</h5>
+          <a class="nav-group-item active">
+            <span class="icon icon-home"></span>
+            HOME
+          </a>
+          <span class="nav-group-item">
+            <span class="icon icon-download"></span>
+            Downloads
+          </span>
+          <span class="nav-group-item">
+            <span class="icon icon-folder"></span>
+            Documents
+          </span>
+          <span class="nav-group-item">
+            <span class="icon icon-signal"></span>
+            AirPlay
+          </span>
+          <span class="nav-group-item">
+            <span class="icon icon-print"></span>
+            Applications
+          </span>
+          <span class="nav-group-item">
+            <span class="icon icon-cloud"></span>
+            Desktop
+          </span>
+        </nav>
       </div>
-      <div class="pane">
-
-        
-        
-      </div>
+      <div class="pane">...</div>
     </div>
   </div>
   <footer class="toolbar toolbar-footer">
-  <div class="toolbar-actions">
-    
-    <button class="btn btn-default">
-      Cancel
-    </button>
-
-    <button class="btn btn-primary pull-right">
-      Save
-    </button>
-
-  </div>
-</footer>
-</div>  
+    <h1 class="title">Footer</h1>
+  </footer>
+</div>   
 </body>
-<script>
-  require('./renderer.js')
-</script>
 </html>
