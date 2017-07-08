@@ -1,29 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <title>Photon</title>
 
-<!-- Stylesheets -->
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/bootstrap-theme.css">
-<!-- JS-Materialize -->
-<script src="js/bootstrap.js" charset="utf-8"></script>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/photon.css">
+  <!--<link rel="stylesheet" href="css/stilo.css">-->
+  <!-- JS-Materialize -->
+  <script src="js/bootstrap.js" charset="utf-8"></script>
 
-<!-- Electron Javascript
+  <!-- Electron Javascript
 <script src="app.js" charset="utf-8"></script>
 -->
-<!-- Responsive web -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta charset="utf-8">
+  <!-- Responsive web -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta charset="utf-8">
 </head>
+
 <body>
 
+  <div class="window">
+    <header class="toolbar toolbar-header">
+      <p class="title">Header</p>
+    </header>
+    <div class="window-content">
+      <div class="pane-group">
+        <div class="pane-sm sidebar">
 
 
- 
+<nav class="nav-group">
+  <h5 class="nav-group-title">Favorites</h5>
+  <a class="nav-group-item active">
+    <span class="icon icon-home"></span>
+    connors
+  </a>
+  <span class="nav-group-item">
+    <span class="icon icon-download"></span>
+    Downloads
+  </span>
+  <span class="nav-group-item">
+    <span class="icon icon-folder"></span>
+    Documents
+  </span>
+  <span class="nav-group-item">
+    <span class="icon icon-signal"></span>
+    AirPlay
+  </span>
+  <span class="nav-group-item">
+    <span class="icon icon-print"></span>
+    Applications
+  </span>
+  <span class="nav-group-item">
+    <span class="icon icon-cloud"></span>
+    Desktop
+  </span>
+</nav>
+
+
+
+
+          
+
+        </div>
+        <div class="pane">
+          central
+        </div>
+      </div>
+    </div>
+    <footer class="toolbar toolbar-footer">
+    <div class="toolbar-actions">
+      <button class="btn btn-default">
+      Cancel
+    </button>
+
+      <button class="btn btn-primary pull-right">
+      Save
+    </button>
+    </div>
+  </footer>
+  </div>
 </body>
 <script>
   require('render.js')
+
 </script>
+
 </html>
