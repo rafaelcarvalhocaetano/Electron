@@ -9,5 +9,13 @@
     width: 30%;
     height: 15em;
     margin: 15% 0 0 35%;
-   
+    border:1px solid red;
 }
+li{
+    float: left;
+    list-style: none;
+    margin-right: 1%;
+}
+
+
+

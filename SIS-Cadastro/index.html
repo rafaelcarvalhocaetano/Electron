@@ -2,34 +2,38 @@
 <html lang="pt-br">
 
 <head>
-<title>Sistema Integrado de Segurança</title>
+  <title>Sistema Integrado de Segurança</title>
 
-<!--Import materialize.css-->
-<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"  media="screen,projection"/>
-<link type="text/css" rel="stylesheet" href="css/estilo.css"  media="screen,projection"/>
-<!--Let browser know website is optimized for mobile-->
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<!-- Configurando sistema para carregar jquery -->
-<script>window.$ = window.jQuery = require('./jquery-3.2.1.js');</script>
-<!-- JS do Bootstrap -->
-<script src="js/bootstrap.min.js"></script>
-<!-- Responsive web -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta charset="utf-8">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="css/estilo.css" media="screen,projection" />
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Configurando sistema para carregar jquery -->
+  <script>
+    window.$ = window.jQuery = require('./jquery-3.2.1.js');
+  </script>
+  <!-- JS do Bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+  <!-- Responsive web -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta charset="utf-8">
 </head>
+
 <body id="log">
 <div class="box">
-
-<input type="text" class="form-control" placeholder="Nome completo">
-<br>
-<input type="text" class="form-control" placeholder="Senha com 8 digitos">
+  <ul>
+    <li><span class="">a</span><input type="text" placeholder="Nome"></li>
+    <li><span class="glyphi">a</span><input type="text" placeholder="Senha"></li>
+  </ul>
 
 </div>
 </body>
 <script>
   require('render.js')
+
 </script>
-<script src="http://localhost:35729/livereload.js"/>
+<script src="http://localhost:35729/livereload.js" />
 
 </html>
