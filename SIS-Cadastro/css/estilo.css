@@ -4,9 +4,28 @@ body{
     background-color: #212325;
 }
 .container{
-    background-color: #fff;
     width: 40%;
+    height: auto;
     margin: 20% 0 0 30%;
 }
+.form-control{
+    width: 100%;
+    margin: 2% 0% 0 0%;
+    padding: 4%;
+}
+.btn{
+    width: 50%;
+    margin: 4% -1% 0 0;
+    padding: 2%;
+}
+a{
+    color: #fff;
+    font-size: 15px;
+}
+a:hover{
+    text-decoration: none;
+    color: blueviolet;
+}
+
 
 
