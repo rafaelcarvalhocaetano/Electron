@@ -9,8 +9,6 @@
   "author": "Rafael Carvalho",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "~1.6.2",
-    "reload": "live-reload app --port 35729",
-    "live-reload": "^1.1.0"
+    "electron": "~1.6.2"    
   }
 }

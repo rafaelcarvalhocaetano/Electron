@@ -1,21 +1,12 @@
-*{
+body{
     margin: 0;
-    padding: 
+    padding: 0;
+    background-color: #212325;
 }
-#log{
-    background-color: #212333;
+.container{
+    background-color: #fff;
+    width: 40%;
+    margin: 20% 0 0 30%;
 }
-.box{
-    width: 30%;
-    height: 15em;
-    margin: 15% 0 0 35%;
-    border:1px solid red;
-}
-li{
-    float: left;
-    list-style: none;
-    margin-right: 1%;
-}
-
 
 
