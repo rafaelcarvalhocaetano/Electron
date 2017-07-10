@@ -26,6 +26,13 @@ a:hover{
     text-decoration: none;
     color: blueviolet;
 }
+.formulario{
+    width: 40%;
+    margin: 20% 0 0 30%;
+}
+.lb{
+    color: #fff;
+}
 
 
 
