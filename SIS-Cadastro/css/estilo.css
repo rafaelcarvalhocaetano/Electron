@@ -45,6 +45,13 @@ li{
 ul li{
     margin-top: 10%;
 }
+#cat{
+    color: #ccc;
+    margin: 5px;
+}
+#cat:hover{
+    color: #FFF;
+}
 
 
 
