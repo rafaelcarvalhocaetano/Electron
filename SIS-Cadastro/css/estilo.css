@@ -38,6 +38,13 @@ a:hover{
     height: 49em;
     background-color: #ccc;
 }
+li{
+    margin: 30% 0 80% 35%;
+    list-style: none;
+}
+ul li{
+    margin-top: 10%;
+}
 
 
 
