@@ -43,6 +43,8 @@ a:hover{
     position: absolute;    
 }
 #cat{
+    margin: 5% 0 5% 5%;
+    color: #424952;
     /*
     margin: 1% 0 0 98%;
     color: #ccc; 
@@ -55,7 +57,7 @@ a:hover{
 .um{
     width: 20%;
     float: left;
-    background-color: #424952;
+    background-color: #252831;
 }
 .um ul{
     margin: 40% 5% 5% 5%;
