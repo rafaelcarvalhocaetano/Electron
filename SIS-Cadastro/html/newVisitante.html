@@ -34,50 +34,19 @@
             <li><a href="#">Profile</a></li>
             <li><a href="#">Messages</a></li>
             <i id="cat" class="fa fa-cog" onclick="a();"></i>
-
+            
             <div class="icones">
 
             </div>
         </ul>
     </div>
     <div class="dois">
-        <i id="txt" class="fa fa-user-circle fa-3x">  Sistema de Cadastro - SG</i>
+        <i id="txt" class="fa fa-user-circle fa-3x">  Sistema de Cadastro - SG</i>    
     </div>
-   
     <div class="p">
-        <div class="wap">
-            <button class="btn btn-default">visitante</button>
-            <button class="btn btn-default">Motoristas</button>
-            <button class="btn btn-default">Ajudantes</button>
-            <button class="btn btn-default">Terceiros</button>
-        </div>
-        <div class="tbl">
-            <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Nome</th>
-                <th>Preço</th>
-                <th>Quantidade</th>
-                <th>Opções</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="produto in produtos">
-                <td>{{produto.nome}}</td>
-                <td>{{produto.preco}}</td>
-                <td>{{produto.qtd}}</td>
-                <td>
-                 <button class="btn btn-primary" @click="editProduct(produto)">Editar</button>
-                 <button class="btn btn-primary" @click="editProduct(produto)">Editar</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
-            
+        <div class="panel panel-default">
            
-       
+        </div>
     </div>
 </body>
 <script>
