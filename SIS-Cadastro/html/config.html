@@ -2,54 +2,55 @@
 <html lang="pt-br">
 
 <head>
-  <title>Sistema Integrado de Segurança</title>
+    <title>Sistema Integrado de Segurança</title>
 
-  <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css" media="screen,projection" />
-  <link type="text/css" rel="stylesheet" href="../css/estilo.css" media="screen,projection" />
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../css/estilo.css" media="screen,projection" />
     <link type="text/css" rel="stylesheet" href="../css/font-awesome.css" media="screen,projection" />
-  <!--Let browser know website is optimized for mobile-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Configurando sistema para carregar jquery -->
-  <script>
-    window.$ = window.jQuery = require('../jquery-3.2.1.js');
-  </script>
-  <!-- JS do Bootstrap -->
-  <script src="../js/bootstrap.min.js"></script>
-  <script src="../js/windows.js"></script>
-  <!-- Responsive web -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta charset="utf-8">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Configurando sistema para carregar jquery -->
+    <script>
+        window.$ = window.jQuery = require('../jquery-3.2.1.js');
+    </script>
+    <!-- JS do Bootstrap -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/windows.js"></script>
+    <!-- Responsive web -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="utf-8">
 </head>
+
 <body>
+    <div class="um">
+        <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Messages</a></li>
+            <li class="disabled"><a href="#">Configurações</a></li>
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Messages</a></li>
+            <i id="cat" class="fa fa-cog" onclick="a();"></i>
+            
+            <div class="icones">
 
-<div class="um">
-
-    <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Messages</a></li>
-        <li class="disabled"><a href="#">Configurações</a></li>
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Messages</a></li>
-        <i id="cat" class="fa fa-cog" onclick="a();"></i>
-        
-    <div class="icones">
-   
+            </div>
+        </ul>
     </div>
-    </ul>
-</div>
-<div class="dois">
-    
-asdas
-</div>
+    <div class="dois">
+
+        asdas
+    </div>
 
 
 
 </body>
 <script>
-  require('render.js')
+    require('render.js')
+
 </script>
+
 </html>

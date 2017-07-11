@@ -35,17 +35,19 @@ a:hover{
 }
 .icones{
 
-    width: 30%;
-    height: 10em;
-    margin: 30% 0 0 30%;
+    width: 95%;
+    height: 11em;
+    margin: 2% 0 0 5%;
     background-color: #ccc;
     display: none;
-    position: absolute;    
+    border-radius: 10px 0 10px 0;
+    /*position: absolute; --> coloca onde você deseja posicionar */    
 }
 #cat{
     margin: 5% 0 5% 5%;
-    color: #424952;
+    color: #ccc;
     /*
+    color: #424952;
     margin: 1% 0 0 98%;
     color: #ccc; 
     position: absolute;
@@ -60,7 +62,7 @@ a:hover{
     background-color: #252831;
 }
 .um ul{
-    margin: 40% 5% 5% 5%;
+    margin: 60% 5% 5% 5%;
 }
 ul li{
     margin: 5% 0 0 0;
