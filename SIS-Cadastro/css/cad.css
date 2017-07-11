@@ -51,6 +51,7 @@ ul li{
 #txt {
     margin: 3% 0 1% 20%;
     color: #fff;
+    opacity: .2;
 }
 .tres > ul > li>a:hover{
     color: #fff;
@@ -78,7 +79,6 @@ ul li{
     border-radius: 10px 10px;
 }
 .i{
-
      background-color: #337AB7;
 }
 

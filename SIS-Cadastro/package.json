@@ -9,6 +9,9 @@
   "author": "Rafael Carvalho",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "~1.6.2"    
+    "electron": "~1.6.2"
+  },
+  "dependencies": {
+    "vue": "^2.3.4"
   }
 }
