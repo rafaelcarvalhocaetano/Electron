@@ -59,14 +59,26 @@ ul li{
 #pnl{
     height: 12em;
 }
-.p{
+.painel{
     float: left;
     width: 80%;
     height: 40em;
     margin: 0 0 0 0;
-    background-color: #ccc;
 }
-.wap{
-    
+.nav{
+    margin: 2% 0 0 30%;
+}
+.tbl{
+    background-color: #ccc;
+    border-radius: 5px 5px 5px 5px;
+    width: 95%;
+    margin: 2% 3% 0 3%;
+}
+.table{
+    border-radius: 10px 10px;
+}
+.i{
+
+     background-color: #337AB7;
 }
 
