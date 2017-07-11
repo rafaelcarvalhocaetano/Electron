@@ -38,9 +38,9 @@ a:hover{
     width: 95%;
     height: 11em;
     margin: 2% 0 0 5%;
-    background-color: #ccc;
+    background-color: #424952;
     display: none;
-    border-radius: 10px 0 10px 0;
+    border-radius: 5px 0 5px 0;
     /*position: absolute; --> coloca onde você deseja posicionar */    
 }
 #cat{
@@ -58,8 +58,11 @@ a:hover{
 }
 .um{
     width: 20%;
+    height: 47em;
     float: left;
     background-color: #252831;
+    border-right: 1px solid rgba(10, 10, 10, .3);
+
 }
 .um ul{
     margin: 60% 5% 5% 5%;
@@ -72,8 +75,20 @@ ul li{
     background-color: #337AB7;
 }
 .dois{
-    width: 100%;
-    background-color: #424952;
+    border-bottom: 1px solid rgba(10, 10, 10, .3);
 }
-
+#txt {
+    margin: 3% 0 1% 20%;
+    color: #fff;
+}
+.nav{
+    margin: 0 0 0 0;
+}
+.tres > ul > li>a:hover{
+    color: #fff;
+    background-color: #337AB7;
+}
+#pnl{
+    height: 12em;
+}
 
