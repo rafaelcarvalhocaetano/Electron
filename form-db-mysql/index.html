@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>PRINCIPAL</title>
+    <script>window.$ = window.jQuery = require('./jquery-3.2.1.js');</script>
 
     <!-- Stylesheets 
     <link rel="stylesheet" href="css/photon.css">
@@ -11,38 +12,40 @@
    <!-- <script src="app.js" charset="utf-8"></script> -->
   </head>
   <body>
+    <labe class="l"></labe>
    <input type="button" value="Teste de conexão" id="btn"/>
+
   </body>
   <script>
-    document.getElementById("btn").addEventListener("click", () => {
-
+    //chama o mysql
     let mysql = require("mysql");
+
+    //variavél que recebe a função de criar a base de dados
     let conectar =mysql.createConnection({
       host:"localhost",
       user:"root",
       password:"q1w2e3r4",
       database:"electron"
     });
+    //função que conecta
     conectar.connect((err)=>{
       if(err){
         return console.log(err.stack);
       }
       console.log("Connecção ok");
     });
-    $query = 'SELECT nome FROM `teste`';
+    //variavel que seleciona o elemento
+    $query = 'SELECT * FROM `teste`';
 
+    //função que chama o elemento do banco de dados e mostra no html
     conectar.query($query, (err, rows, fields) => {
-      if(err){
-        console.log("Erro na busca", err);
-      }
-      console.log(rows);
+      if(err) throw err;
+      $('.l').text(rows[0].id);
     });
 
     conectar.end(function(){
 
-    });   
-}, false);
-    
+    });    
 
   </script>
 </html>
