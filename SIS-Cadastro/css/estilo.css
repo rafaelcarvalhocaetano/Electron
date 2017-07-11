@@ -34,6 +34,7 @@ a:hover{
     color: #fff;
 }
 .icones{
+    display: none;
     width: 3%;
     height: 40em;
     background-color: #ccc;
