@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <title>PRINCIPAL</title>
+
+    <!-- Stylesheets 
+    <link rel="stylesheet" href="css/photon.css">
+-->
+    <!-- Electron Javascript -->
+   <!-- <script src="app.js" charset="utf-8"></script> -->
+  </head>
+  <body>
+   <input type="button" value="Teste de conexão" id="btn"/>
+  </body>
+  <script>
+    document.getElementById("btn").addEventListener("click", () => {
+
+    let mysql = require("mysql");
+    let conectar =mysql.createConnection({
+      host:"localhost",
+      user:"root",
+      password:"q1w2e3r4",
+      database:"electron"
+    });
+    conectar.connect((err)=>{
+      if(err){
+        return console.log(err.stack);
+      }
+      console.log("Connecção ok");
+    });
+    $query = 'SELECT nome FROM `teste`';
+
+    conectar.query($query, (err, rows, fields) => {
+      if(err){
+        console.log("Erro na busca", err);
+      }
+      console.log(rows);
+    });
+
+    conectar.end(function(){
+
+    });   
+}, false);
+    
+
+  </script>
+</html>
