@@ -12,9 +12,11 @@
    <!-- <script src="app.js" charset="utf-8"></script> -->
   </head>
   <body>
-    <labe class="l"></labe>
-   <input type="button" value="Teste de conexão" id="btn"/>
-
+    <form action="" method="POST">
+      <input class="l" type="date">
+      <input type="button" value="Teste de conexão" id="btn"/>
+    </form>
+   
   </body>
   <script>
     //chama o mysql
@@ -25,7 +27,7 @@
       host:"localhost",
       user:"root",
       password:"q1w2e3r4",
-      database:"electron"
+      database:"portaria"
     });
     //função que conecta
     conectar.connect((err)=>{
@@ -35,17 +37,26 @@
       console.log("Connecção ok");
     });
     //variavel que seleciona o elemento
-    $query = 'SELECT * FROM `teste`';
-
+    /*
+    $query = 'SELECT * FROM `cadastro`';
     //função que chama o elemento do banco de dados e mostra no html
     conectar.query($query, (err, rows, fields) => {
       if(err) throw err;
-      $('.l').text(rows[0].id);
+      $('.b').text(rows[0].id);
+    });
+    */
+    const buscando = $('.l');
+    $sql = "INSET INTO cadastro `data` VALUES ",buscando;
+    
+
+    conectar.query($sql, function(err, rows, fields) {
+      if(err){
+        return console.log(err);
+      }
+      console.log(info);
     });
 
-    conectar.end(function(){
-
-    });    
+    conectar.end();
 
   </script>
 </html>
