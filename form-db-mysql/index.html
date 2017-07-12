@@ -41,7 +41,7 @@
     if (err) {
       return console.log(err.stack);
     }
-    console.log("Connecção ok");
+    console.log("CONECTADO COM SUCESSO AO MYSQL");
   });
   //variavel que seleciona o elemento
   /*
@@ -52,22 +52,24 @@
     $('.b').text(rows[0].id);
   });
   */
+
+//inserindo dados com sucesso
 function teste(){
 
  var info = {
-   nome:("nome"),
-   empresa:('empresa'),
-   rg:('rg'),
-   data:('data')
+   nome:$("#nome").val(),
+   empresa:$("#empresa").val(),
+   rg:$("#rg").val(),
+   data:$("#data").val()
  };
 
-conectar.query('insert into cadastro set ?', info, function(err, result){
+var query = conectar.query('insert into cadastro set ?', info, function(err, result){
       if(err){
         console.log(err);
       }else{
         console.log("secesso");
       }
-      console.log("dasdas");
+      console.log(query.sql);
  });
  
 conectar.end();
