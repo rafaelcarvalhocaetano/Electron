@@ -2,9 +2,9 @@
 Projetos de aplicações multiplataforma com html, js e css, usando o ELECTRON
 Para estilização dos projetos será utilizado Materialize, Bootstrap e JQuery.
 
-[Configurações iniciais](#configurações-iniciais)
-[Formulário](#formulário)
-[SIS-Sistema Integrado de Segurança](#sis-sistema-integrado-de-segurança)
+ - [Configurações iniciais](#configurações-iniciais)
+ - [Formulário](#formulário)
+ - [SIS-Sistema Integrado de Segurança](#sis-sistema-integrado-de-segurança)
 
 ### Formulário
 
@@ -14,7 +14,7 @@ Aplicação ainda em processo de construção.
 
 <img src="https://github.com/rafaelcarvalhocaetano/Electron/blob/master/formulario/img/formulario.png">
 
-### Sistema Integrado de Segurança
+### SIS - Sistema Integrado de Segurança
 Desenvolvimento de um controle de acesso para portarias.
 
 
