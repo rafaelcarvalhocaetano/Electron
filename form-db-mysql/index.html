@@ -1,62 +1,85 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <title>PRINCIPAL</title>
-    <script>window.$ = window.jQuery = require('./jquery-3.2.1.js');</script>
 
-    <!-- Stylesheets 
+<head>
+  <meta charset="utf-8">
+  <title>PRINCIPAL</title>
+  <script>
+    window.$ = window.jQuery = require('./jquery-3.2.1.js');
+  </script>
+
+  <!-- Stylesheets 
     <link rel="stylesheet" href="css/photon.css">
 -->
-    <!-- Electron Javascript -->
-   <!-- <script src="app.js" charset="utf-8"></script> -->
-  </head>
-  <body>
-    <form action="" method="POST">
-      <input class="l" type="date">
-      <input type="button" value="Teste de conexão" id="btn"/>
-    </form>
-   
-  </body>
-  <script>
-    //chama o mysql
-    let mysql = require("mysql");
+  <!-- Electron Javascript -->
+  <!-- <script src="app.js" charset="utf-8"></script> -->
+</head>
 
-    //variavél que recebe a função de criar a base de dados
-    let conectar =mysql.createConnection({
-      host:"localhost",
-      user:"root",
-      password:"q1w2e3r4",
-      database:"portaria"
-    });
-    //função que conecta
-    conectar.connect((err)=>{
+<body>
+  <form id="form" method="POST">
+    <input name="nome" type="text" id="nome">
+    <input name="empresa" type="text" id="empresa">
+    <input name="rg" type="text" id="rg">
+    <input name="data" type="date" id="data">
+    <input type="button" value="Teste de conexão" id="btn" onclick="teste();" />
+  </form>
+
+</body>
+<script>
+  //chama o mysql
+  let mysql = require("mysql");
+
+  //variavél que recebe a função de criar a base de dados
+  let conectar = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "q1w2e3r4",
+    database: "portaria"
+  });
+  //função que conecta
+  conectar.connect((err) => {
+    if (err) {
+      return console.log(err.stack);
+    }
+    console.log("Connecção ok");
+  });
+  //variavel que seleciona o elemento
+  /*
+  $query = 'SELECT * FROM `cadastro`';
+  //função que chama o elemento do banco de dados e mostra no html
+  conectar.query($query, (err, rows, fields) => {
+    if(err) throw err;
+    $('.b').text(rows[0].id);
+  });
+  */
+function teste(){
+
+ var info = {
+   nome:("nome"),
+   empresa:('empresa'),
+   rg:('rg'),
+   data:('data')
+ };
+
+conectar.query('insert into cadastro set ?', info, function(err, result){
       if(err){
-        return console.log(err.stack);
+        console.log(err);
+      }else{
+        console.log("secesso");
       }
-      console.log("Connecção ok");
-    });
-    //variavel que seleciona o elemento
-    /*
-    $query = 'SELECT * FROM `cadastro`';
-    //função que chama o elemento do banco de dados e mostra no html
-    conectar.query($query, (err, rows, fields) => {
-      if(err) throw err;
-      $('.b').text(rows[0].id);
-    });
-    */
-    const buscando = $('');
-    $sql = "INSET INTO cadastro `data` VALUES ",buscando;
+      console.log("dasdas");
+ });
+ 
+conectar.end();
+ }
+
+   
+
+
     
 
-    conectar.query($sql, function(err, rows, fields) {
-      if(err){
-        return console.log(err);
-      }
-      console.log(info);
-    });
 
-    conectar.end();
 
-  </script>
+</script>
+
 </html>
