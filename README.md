@@ -14,7 +14,7 @@ Aplicação ainda em processo de construção.
 
 <img src="https://github.com/rafaelcarvalhocaetano/Electron/blob/master/formulario/img/formulario.png">
 
-### SIS - Sistema Integrado de Segurança
+### SIS-Sistema Integrado de Segurança
 Desenvolvimento de um controle de acesso para portarias.
 
 
