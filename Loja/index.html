@@ -117,8 +117,8 @@
 <script>
   
   var read = require('read-file-utf8');
-  var loki = require('lokijs');
-  var db = new loki('db.json');
+  var loki = require('lokijs'); //chamando o banco de dados
+  var db = new loki('db.json'); // criando o banco de dados e criando um arquivo json para receber as infos
   //verificando se o arquivo existe
   var fileExists =require('file-exists');
   var data = {};
@@ -127,7 +127,6 @@
     db.loadJSON(data);
   }else{
     //vendas
-   
     db.addCollection('vendas'); //adicionando itens de vendas
     db.addCollection('children'); //adicionando itens de clientes
     db.addCollection('produto'); //adiciona os itens contido dentro de produtos a var produtos
@@ -136,6 +135,7 @@
     
   }
 
+//Chamando vue para a aplicação
   window.Vue =require('vue');
   //var clientes = db.addCollection('children');
   var clientes = db.getCollection('children');
