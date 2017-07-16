@@ -2,7 +2,23 @@
 Projetos de aplicações multiplataforma com html, js e css, usando o ELECTRON
 Para estilização dos projetos será utilizado Materialize, Bootstrap e JQuery.
 
-### Configuração do sistema
+ - [Configurações iniciais](#configurações-iniciais)
+ - [Formulário](#formulário)
+ - [SIS-Sistema Integrado de Segurança](#sis-sistema-integrado-de-segurança)
+
+### Formulário
+
+Está aplicação represeta um pequeno sistema para lojas, disponibilizando armazenamento e controle do fluxo de informação.
+Aplicação ainda em processo de construção.
+
+
+<img src="https://github.com/rafaelcarvalhocaetano/Electron/blob/master/formulario/img/formulario.png">
+
+### SIS-Sistema Integrado de Segurança
+Desenvolvimento de um controle de acesso para portarias.
+
+
+### Configurações iniciais
 
 Configuração minima permitida para rodar uma aplicação electron.
 
@@ -117,13 +133,3 @@ renderer.js
 Para melhor configuração do sistema acessar o https://electron.atom.io/
 
 
-### Formulario
-
-Está aplicação represeta um pequeno sistema para lojas, disponibilizando armazenamento e controle do fluxo de informação.
-Aplicação ainda em processo de construção.
-
-
-<img src="https://github.com/rafaelcarvalhocaetano/Electron/blob/master/formulario/img/formulario.png">
-
-### Sistema Integrado de Segurança
-Desenvolvimento de um controle de acesso para portarias.
