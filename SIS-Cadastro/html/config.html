@@ -11,7 +11,9 @@
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Configurando sistema para carregar jquery -->
-    
+     <script>
+        window.$ = window.jQuery = require('../jquery-3.2.1.js');
+    </script>
     <!-- JS do Bootstrap -->
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/windows.js"></script>
@@ -40,6 +42,22 @@
     </div>
     <div class="dois">
         <i id="txt" class="fa fa-user-circle fa-3x">  Sistema de Cadastro - SG</i>
+    </div>
+    <!-- Visitante -->
+    <div id="" v-if="visitante">
+        <h1>visitante</h1>
+    </div>
+    <!-- Motorista -->
+    <div id="" v-if="motorista">
+        <h1>motorista</h1>
+    </div>
+    <!-- Ajudante -->
+    <div id="" v-if="ajudante">
+        <h1>ajudante</h1>
+    </div>
+    <!-- Terceiro -->
+    <div id="" v-if="terceiro">
+        <h1>terceiro</h1>
     </div>
 
     <div class="painel">
@@ -98,11 +116,11 @@
             <h1>Terceiros</h1>
         </div>
     </div>
+
+   
    
 </body>
 <script>
-window.$ = window.jQuery = require('../jquery-3.2.1.js');
-
 window.Vue = require('Vue');
 
 new Vue({
@@ -117,8 +135,6 @@ new Vue({
 
   }
 })
-
-
 </script>
 
 </html>
