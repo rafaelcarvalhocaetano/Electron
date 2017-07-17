@@ -81,4 +81,21 @@ ul li{
 .i{
      background-color: #337AB7;
 }
-
+/* 
+Conteudo da pagina com VUE
+*/
+#modal{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background: rgba(0, 0, 0, 0.7);
+}
+#modal .wrap{
+    width: 60%;
+    height: 60%;
+    margin-left: 20%;
+    margin-top: 10%;
+    background-color: #FFF;
+}

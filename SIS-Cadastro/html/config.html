@@ -43,7 +43,7 @@
     <div class="dois">
         <i id="txt" class="fa fa-user-circle fa-3x">  Sistema de Cadastro - SG</i>
     </div>
-   
+
     <div class="painel">
         <div class="nav">
             <button class="btn btn-default">visitante</button>
@@ -53,49 +53,57 @@
         </div>
         <div class="tbl">
             <table class="table table-hover info">
-              <tr class="i">
-                <th>Nome</th>
-                <th>Preço</th>
-                <th>Quantidade</th>
-                <th>Opções</th>
-              </tr>
-        
-              <tr v-for="produto in produtos">
-                <td>rafael</td>
-                <td>lapis</td>
-                <td>1</td>
-                <td>
-                 <i class="fa fa-user" @click="editProduct(produto)">Editar</i>
-                <i class="fa fa-user" @click="editProduct(produto)">Editar</i>
-                </td>
-              </tr>
-              <tr v-for="produto in produtos">
-                <td>rafael</td>
-                <td>lapis</td>
-                <td>1</td>
-                <td>
-                 <i class="fa fa-user" @click="editProduct(produto)">Editar</i>
-                 <i class="fa fa-user" @click="editProduct(produto)">Editar</i>
-                </td>
-              </tr>
-              <tr v-for="produto in produtos">
-                <td>rafael</td>
-                <td>lapis</td>
-                <td>1</td>
-                <td>
-                 <i class="fa fa-user" @click="editProduct(produto)">Editar</i>
-                 <i class="fa fa-user" @click="editProduct(produto)">Editar</i>
-                </td>
-              </tr>
-          </table>
-        </div> 
+                <tr class="i">
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                    <th>Opções</th>
+                </tr>
+
+                <tr v-for="produto in produtos">
+                    <td>rafael</td>
+                    <td>lapis</td>
+                    <td>1</td>
+                    <td>
+                        <i class="fa fa-user" @click="editProduct(produto)">Editar</i>
+                        <i class="fa fa-user" @click="editProduct(produto)">Editar</i>
+                    </td>
+                </tr>
+                <tr v-for="produto in produtos">
+                    <td>rafael</td>
+                    <td>lapis</td>
+                    <td>1</td>
+                    <td>
+                        <i class="fa fa-user" @click="editProduct(produto)">Editar</i>
+                        <i class="fa fa-user" @click="editProduct(produto)">Editar</i>
+                    </td>
+                </tr>
+                <tr v-for="produto in produtos">
+                    <td>rafael</td>
+                    <td>lapis</td>
+                    <td>1</td>
+                    <td>
+                        <i class="fa fa-user" @click="editProduct(produto)">Editar</i>
+                        <i class="fa fa-user" @click="editProduct(produto)">Editar</i>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
     <div>
-
+    </div>
+    <!-- Cadastrando novo Visitante -->
+    <div id="modal" v-if="see">
+        <div class="wrap">
+            <h1>OOOOOOOO</h1>
+        </div>
     </div>
 </body>
+
 <script>
-    require('render.js')
+window.Vue = require('Vue');
+
+
 </script>
 
 </html>
