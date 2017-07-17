@@ -11,9 +11,7 @@
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Configurando sistema para carregar jquery -->
-    <script>
-        window.$ = window.jQuery = require('../jquery-3.2.1.js');
-    </script>
+    
     <!-- JS do Bootstrap -->
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/windows.js"></script>
@@ -52,39 +50,42 @@
             <button class="btn btn-default">Terceiros</button>
         </div>
         <div class="tbl">
+            
             <table class="table table-hover info">
+                <div class="clearfix">
                 <tr class="i">
                     <th>Nome</th>
                     <th>Preço</th>
                     <th>Quantidade</th>
                     <th>Opções</th>
                 </tr>
+                </div>
 
-                <tr v-for="produto in produtos">
+                <tr>
                     <td>rafael</td>
                     <td>lapis</td>
                     <td>1</td>
                     <td>
-                        <i class="fa fa-user" @click="editProduct(produto)">Editar</i>
-                        <i class="fa fa-user" @click="editProduct(produto)">Editar</i>
+                        <i class="fa fa-user" >Editar</i>
+                        <i class="fa fa-user" >Editar</i>
                     </td>
                 </tr>
-                <tr v-for="produto in produtos">
+                <tr >
                     <td>rafael</td>
                     <td>lapis</td>
                     <td>1</td>
                     <td>
-                        <i class="fa fa-user" @click="editProduct(produto)">Editar</i>
-                        <i class="fa fa-user" @click="editProduct(produto)">Editar</i>
+                        <i class="fa fa-user" >Editar</i>
+                        <i class="fa fa-user" >Editar</i>
                     </td>
                 </tr>
-                <tr v-for="produto in produtos">
+                <tr>
                     <td>rafael</td>
                     <td>lapis</td>
                     <td>1</td>
                     <td>
-                        <i class="fa fa-user" @click="editProduct(produto)">Editar</i>
-                        <i class="fa fa-user" @click="editProduct(produto)">Editar</i>
+                        <i class="fa fa-user" >Editar</i>
+                        <i class="fa fa-user">Editar</i>
                     </td>
                 </tr>
             </table>
@@ -93,15 +94,48 @@
     <div>
     </div>
     <!-- Cadastrando novo Visitante -->
-    <div id="modal" v-if="see">
+    <div id="modal" v-if="openVisitante">
         <div class="wrap">
-            <h1>OOOOOOOO</h1>
+            <h1>Visitante</h1>
         </div>
     </div>
+    <!-- Cadastrando novo MOTORISTA -->
+    <div id="modal" v-if="openMotor">
+        <div class="wrap">
+            <h1>Motoristas</h1>
+        </div>
+    </div>
+    <!-- Cadastrando novo AJUDANTE -->
+    <div id="modal" v-if="openAjudante">
+        <div class="wrap">
+            <h1>Ajudante</h1>
+        </div>
+    </div>
+    <!-- Cadastrando novo TERCEIRO -->
+    <div id="modal" v-if="openTerceiro">
+        <div class="wrap">
+            <h1>Terceiros</h1>
+        </div>
+    </div>
+   
 </body>
-
 <script>
+window.$ = window.jQuery = require('../jquery-3.2.1.js');
+
 window.Vue = require('Vue');
+
+new Vue({
+    el: 'body',
+    data: {
+    openVisitante:false,
+    openMotor:false,
+    openTerceiro:false,
+    openAjudante:false
+},
+  methods:{
+
+  }
+})
 
 
 </script>
