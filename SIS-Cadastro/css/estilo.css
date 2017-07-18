@@ -37,20 +37,16 @@ pagina esqueci a senha
     top: 0px;
     background: rgba(0, 0, 0, 0.7);
 }
-#esq .pass{
-    width: 60%;
-    height: 60%;
-    margin-left: 20%;
+.pass{
+    width: 40%;
+    height: 50%;
+    margin-left: 30%;
     margin-top: 10%;
     background-color: #FFF;
 }
-.form-control{
-    width: 60%;
-    margin: 10% 0 0 0;
-    color: #fff;
+.email{
+   
+    margin: 30% 0 0 0;
+    width: 40%;
+   
 }
-#env{
-    width: 20%;
-    float: right;
-}
-
