@@ -31,15 +31,28 @@
 <a href="html/senha.html">Esqueci a senha</a>
 </div>
 <div id="esq" v-if="senha">
-<form class="pass">
+<form class="pass" action="rapha.pse@outlook.com" method="POST">
   <div class="text-center">
-  <input type="text" class="email" placeholder="Informe seu email">
-  <input type="submit" class="bb"/>
+    <input type="text" class="email" placeholder="Informe seu email">
+    <input type="submit" class="bb"/>
   </div>
 </form>
 </div>
 </body>
 <script>
-  require('render.js');
+window.Vue = require('vue');
+
+new Vue({
+    el: 'body',
+    data: {
+    senha:false
+},
+  methods:{
+      editarVisitante:function(){
+
+      },
+
+  }
+})
 </script>
 </html>
