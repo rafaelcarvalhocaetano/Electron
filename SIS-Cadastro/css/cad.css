@@ -29,7 +29,7 @@ body{
     width: 20%;
     height: 48em;
     background-color: #252831;
-    border-right: 1px solid rgba(10, 10, 10, .3);
+   /* border-right: 1px solid rgba(10, 10, 10, .3); */
     position: relative;
     float: left;
     
@@ -46,13 +46,17 @@ ul li{
     background-color: #337AB7;
 }
 .dois{
-    border-bottom: 1px solid rgba(10, 10, 10, .3);
+ 
+   
+    /*border-bottom: 1px solid rgba(10, 10, 10, .3);*/
 }
+/*
 #txt {
     margin: 3% 0 1% 20%;
     color: #fff;
-    opacity: .2;
+    opacity: .6;
 }
+*/
 .tres > ul > li>a:hover{
     color: #fff;
     background-color: #337AB7;
@@ -71,7 +75,6 @@ ul li{
 }
 .tbl{
     background-color: #ccc;
-    border-radius: 5px 5px 5px 5px;
     width: 95%;
     margin: 2% 3% 0 3%;
 }
