@@ -23,12 +23,13 @@
 </head>
 <body>
 <div class="container">
-<input type="text" class="form-control" placeholder="Informe o Nome">
-<input type="text" class="form-control" placeholder="Informe a Senha com 8 digitos">
-
-<button type="button" class="btn btn-default"><i class="fa fa-user"> Logar</i></button>
-<button type="button" class="btn btn-default"><i class="fa fa-plus-square-o"> Cadastrar</i></button>
-<a href="html/senha.html">Esqueci a senha</a>
+  <input type="text" class="form-control" placeholder="Informe o Nome">
+  <input type="text" class="form-control" placeholder="Informe a Senha com 8 digitos">
+<div>
+  <button id="btn1" type="button" class="btn btn-default"><i class="fa fa-user"> Logar</i></button>
+  <button id="btn2" type="button" class="btn btn-default"><i class="fa fa-plus-square-o"> Cadastrar</i></button>
+</div>
+<a href="html/cadastro.html">Esqueci a senha</a>
 </div>
 <div id="esq" v-if="senha">
 <form class="pass" action="rapha.pse@outlook.com" method="POST">
