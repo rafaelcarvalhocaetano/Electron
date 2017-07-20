@@ -5,18 +5,18 @@
     <title>Sistema Integrado de Segurança</title>
 
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css" media="screen,projection" />
-    <link type="text/css" rel="stylesheet" href="../css/cad.css" media="screen,projection" />
-    <link type="text/css" rel="stylesheet" href="../css/font-awesome.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/cad.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/font-awesome.css" media="screen,projection" />
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Configurando sistema para carregar jquery -->
      <script>
-        window.$ = window.jQuery = require('../jquery-3.2.1.js');
+        window.$ = window.jQuery = require('./jquery-3.2.1.js');
     </script>
     <!-- JS do Bootstrap -->
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/windows.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/windows.js"></script>
     <!-- Responsive web -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -27,9 +27,9 @@
     <div class="um">
         <ul class="nav nav-pills nav-stacked">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Messages</a></li>
-            <li class="disabled"><a href="#">Configurações</a></li>
+            <li><a href="#">Veículos da Empresa</a></li>
+            <li><a href="#">Visitantes</a></li>
+            <li class="disabled"><a href="#">Lista</a></li>
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Messages</a></li>
@@ -62,10 +62,22 @@
 
     <div class="painel">
         <div class="nav">
-            <button class="btn btn-default">visitante</button>
-            <button class="btn btn-default">Motoristas</button>
-            <button class="btn btn-default">Ajudantes</button>
-            <button class="btn btn-default">Terceiros</button>
+            <button class="btn btn-default">
+                <i class="fa fa-plus"></i>
+                Visitante
+            </button>
+            <button class="btn btn-default">
+                <i class="fa fa-plus"></i>
+                Motoristas
+            </button>
+            <button class="btn btn-default">
+                <i class="fa fa-plus"></i>
+                Ajudantes
+            </button>
+            <button class="btn btn-default">
+                <i class="fa fa-plus"></i>
+                Terceiros
+            </button>
         </div>
         <div class="tbl">
           
