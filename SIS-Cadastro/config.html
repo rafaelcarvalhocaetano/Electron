@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <div class="um">
+    <form class="um">
         <ul class="nav nav-pills nav-stacked">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#">Veículos da Empresa</a></li>
@@ -33,10 +33,18 @@
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Messages</a></li>
+           
             <i id="cat" class="fa fa-cog" onclick="a();"></i>
-
             <div class="icones">
-                vazia
+                <form class="icones" method="POST">
+                Usuário
+                <input type="text" name="user">
+                Senha
+                <input type="text" name="senha">
+                Nome do banco de dados
+                <input type="text" name="database">
+                <input type="submit" value="Enviar" onclick="enviar();">
+                </form>
             </div>
         </ul>
     </div>
@@ -97,8 +105,7 @@
                     <th class="text-center">Vazio</th>
                     <th class="text-center">Saída</th>
                     <th class="text-center">Carregado</th>
-                    <th class="text-center">Vazio</th>
-                    
+                    <th class="text-center">Vazio</th> 
                 </tr>
                 <tr>
                     <th class="text-center">Cavalo</th>
@@ -149,7 +156,36 @@
     </div>
 </body>
 <script>
+
+let db =require('mysql');
+
+var mdb = new loki('db.json');
+
+let conectar = db.createConnection({
+   
+    
+    host     : $(localhost),
+    user     : $('user').val(),
+    password : $('senha').val(),
+    database : $('database').val()
+
+});
+
+conectar.connect(function(err){
+    if(err){
+        return console.log(err.stack);
+    }
+    console.log("Conectado com sucesso")
+});
+
+</script>
+
+
+
+
+<script>
 window.Vue = require('Vue');
+
 
 new Vue({
     el: 'body',
@@ -165,7 +201,6 @@ new Vue({
       },
 
   }
-})
+});
 </script>
-
 </html>

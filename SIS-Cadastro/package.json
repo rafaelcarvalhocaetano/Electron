@@ -12,6 +12,7 @@
     "electron": "~1.6.2"
   },
   "dependencies": {
+    "mysql": "^2.13.0",
     "vue": "^1.0.28"
   }
 }
