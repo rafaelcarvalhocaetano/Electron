@@ -26,7 +26,7 @@
     <p>Data<br>
     <input name="data" type="date" id="data"></p>
     <br/>
-    <input type="button" value="Teste de conexão" id="btn" onclick="teste();" />
+    <input type="button" value="Teste de conexão" onclick="enviar();" />
   </form>
   <div class="form-group">
     <table class="tabela">
@@ -39,12 +39,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>aaa</td>
-          <td>aaa</td>
-          <td>aaa</td>
-          <td>aaa</td>
+        <tr v-for="cliente in clientes">
+          <td class="a">{{cliente.name}}</td>
+          <td class="b">{{cliente.empresa}}</td>
+          <td class="c">{{cliente.rg}}</td>
+          <td class="d">{{cliente.data}}</td>
         </tr>
+        
       </tbody>
     </table>
   </div>
@@ -52,7 +53,6 @@
 <script>
   //chama o mysql
   let mysql = require("mysql");
-
   window.Vue =require('vue');
 
   //variavél que recebe a função de criar a base de dados
@@ -70,17 +70,36 @@
     console.log("CONECTADO COM SUCESSO AO MYSQL");
   });
   //variavel que seleciona o elemento
-  /*
-  $query = 'SELECT * FROM `cadastro`';
+  
+    $query = 'SELECT * FROM `cadastro`';
   //função que chama o elemento do banco de dados e mostra no html
-  conectar.query($query, (err, rows, fields) => {
-    if(err) throw err;
-    $('.b').text(rows[0].id);
+  conectar.query($query, (err, rows) => {
+    if(err){
+      throw err;
+    }
+    
+
+    for (i = 0; i < rows.length; i++) { 
+        $dados = rows[i];
+    } 
+    
   });
-  */
+new Vue({
+  el:'body',
+  data: {
+    $dados:[],
+    mode:'',
+    client:{
+      nome:'',
+      cpf:'',
+      telefone:''
+  }
+
+})
+  
 
 //inserindo dados com sucesso
-function teste(){
+function enviar(){
 
  var info = {
    nome:$("#nome").val(),
@@ -98,15 +117,22 @@ var query = conectar.query('insert into cadastro set ?', info, function(err, res
       console.log(query.sql);
  });
 conectar.end();
- }
+}
+/*
+  let clientes = inserir;
 
-   
-
-
-    
-
-
-
+  new Vue({
+    el: 'body', //recebe o conteúdo do body
+      data: {
+         clientes:[],
+         mode:'',
+         client:{
+           nome:'',
+           cpf:'',
+           telefone:''
+         }
+})
+*/
 </script>
 
 </html>
