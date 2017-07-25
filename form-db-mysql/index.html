@@ -35,6 +35,7 @@
     <table class="tabela">
       <thead>
         <tr>
+          <th>ID</th>
           <th>Nome</th>
           <th>Empresa</th>
           <th>RG</th>
@@ -42,18 +43,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="info in infos">
-          <td class="a">a</td>
-          <td class="b">a</td>
-          <td class="c">{{data.message}}</td>
-          <td class="d">a</td>
+        <tr v-for="busca in buscar">
+          <td>{{busca.id}}</td>
+          <td>{{busca.nome}}</td>
+          <td>{{busca.empresa}}</td>
+          <td>{{busca.rg}}</td>
+          <td>{{busca.data}}</td>
         </tr>
-
       </tbody>
     </table>
-    <div id="app">
-      {{ message }}
-    </div>
+   
   </div>
 </body>
 <script>
@@ -65,15 +64,16 @@
     password: "q1w2e3r4",
     database: "portaria"
   });
-  
+  let res;
+   
   new Vue({
-    el: '#app',
-    data: {
+    el: 'body',
+   data: {
       buscar: [],
       info:{
         nome:'',
-        rg:'',
         empresa:'',
+        rg:'',
         data:''
      }
     },
@@ -85,16 +85,21 @@
         }
         console.log("CONECTADO COM SUCESSO AO MYSQL");
       });
-       let buscando = conectar.query("SELECT * FROM cadastro", function (error, results) {
+       
+    },
+    ready:function(){
+      let busca = conectar.query("SELECT nome, empresa, rg, data FROM cadastro", function (error, results) {
         if (error) {
           throw error;
         }
-        console.log(results);
+       res = results.forEach(function(results, index) {
+         console.log(results);
+       });
       });
-      this.buscando.results = buscar.info;
-    },
-    methods: {
+
+      this.buscar = busca.data;
      
+      
     }
   })
 
