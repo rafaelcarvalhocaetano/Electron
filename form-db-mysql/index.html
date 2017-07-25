@@ -19,14 +19,14 @@
 <body>
   <form id="form" method="POST">
     <p>Nome <br>
-      <input name="nome" v-model="info.nome" type="text" id="nome">
+      <input name="nome" v-model="info.nome" type="text">
     </p>
     <p>Empresa<br>
-      <input name="empresa" v-model="info.empresa" type="text" id="empresa"></p>
+      <input name="empresa" v-model="info.empresa" type="text"></p>
     <p>RG<br>
-      <input name="rg" v-model="info.rg" type="text" id="rg"></p>
+      <input name="rg" v-model="info.rg" type="text"></p>
     <p>Data<br>
-      <input name="data" v-model="info.data" type="date" id="data"></p>
+      <input name="data" v-model="info.data" type="date"></p>
     <br/>
     <input type="button" value="Teste de conexão" />
   </form>
@@ -43,64 +43,68 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="busca in buscar">
+
+        <tr v-for="busca in visitantes">
           <td>{{busca.id}}</td>
           <td>{{busca.nome}}</td>
           <td>{{busca.empresa}}</td>
           <td>{{busca.rg}}</td>
           <td>{{busca.data}}</td>
         </tr>
+
       </tbody>
     </table>
-   
+    <h2>{{numbers}}</h2>
+
   </div>
 </body>
 <script>
   window.Vue = require('vue');
   let mysql = require('mysql');
+
   let conectar = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "q1w2e3r4",
     database: "portaria"
   });
-  let res;
-   
+
   new Vue({
     el: 'body',
-   data: {
-      buscar: [],
-      info:{
-        nome:'',
-        empresa:'',
-        rg:'',
-        data:''
-     }
+    data: {
+      listas: [],
+      visit: {
+        nome: '',
+        empresa: '',
+        rg: '',
+        data: ''
+      }
     },
     ready: function () { //função responsável por exibir as infos
       conectar.connect((err) => {
         if (err) {
-         throw err;
-         console.log("Erro ao conectar");
+          throw err;
+          console.log("Erro ao conectar");
         }
         console.log("CONECTADO COM SUCESSO AO MYSQL");
       });
-       
+
     },
-    ready:function(){
+    ready: function () {
       let busca = conectar.query("SELECT nome, empresa, rg, data FROM cadastro", function (error, results) {
         if (error) {
           throw error;
         }
-       res = results.forEach(function(results, index) {
-         console.log(results);
-       });
+        results.forEach(function (results, index) {
+          console.log(results);
+        });
       });
-
       this.buscar = busca.data;
-     
-      
+
+
     }
+  })
+
   })
 
 </script>
