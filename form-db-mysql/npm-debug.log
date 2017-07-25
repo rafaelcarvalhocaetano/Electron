@@ -1,0 +1,153 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'mysqljs',
+1 verbose cli   '/',
+1 verbose cli   'mysql',
+1 verbose cli   '-S' ]
+2 info using npm@3.10.10
+3 info using node@v6.9.5
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData mysqljs
+8 silly fetchPackageMetaData /
+9 silly fetchPackageMetaData mysql@^2.13.0
+10 silly fetchNamedPackageData mysql
+11 silly mapToRegistry name mysql
+12 silly mapToRegistry using default registry
+13 silly mapToRegistry registry https://registry.npmjs.org/
+14 silly mapToRegistry data Result {
+14 silly mapToRegistry   raw: 'mysql',
+14 silly mapToRegistry   scope: null,
+14 silly mapToRegistry   escapedName: 'mysql',
+14 silly mapToRegistry   name: 'mysql',
+14 silly mapToRegistry   rawSpec: '',
+14 silly mapToRegistry   spec: 'latest',
+14 silly mapToRegistry   type: 'tag' }
+15 silly mapToRegistry uri https://registry.npmjs.org/mysql
+16 silly fetchNamedPackageData mysqljs
+17 silly mapToRegistry name mysqljs
+18 silly mapToRegistry using default registry
+19 silly mapToRegistry registry https://registry.npmjs.org/
+20 silly mapToRegistry data Result {
+20 silly mapToRegistry   raw: 'mysqljs',
+20 silly mapToRegistry   scope: null,
+20 silly mapToRegistry   escapedName: 'mysqljs',
+20 silly mapToRegistry   name: 'mysqljs',
+20 silly mapToRegistry   rawSpec: '',
+20 silly mapToRegistry   spec: 'latest',
+20 silly mapToRegistry   type: 'tag' }
+21 silly mapToRegistry uri https://registry.npmjs.org/mysqljs
+22 verbose request uri https://registry.npmjs.org/mysqljs
+23 verbose request no auth needed
+24 info attempt registry request try #1 at 21:17:35
+25 verbose request id 3d95b5393992226b
+26 http request GET https://registry.npmjs.org/mysqljs
+27 silly fetchOtherPackageData /
+28 silly cache add args [ '/', null ]
+29 verbose cache add spec /
+30 silly cache add parsed spec Result {
+30 silly cache add   raw: '/',
+30 silly cache add   scope: null,
+30 silly cache add   escapedName: null,
+30 silly cache add   name: null,
+30 silly cache add   rawSpec: '/',
+30 silly cache add   spec: 'C:\\',
+30 silly cache add   type: 'local' }
+31 verbose request uri https://registry.npmjs.org/mysql
+32 verbose request no auth needed
+33 info attempt registry request try #1 at 21:17:35
+34 verbose etag W/"596c438f-220e8"
+35 verbose lastModified Mon, 17 Jul 2017 04:56:47 GMT
+36 http request GET https://registry.npmjs.org/mysql
+37 error addLocal Could not install C:\
+38 silly fetchPackageMetaData Error: EISDIR: illegal operation on a directory, read
+38 silly fetchPackageMetaData     at Error (native)
+38 silly fetchPackageMetaData  error for / { Error: EISDIR: illegal operation on a directory, read
+38 silly fetchPackageMetaData     at Error (native) errno: -4068, code: 'EISDIR', syscall: 'read' }
+39 http 304 https://registry.npmjs.org/mysql
+40 verbose headers { date: 'Tue, 25 Jul 2017 00:18:17 GMT',
+40 verbose headers   via: '1.1 varnish',
+40 verbose headers   'cache-control': 'max-age=300',
+40 verbose headers   etag: 'W/"596c438f-220e8"',
+40 verbose headers   age: '22',
+40 verbose headers   connection: 'keep-alive',
+40 verbose headers   'x-served-by': 'cache-gru7122-GRU',
+40 verbose headers   'x-cache': 'HIT',
+40 verbose headers   'x-cache-hits': '1',
+40 verbose headers   'x-timer': 'S1500941898.781452,VS0,VE1',
+40 verbose headers   vary: 'Accept-Encoding, Accept' }
+41 silly get cb [ 304,
+41 silly get   { date: 'Tue, 25 Jul 2017 00:18:17 GMT',
+41 silly get     via: '1.1 varnish',
+41 silly get     'cache-control': 'max-age=300',
+41 silly get     etag: 'W/"596c438f-220e8"',
+41 silly get     age: '22',
+41 silly get     connection: 'keep-alive',
+41 silly get     'x-served-by': 'cache-gru7122-GRU',
+41 silly get     'x-cache': 'HIT',
+41 silly get     'x-cache-hits': '1',
+41 silly get     'x-timer': 'S1500941898.781452,VS0,VE1',
+41 silly get     vary: 'Accept-Encoding, Accept' } ]
+42 verbose etag https://registry.npmjs.org/mysql from cache
+43 verbose get saving mysql to C:\Users\Developer\AppData\Roaming\npm-cache\registry.npmjs.org\mysql\.cache.json
+44 verbose correctMkdir C:\Users\Developer\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+45 http 200 https://registry.npmjs.org/mysqljs
+46 verbose headers { server: 'nginx/1.10.3',
+46 verbose headers   'content-type': 'application/json',
+46 verbose headers   'last-modified': 'Wed, 19 Jul 2017 11:37:55 GMT',
+46 verbose headers   etag: 'W/"596f4493-3b86"',
+46 verbose headers   'content-encoding': 'gzip',
+46 verbose headers   'cache-control': 'max-age=300',
+46 verbose headers   'content-length': '6018',
+46 verbose headers   'accept-ranges': 'bytes',
+46 verbose headers   date: 'Tue, 25 Jul 2017 00:18:17 GMT',
+46 verbose headers   via: '1.1 varnish',
+46 verbose headers   age: '0',
+46 verbose headers   connection: 'keep-alive',
+46 verbose headers   'x-served-by': 'cache-gru7127-GRU',
+46 verbose headers   'x-cache': 'MISS',
+46 verbose headers   'x-cache-hits': '0',
+46 verbose headers   'x-timer': 'S1500941898.780865,VS0,VE197',
+46 verbose headers   vary: 'Accept-Encoding, Accept' }
+47 silly get cb [ 200,
+47 silly get   { server: 'nginx/1.10.3',
+47 silly get     'content-type': 'application/json',
+47 silly get     'last-modified': 'Wed, 19 Jul 2017 11:37:55 GMT',
+47 silly get     etag: 'W/"596f4493-3b86"',
+47 silly get     'content-encoding': 'gzip',
+47 silly get     'cache-control': 'max-age=300',
+47 silly get     'content-length': '6018',
+47 silly get     'accept-ranges': 'bytes',
+47 silly get     date: 'Tue, 25 Jul 2017 00:18:17 GMT',
+47 silly get     via: '1.1 varnish',
+47 silly get     age: '0',
+47 silly get     connection: 'keep-alive',
+47 silly get     'x-served-by': 'cache-gru7127-GRU',
+47 silly get     'x-cache': 'MISS',
+47 silly get     'x-cache-hits': '0',
+47 silly get     'x-timer': 'S1500941898.780865,VS0,VE197',
+47 silly get     vary: 'Accept-Encoding, Accept' } ]
+48 verbose get saving mysqljs to C:\Users\Developer\AppData\Roaming\npm-cache\registry.npmjs.org\mysqljs\.cache.json
+49 verbose correctMkdir C:\Users\Developer\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+50 silly rollbackFailedOptional Starting
+51 silly rollbackFailedOptional Finishing
+52 silly runTopLevelLifecycles Finishing
+53 silly install printInstalled
+54 verbose stack Error: EISDIR: illegal operation on a directory, read
+54 verbose stack     at Error (native)
+55 verbose cwd C:\dev\elec\form-db-mysql
+56 error Windows_NT 6.1.7601
+57 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "mysqljs" "/" "mysql" "-S"
+58 error node v6.9.5
+59 error npm  v3.10.10
+60 error code EISDIR
+61 error errno -4068
+62 error syscall read
+63 error eisdir EISDIR: illegal operation on a directory, read
+64 error eisdir This is most likely not a problem with npm itself
+64 error eisdir and is related to npm not being able to find a package.json in
+64 error eisdir a package you are trying to install.
+65 verbose exit [ -4068, true ]

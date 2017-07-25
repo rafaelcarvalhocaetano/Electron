@@ -9,10 +9,10 @@
   "author": "Rafael Carvalho",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "~1.6.2"
+    "electron-prebuilt": "^0.36.0"
   },
   "dependencies": {
     "mysql": "^2.13.0",
-    "vue": "^2.4.2"
+    "vue": "1.0.28"
   }
 }

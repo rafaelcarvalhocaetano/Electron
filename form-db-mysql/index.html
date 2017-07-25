@@ -20,14 +20,15 @@
   <form id="form" method="POST">
     <p>Nome <br><input name="nome" type="text" id="nome"></p>
     <p>Empresa<br>
-    <input name="empresa" type="text" id="empresa"></p>
+      <input name="empresa" type="text" id="empresa"></p>
     <p>RG<br>
-    <input name="rg" type="text" id="rg"></p>
+      <input name="rg" type="text" id="rg"></p>
     <p>Data<br>
-    <input name="data" type="date" id="data"></p>
+      <input name="data" type="date" id="data"></p>
     <br/>
-    <input type="button" value="Teste de conexão" onclick="enviar();" />
+    <input type="button" value="Teste de conexão" />
   </form>
+
   <div class="form-group">
     <table class="tabela">
       <thead>
@@ -39,38 +40,68 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="cliente in clientes">
-          <td class="a">{{cliente.name}}</td>
-          <td class="b">{{cliente.empresa}}</td>
-          <td class="c">{{cliente.rg}}</td>
-          <td class="d">{{cliente.data}}</td>
+        <tr>
+          <td class="a">a</td>
+          <td class="b">a</td>
+          <td class="c">{{data.message}}</td>
+          <td class="d">a</td>
         </tr>
-        
+
       </tbody>
     </table>
+    <div id="app">
+      {{ message }}
+    </div>
   </div>
 </body>
 <script>
-  //chama o mysql
-  let mysql = require("mysql");
-  window.Vue =require('vue');
+  window.Vue = require('vue');
+  let mysql = require('mysql');
 
-  //variavél que recebe a função de criar a base de dados
+
   let conectar = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "q1w2e3r4",
     database: "portaria"
   });
-  //função que conecta
-  conectar.connect((err) => {
-    if (err) {
-      return console.log(err.stack);
+
+  let buscar = 
+
+
+  new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello aaaaVue.js!'
+    },
+    ready: function () { //função responsável por exibir as infos
+
+      conectar.connect((err) => {
+        if (err) {
+          return console.log(err.stack);
+        }
+        console.log("CONECTADO COM SUCESSO AO MYSQL");
+      });
+
+
+
+    },
+    methods: {
+
     }
-    console.log("CONECTADO COM SUCESSO AO MYSQL");
-  });
+  })
+
+</script>
+<script>
+  //chama o mysql
+  //let mysql = require("mysql");
+
+
+
+  //variavél que recebe a função de criar a base de dados
+
   //variavel que seleciona o elemento
-  
+  /*
     $query = 'SELECT * FROM `cadastro`';
   //função que chama o elemento do banco de dados e mostra no html
   conectar.query($query, (err, rows) => {
@@ -84,20 +115,9 @@
     } 
     
   });
-new Vue({
-  el:'body',
-  data: {
-    $dados:[],
-    mode:'',
-    client:{
-      nome:'',
-      cpf:'',
-      telefone:''
-  }
+  */
 
-})
-  
-
+/*
 //inserindo dados com sucesso
 function enviar(){
 
@@ -118,7 +138,7 @@ var query = conectar.query('insert into cadastro set ?', info, function(err, res
  });
 conectar.end();
 }
-/*
+
   let clientes = inserir;
 
   new Vue({
@@ -132,7 +152,7 @@ conectar.end();
            telefone:''
          }
 })
-*/
+
 </script>
 
 </html>
