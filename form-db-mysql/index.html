@@ -18,13 +18,15 @@
 
 <body>
   <form id="form" method="POST">
-    <p>Nome <br><input name="nome" type="text" id="nome"></p>
+    <p>Nome <br>
+      <input name="nome" v-model="info.nome" type="text" id="nome">
+    </p>
     <p>Empresa<br>
-      <input name="empresa" type="text" id="empresa"></p>
+      <input name="empresa" v-model="info.empresa" type="text" id="empresa"></p>
     <p>RG<br>
-      <input name="rg" type="text" id="rg"></p>
+      <input name="rg" v-model="info.rg" type="text" id="rg"></p>
     <p>Data<br>
-      <input name="data" type="date" id="data"></p>
+      <input name="data" v-model="info.data" type="date" id="data"></p>
     <br/>
     <input type="button" value="Teste de conexão" />
   </form>
@@ -40,7 +42,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr v-for="info in infos">
           <td class="a">a</td>
           <td class="b">a</td>
           <td class="c">{{data.message}}</td>
@@ -57,37 +59,25 @@
 <script>
   window.Vue = require('vue');
   let mysql = require('mysql');
-
-
   let conectar = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "q1w2e3r4",
     database: "portaria"
   });
-
-  function buscar(){
-    let sql = "SELECT * FROM cadastro";
-    conectar.query(sql, (err, rows) => {
-        if (err) {
-          console.log("Deu erro ....");
-        }
-        console.log("BUSCA OK", rows);
-      });
-  }
   
-  
-
-
-
-
   new Vue({
     el: '#app',
     data: {
-      message: 'Hello aaaaVue.js!'
+      buscar: [],
+      info:{
+        nome:'',
+        rg:'',
+        empresa:'',
+        data:''
+     }
     },
     ready: function () { //função responsável por exibir as infos
-
       conectar.connect((err) => {
         if (err) {
          throw err;
@@ -95,11 +85,16 @@
         }
         console.log("CONECTADO COM SUCESSO AO MYSQL");
       });
-      buscar();
-      
+       let buscando = conectar.query("SELECT * FROM cadastro", function (error, results) {
+        if (error) {
+          throw error;
+        }
+        console.log(results);
+      });
+      this.buscando.results = buscar.info;
     },
     methods: {
-
+     
     }
   })
 
