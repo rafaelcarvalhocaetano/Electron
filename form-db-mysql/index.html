@@ -26,7 +26,7 @@
     <p>RG<br>
       <input name="rg" type="text"></p>
     <p>Data<br>
-      <input name="data"  type="date"></p>
+      <input name="data" type="date"></p>
     <br/>
     <input type="button" value="Teste de conexão" />
   </form>
@@ -55,7 +55,7 @@
       </tbody>
     </table>
   </div>
-  
+
 </body>
 <script>
   window.Vue = require('vue');
@@ -63,39 +63,41 @@
 
   let conectar = mysql.createConnection({
     host: "localhost",
+    port: 3306,
     user: "root",
     password: "q1w2e3r4",
     database: "portaria"
   });
-  
- 
+
+
   new Vue({
     el: 'body',
     data: {
       listas: []
     },
     ready: function () { //função responsável por exibir as infos
-      
       conectar.connect((err) => {
         if (err) {
-          throw err;
+          //throw err;
           console.log("Erro ao conectar");
         }
         console.log("CONECTADO COM SUCESSO AO MYSQL");
       });
-      let b = conectar.query("SELECT * FROM cadastro", function (err, res) {
-        if (error) {
-          throw error;
+      conectar.query("SELECT id, nome, empresa, rg, data FROM cadastro", function (err, res) {
+        if (err) {
+          throw err;
         }
-        console.log(res);
-        let r = res[0]
-        $('.b').append('<h3>'+r.nome+'</h3>');
-             
+       
+        this.listas = res[];
+        console.log(this.listas);
+
       });
-     
-      
-      
-     
+
+
+
+
+
+
     }
   })
 
