@@ -19,14 +19,14 @@
 <body>
   <form id="form" method="POST">
     <p>Nome <br>
-      <input name="nome" v-model="info.nome" type="text">
+      <input name="nome" type="text">
     </p>
     <p>Empresa<br>
-      <input name="empresa" v-model="info.empresa" type="text"></p>
+      <input name="empresa" type="text"></p>
     <p>RG<br>
-      <input name="rg" v-model="info.rg" type="text"></p>
+      <input name="rg" type="text"></p>
     <p>Data<br>
-      <input name="data" v-model="info.data" type="date"></p>
+      <input name="data"  type="date"></p>
     <br/>
     <input type="button" value="Teste de conexão" />
   </form>
@@ -44,19 +44,18 @@
       </thead>
       <tbody>
 
-        <tr v-for="busca in visitantes">
-          <td>{{busca.id}}</td>
-          <td>{{busca.nome}}</td>
-          <td>{{busca.empresa}}</td>
-          <td>{{busca.rg}}</td>
-          <td>{{busca.data}}</td>
+        <tr v-for="lista in listas">
+          <td>{{lista.id}}</td>
+          <td>{{lista.nome}}</td>
+          <td>{{lista.empresa}}</td>
+          <td>{{lista.rg}}</td>
+          <td>{{lista.data}}</td>
         </tr>
 
       </tbody>
     </table>
-    <h2>{{numbers}}</h2>
-
   </div>
+  
 </body>
 <script>
   window.Vue = require('vue');
@@ -68,19 +67,15 @@
     password: "q1w2e3r4",
     database: "portaria"
   });
-
+  
+ 
   new Vue({
     el: 'body',
     data: {
-      listas: [],
-      visit: {
-        nome: '',
-        empresa: '',
-        rg: '',
-        data: ''
-      }
+      listas: []
     },
     ready: function () { //função responsável por exibir as infos
+      
       conectar.connect((err) => {
         if (err) {
           throw err;
@@ -88,23 +83,20 @@
         }
         console.log("CONECTADO COM SUCESSO AO MYSQL");
       });
-
-    },
-    ready: function () {
-      let busca = conectar.query("SELECT nome, empresa, rg, data FROM cadastro", function (error, results) {
+      let b = conectar.query("SELECT * FROM cadastro", function (err, res) {
         if (error) {
           throw error;
         }
-        results.forEach(function (results, index) {
-          console.log(results);
-        });
+        console.log(res);
+        let r = res[0]
+        $('.b').append('<h3>'+r.nome+'</h3>');
+             
       });
-      this.buscar = busca.data;
-
-
+     
+      
+      
+     
     }
-  })
-
   })
 
 </script>
