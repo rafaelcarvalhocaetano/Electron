@@ -68,79 +68,74 @@
     password: "q1w2e3r4",
     database: "portaria"
   });
- 
 
- 
- 
-  
-  
-  
+function enviar(){
 
+ var info = {
+   nome:$("#nome").val(),
+   empresa:$("#empresa").val(),
+   rg:$("#rg").val(),
+   data:$("#data").val()
+ };
+
+var query = conectar.query('INSERT INTO cadastro SET ?', info, (err, result) => {
+      if(err){
+        console.log(err);
+      }else{
+        console.log("secesso");
+      }
+      console.log(query.sql);
+ });
+}
 
   new Vue({
     el: 'body',
-    
     data: {
-      lista: []
-            
-      },
-      ready:function(){
-        conexao.connect((err, result) => {
+      lista: [],
+      tela:'',
+      visitante:{
+        nome:'',
+        empresa:'',
+        rg:'',
+        data:''
+      }
+    },
+    ready: function () {
+      //conecta-se ao banco de dados
+      conexao.connect((err, result) => {
         if (err) {
           throw err
           console.log("Erro ao conectar");
         }
-        console.log(result+"CONECTADO COM SUCESSO AO MYSQL");
-        
-        let v = conexao.query("SELECT id, nome, empresa, rg, data FROM cadastro", (err, bb) => {
-              if (err) {
-                throw err;
-              }
-              bb.forEach((e) => {
-                JSON.stringify(e);
-              });
-              this.lista = bb;
-              console.log(this.lista);
+        console.log("CONECTADO COM SUCESSO AO MYSQL");
+
+        conexao.query("SELECT id, nome, empresa, rg, data FROM cadastro", (err, bb) => {
+          if (err) {
+            throw err;
+          }
+          bb.forEach((e) => {
+            JSON.stringify(e);
+            console.log(JSON.stringify(e));
+          });
+          this.lista = bb;
         });
-        console.log(v.sql);
       });
+    },
+    methods:{
+      createVisitante:function(visitante){
+        this.tela = '';
+        this.
 
       }
       
-     
-      
-    
-  });
 
+    }
+  });
 
 </script>
 <!--
 <script>
-  //chama o mysql
-  //let mysql = require("mysql");
 
-`id`,`nome`,`empresa`,`rg`,`data`
-
-  //variavél que recebe a função de criar a base de dados
-
-  //variavel que seleciona o elemento
-  /*
-    $query = 'SELECT * FROM `cadastro`';
-  //função que chama o elemento do banco de dados e mostra no html
-  conectar.query($query, (err, rows) => {
-    if(err){
-      throw err;
-    }
-    
-
-    for (i = 0; i < rows.length; i++) { 
-        $dados = rows[i];
-    } 
-    
-  });
-  */
-
-/*
 //inserindo dados com sucesso
 function enviar(){
 
@@ -179,4 +174,5 @@ conectar.end();
 
 </script>
 -->
+
 </html>
