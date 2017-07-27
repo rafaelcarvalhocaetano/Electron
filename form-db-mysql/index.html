@@ -56,51 +56,70 @@
     </table>
   </div>
 
+
 </body>
 <script>
   window.Vue = require('vue');
   let mysql = require('mysql');
-  let conectar = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "q1w2e3r4",
-        database: "portaria"
-  });
 
-  function Buscar() {
-    conectar.query("SELECT `id`,`nome`,`empresa`,`rg`,`data` FROM cadastro", (err, bb) => {
-      if (err) {
-        throw err;
-      }
-      bb.forEach((e) => {
-        JSON.stringify(e);
-      });
-    });
-  }
+  let conexao = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "q1w2e3r4",
+    database: "portaria"
+  });
+ 
+
+ 
+ 
+  
+  
+  
 
 
   new Vue({
     el: 'body',
+    
     data: {
-      lista: JSON.stringify(new Buscar()),
-    },
-    ready: function () {
-      conectar.connect((err, result) => {
+      lista: []
+            
+      },
+      ready:function(){
+        conexao.connect((err, result) => {
         if (err) {
           throw err
           console.log("Erro ao conectar");
         }
         console.log(result+"CONECTADO COM SUCESSO AO MYSQL");
+        
+        let v = conexao.query("SELECT id, nome, empresa, rg, data FROM cadastro", (err, bb) => {
+              if (err) {
+                throw err;
+              }
+              bb.forEach((e) => {
+                JSON.stringify(e);
+              });
+              this.lista = bb;
+              console.log(this.lista);
+        });
+        console.log(v.sql);
       });
-    }
+
+      }
+      
+     
+      
+    
   });
 
+
 </script>
+<!--
 <script>
   //chama o mysql
   //let mysql = require("mysql");
 
-
+`id`,`nome`,`empresa`,`rg`,`data`
 
   //variavél que recebe a função de criar a base de dados
 
@@ -159,5 +178,5 @@ conectar.end();
 */
 
 </script>
-
+-->
 </html>
