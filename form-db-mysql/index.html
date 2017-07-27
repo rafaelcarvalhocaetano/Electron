@@ -44,12 +44,12 @@
       </thead>
       <tbody>
 
-        <tr v-for="lista in listas">
-          <td>{{lista.id}}</td>
-          <td>{{lista.nome}}</td>
-          <td>{{lista.empresa}}</td>
-          <td>{{lista.rg}}</td>
-          <td>{{lista.data}}</td>
+        <tr v-for="l in lista">
+          <td>{{l.id}}</td>
+          <td>{{l.nome}}</td>
+          <td>{{l.empresa}}</td>
+          <td>{{l.rg}}</td>
+          <td>{{l.data}}</td>
         </tr>
 
       </tbody>
@@ -60,46 +60,40 @@
 <script>
   window.Vue = require('vue');
   let mysql = require('mysql');
-
   let conectar = mysql.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "q1w2e3r4",
-    database: "portaria"
+        host: "localhost",
+        user: "root",
+        password: "q1w2e3r4",
+        database: "portaria"
   });
+
+  function Buscar() {
+    conectar.query("SELECT `id`,`nome`,`empresa`,`rg`,`data` FROM cadastro", (err, bb) => {
+      if (err) {
+        throw err;
+      }
+      bb.forEach((e) => {
+        JSON.stringify(e);
+      });
+    });
+  }
 
 
   new Vue({
     el: 'body',
     data: {
-      listas: []
+      lista: JSON.stringify(new Buscar()),
     },
-    ready: function () { //função responsável por exibir as infos
-      conectar.connect((err) => {
+    ready: function () {
+      conectar.connect((err, result) => {
         if (err) {
-          //throw err;
+          throw err
           console.log("Erro ao conectar");
         }
-        console.log("CONECTADO COM SUCESSO AO MYSQL");
+        console.log(result+"CONECTADO COM SUCESSO AO MYSQL");
       });
-      conectar.query("SELECT id, nome, empresa, rg, data FROM cadastro", function (err, res) {
-        if (err) {
-          throw err;
-        }
-       
-        this.listas = res[];
-        console.log(this.listas);
-
-      });
-
-
-
-
-
-
     }
-  })
+  });
 
 </script>
 <script>
