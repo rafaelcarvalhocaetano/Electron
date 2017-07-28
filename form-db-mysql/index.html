@@ -74,12 +74,20 @@
     data: {
       lista: [],
       tela: '',
-      visit: {
+       visit: {
         nome: '',
         empresa: '',
         rg: '',
         data: ''
       }
+      /*
+      visit: {
+        nome: $("#nome").val(),
+        empresa: $("#empresa").val(),
+        rg: $("#rg").val(),
+        data: $("#data").val(),
+      }
+      */
     },
     ready: function () {
       //conecta-se ao banco de dados
@@ -103,32 +111,12 @@
       });
     },
     methods: {
-
       createVisitante: function () {
-
-     
-          var data = new Date()
-        var dia = data.getDate();
-        var mes = data.getMonth();
-        var ano = data.getFullYear();
-        data = dia + '/' + (mes++) + '/' + ano;
-        data = $("#data").val();
-
-
         
-
-        var info = {
-          nome: $("#nome").val(),
-          empresa: $("#empresa").val(),
-          rg: $("#rg").val(),
-          data: this.data,
-        };
-        conexao.query('INSERT INTO cadastro SET ?', info, (err, result) => {
+        conexao.query('INSERT INTO cadastro SET ?', this.visit, (err, result) => {
           if (err) {
             console.log(err);
           }
-
-
         });
       }
 
