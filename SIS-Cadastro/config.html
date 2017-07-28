@@ -93,6 +93,7 @@
             <table class="table table-hover">
                 <thead>
                     <tr class="i">
+                        <th class="text-center">Código</th>
                         <th class="text-center">Cavalo</th>
                         <th class="text-center">Carreta</th>
                         <th class="text-center">Col/Ter</th>
@@ -106,16 +107,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th class="text-center">{{}}</th>
-                        <th class="text-center">{{}}</th>
-                        <th class="text-center">TR</th>
-                        <th class="text-center">Nome</th>
-                        <th class="text-center">Entrada</th>
-                       <th class="text-center">Como</th>
-                        <th class="text-center">Saída</th>
-                        <th class="text-center">Como</th>
-                        <th class="text-center">Lacre/RG</th>
+                    <tr v-for="cad in motoristas">
+                        <th class="text-center">{{cad.id}}</th>
+                        <th class="text-center">{{cad.cavalo}}</th>
+                        <th class="text-center">{{cad.carreta}}</th>
+                        <th class="text-center">{{cad.tipo}}</th>
+                        <th class="text-center">{{cad.nome}}</th>
+                        <th class="text-center">{{cad.entrada}}</th>
+                        <th class="text-center">{{cad.como}}</th>
+                        <th class="text-center">{{cad.saida}}</th>
+                        <th class="text-center">{{cad.comos}}</th>
+                        <th class="text-center">{{cad.lacre}}</th>
                         <th class="text-center">Opções</th>
                     </tr>
                 </tbody>
@@ -139,6 +141,7 @@
             <table class="table table-hover">
                 <thead>
                     <tr class="i">
+                        <th class="text-center">Código</th>
                         <th class="text-center">Cavalo</th>
                         <th class="text-center">Carreta</th>
                         <th class="text-center">Col/Ter</th>
@@ -152,21 +155,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th class="text-center">{{}}</th>
-                        <th class="text-center">{{}}</th>
-                        <th class="text-center">TR</th>
-                        <th class="text-center">Nome</th>
-                        <th class="text-center">Entrada</th>
-                       <th class="text-center">Como</th>
-                        <th class="text-center">Saída</th>
-                        <th class="text-center">Como</th>
-                        <th class="text-center">Lacre/RG</th>
-                        <th class="text-center">Opções</th>
+                    <tr v-for="cad in motoristas">
+                        <input type="text" v-model="motorista.cavalo" placeholder="Placa do Cavalo">
+                        <input type="text" v-model="motorista.carreta" placeholder="Placa da Carreta">
+                        <input type="text" v-model="motorista.tipo" placeholder="Terceiro ou Carregado">
+                        <input type="text" v-model="motorista.nome" placeholder="Nome do Motorista">
+                        <input type="date" v-model="motorista.entrada">
+                        <input type="text" v-model="motorista.modo" placeholder="Carregado ou Vázio">
+                        <input type="data" v-model="motorista.saida">
+                        <input type="text" v-model="motorista.comos" placeholder="Carregado ou Vázio">
+                        <input type="text" v-model="motorista.lacre" placeholder="Rg ou Lacre do veículo">
                     </tr>
                 </tbody>
             </table>
         </div>
+        <button class="btn btn-large btn-positive" @click="createVisitante">Salvar</button>
+        <button class="btn btn-large btn-negative" @click="openMotor = false">Fechar</button>
     </div>
     <!-- Cadastrando novo AJUDANTE -->
     <div id="modal" v-if="openAjudante">

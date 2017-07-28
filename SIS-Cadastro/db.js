@@ -13,11 +13,18 @@ new Vue({
     data: {
         lista: [],
         tela: '',
-        visit: {
+        motoristas: {
+            id:'',
+            cavalho:'',
+            carreta:'',
+            tipo:'',
             nome: '',
-            empresa: '',
-            rg: '',
-            data: ''
+            entrada:'',
+            modo:'',
+            saida:'',
+            modos:'',
+            lacre:'',
+           
         },
         openVisitante: false,
         openMotor: false,
@@ -33,7 +40,7 @@ new Vue({
             }
             console.log("CONECTADO COM SUCESSO AO MYSQL");
 
-            conexao.query("SELECT codigo, nome, empresa, rg, data FROM cadastro", (err, bb) => {
+            conexao.query("SELECT * FROM dados", (err, bb) => {
                 if (err) {
                     throw err;
                 }
@@ -48,7 +55,7 @@ new Vue({
     methods: {
         createVisitante: function () {
             this.openMotor = true;
-            conexao.query('INSERT INTO cadastro SET ?', this.visit, (err, result) => {
+            conexao.query('INSERT INTO dados SET ?', this.visit, (err, result) => {
                 if (err) {
                     console.log(err);
                 }
