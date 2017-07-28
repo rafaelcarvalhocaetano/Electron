@@ -45,7 +45,7 @@
       <tbody>
 
         <tr v-for="l in lista">
-          <td>{{l.id}}</td>
+          <td>{{l.codigo}}</td>
           <td>{{l.nome}}</td>
           <td>{{l.empresa}}</td>
           <td>{{l.rg}}</td>
@@ -68,6 +68,7 @@
     password: "q1w2e3r4",
     database: "portaria"
   });
+
   new Vue({
     el: 'body',
     data: {
@@ -89,7 +90,7 @@
         }
         console.log("CONECTADO COM SUCESSO AO MYSQL");
 
-        conexao.query("SELECT id, nome, empresa, rg, data FROM cadastro", (err, bb) => {
+        conexao.query("SELECT codigo, nome, empresa, rg, data FROM cadastro", (err, bb) => {
           if (err) {
             throw err;
           }
@@ -102,23 +103,31 @@
       });
     },
     methods: {
+
       createVisitante: function () {
+
+     
+          var data = new Date()
+        var dia = data.getDate();
+        var mes = data.getMonth();
+        var ano = data.getFullYear();
+        data = dia + '/' + (mes++) + '/' + ano;
+        data = $("#data").val();
+
+
+        
+
         var info = {
           nome: $("#nome").val(),
           empresa: $("#empresa").val(),
           rg: $("#rg").val(),
-          data: $("#data").val(),
+          data: this.data,
         };
         conexao.query('INSERT INTO cadastro SET ?', info, (err, result) => {
           if (err) {
             console.log(err);
           }
-          this.visit = {
-            nome: '',
-            empresa: '',
-            rg: '',
-            data: ''
-          }
+
 
         });
       }
