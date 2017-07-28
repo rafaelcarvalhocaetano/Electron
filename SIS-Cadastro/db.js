@@ -27,9 +27,10 @@ new Vue({
            
         },
         openVisitante: false,
-        openMotor: false,
+        openMotor: true,
         openTerceiro: false,
-        openAjudante: false
+        openAjudante: false,
+        tbl:false,
     },
     ready: function () {
         //conecta-se ao banco de dados
@@ -53,7 +54,8 @@ new Vue({
         });
     },
     methods: {
-        createVisitante: function () {
+        createMotorista: function () {
+            this.tbl = true;
             this.openMotor = true;
             conexao.query('INSERT INTO dados SET ?', this.visit, (err, result) => {
                 if (err) {
