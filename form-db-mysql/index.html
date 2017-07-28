@@ -74,20 +74,12 @@
     data: {
       lista: [],
       tela: '',
-       visit: {
+      visit: {
         nome: '',
         empresa: '',
         rg: '',
         data: ''
       }
-      /*
-      visit: {
-        nome: $("#nome").val(),
-        empresa: $("#empresa").val(),
-        rg: $("#rg").val(),
-        data: $("#data").val(),
-      }
-      */
     },
     ready: function () {
       //conecta-se ao banco de dados
@@ -112,7 +104,6 @@
     },
     methods: {
       createVisitante: function () {
-        
         conexao.query('INSERT INTO cadastro SET ?', this.visit, (err, result) => {
           if (err) {
             console.log(err);
