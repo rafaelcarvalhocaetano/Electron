@@ -5,7 +5,7 @@ let conexao = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "q1w2e3r4",
-    database: "portaria"
+    database: "sisseguranca"
 });
 
 new Vue({
@@ -47,6 +47,7 @@ new Vue({
     },
     methods: {
         createVisitante: function () {
+            this.openMotor = true;
             conexao.query('INSERT INTO cadastro SET ?', this.visit, (err, result) => {
                 if (err) {
                     console.log(err);
