@@ -54,10 +54,10 @@
                 <i class="fa fa-plus"></i>
                 Visitante
             </button>
-            <button class="btn btn-default">
+            <button @click="editClient()" type="button" class="btn btn-default">
                 <i class="fa fa-plus"></i>
                 Motoristas
-            </button @click="createMotorista()">
+            </button>
 
             <button class="btn btn-default">
                 <i class="fa fa-plus"></i>
@@ -104,13 +104,10 @@
             </table>
         </div>
     </div>
-    <div>
-    </div>
     
     <!-- Cadastrando novo MOTORISTA -->
-    <div id="modal" v-if="openMotor">
+    <div id="modal" v-if="openModal">
         <div class="wrap">
-
             <form>
                 <input type="text" v-model="motorista.cavalo" placeholder="Placa do Cavalo">
                 <input type="text" v-model="motorista.carreta" placeholder="Placa da Carreta">
@@ -122,17 +119,74 @@
                 <input type="text" v-model="motorista.comos" placeholder="Carregado ou Vázio">
                 <input type="text" v-model="motorista.lacre" placeholder="Rg ou Lacre do veículo">
 
-                 <button type="submit" class="btn btn-large btn-positive">Salvar</button>
-                <button class="btn btn-large btn-negative" @click="openMotor = false">Fechar</button>
+                <button type="submit" class="btn btn-large btn-positive" @click="createMotorista()">Salvar</button>
+                <button class="btn btn-large btn-negative" @click="createMotorista = false">Fechar</button>
             </form>
-           
-
         </div>
     </div>
     
 </body>
 <script>
-    require('./renderer')
+window.Vue = require('vue');
+let mysql = require('mysql');
+
+let conexao = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "q1w2e3r4",
+    database: "sisseguranca"
+});
+
+new Vue({
+    el: 'body',
+    data: {
+        lista: [],
+        motoristas: {
+            id:'',
+            cavalho:'',
+            carreta:'',
+            tipo:'',
+            nome: '',
+            entrada:'',
+            modo:'',
+            saida:'',
+            modos:'',
+            lacre:''           
+        },
+        openModal: false
+    },
+    ready: function () {
+        //conecta-se ao banco de dados
+        conexao.connect((err, result) => {
+            if (err) {
+                throw err
+                console.log("Erro ao conectar");
+            }
+            console.log("CONECTADO COM SUCESSO AO MYSQL");
+
+            conexao.query("SELECT * FROM dados", (err, bb) => {
+                if (err) {
+                    throw err;
+                }
+                bb.forEach((e) => {
+                    JSON.stringify(e);
+                    console.log(JSON.stringify(e));
+                });
+                this.lista = bb;
+            });
+        });
+    },
+    methods: {
+        createMotorista:function () {
+            this.openMotor = true;
+            conexao.query('INSERT INTO dados SET ?', this.visit, (err, result) => {
+                if (err) {
+                    console.log(err);
+                }
+            });
+        }
+    }
+});
 </script>
 
 </html>

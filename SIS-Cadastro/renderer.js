@@ -15,7 +15,6 @@ new Vue({
     el: 'body',
     data: {
         lista: [],
-        tela: '',
         motoristas: {
             id:'',
             cavalho:'',
@@ -28,10 +27,7 @@ new Vue({
             modos:'',
             lacre:''           
         },
-        openVisitante: false,
-        openMotor: false,
-        openTerceiro: false,
-        openAjudante: false
+        openModal: false
     },
     ready: function () {
         //conecta-se ao banco de dados
@@ -57,15 +53,16 @@ new Vue({
     methods: {
         createMotorista: function () {
             this.openMotor = true;
+            alert('ola');
+            /*
+            this.openMotor = true;
             conexao.query('INSERT INTO dados SET ?', this.visit, (err, result) => {
                 if (err) {
                     console.log(err);
                 }
             });
+            */
         }
-
-
-
     }
 });
 
