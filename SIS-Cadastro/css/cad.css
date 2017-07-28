@@ -99,8 +99,11 @@ Conteudo da pagina com VUE
 }
 #modal .wrap{
     width: 60%;
-    height: 60%;
+    height: 70%;
     margin-left: 20%;
     margin-top: 10%;
     background-color: #FFF;
+}
+#ff{
+    margin: 0 0 0 30%;
 }

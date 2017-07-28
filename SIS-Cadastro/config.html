@@ -54,7 +54,7 @@
                 <i class="fa fa-plus"></i>
                 Visitante
             </button>
-            <button @click="editClient()" type="button" class="btn btn-default">
+            <button @click="openModal()" type="button" class="btn btn-default">
                 <i class="fa fa-plus"></i>
                 Motoristas
             </button>
@@ -104,89 +104,108 @@
             </table>
         </div>
     </div>
-    
-    <!-- Cadastrando novo MOTORISTA -->
-    <div id="modal" v-if="openModal">
-        <div class="wrap">
-            <form>
-                <input type="text" v-model="motorista.cavalo" placeholder="Placa do Cavalo">
-                <input type="text" v-model="motorista.carreta" placeholder="Placa da Carreta">
-                <input type="text" v-model="motorista.tipo" placeholder="Terceiro ou Carregado">
-                <input type="text" v-model="motorista.nome" placeholder="Nome do Motorista">
-                <input type="date" v-model="motorista.entrada">
-                <input type="text" v-model="motorista.modo" placeholder="Carregado ou Vázio">
-                <input type="data" v-model="motorista.saida">
-                <input type="text" v-model="motorista.comos" placeholder="Carregado ou Vázio">
-                <input type="text" v-model="motorista.lacre" placeholder="Rg ou Lacre do veículo">
 
-                <button type="submit" class="btn btn-large btn-positive" @click="createMotorista()">Salvar</button>
-                <button class="btn btn-large btn-negative" @click="createMotorista = false">Fechar</button>
+    <!-- Cadastrando novo MOTORISTA -->
+    <div id="modal" v-if="openMotor">
+        <div class="wrap">
+            <form id="ff" method="POST" class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-sm-4">
+                        <input class="form-control" type="text" v-model="motoristas.cavalo" placeholder="Placa do Cavalo">
+                        <input class="form-control" type="text" v-model="motoristas.carreta" placeholder="Placa da Carreta">
+                        <input class="form-control" type="text" v-model="motoristas.tipo" placeholder="Terceiro ou Carregado">
+                        <input class="form-control" type="text" v-model="motoristas.nome" placeholder="Nome do Motorista">
+                        <input class="form-control" type="date" v-model="motoristas.entrada">
+                        <input class="form-control" type="text" v-model="motoristas.modo" placeholder="Carregado ou Vázio">
+                        <input class="form-control" type="date" v-model="motoristas.saida">
+                        <input class="form-control" type="text" v-model="motoristas.comos" placeholder="Carregado ou Vázio">
+                        <input class="form-control" type="text" v-model="motoristas.lacre" placeholder="Rg ou Lacre do veículo">
+
+                        <button type="submit" class="btn btn-large btn-positive" @click="createMotorista()">Salvar</button>
+                        <button type="button" class="btn btn-large btn-negative" @click="openMotor = false">Fechar</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
-    
+
 </body>
 <script>
-window.Vue = require('vue');
-let mysql = require('mysql');
+    window.Vue = require('vue');
+    let mysql = require('mysql');
 
-let conexao = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "q1w2e3r4",
-    database: "sisseguranca"
-});
+    let conexao = mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "q1w2e3r4",
+        database: "sisseguranca"
+    });
 
-new Vue({
-    el: 'body',
-    data: {
-        lista: [],
-        motoristas: {
-            id:'',
-            cavalho:'',
-            carreta:'',
-            tipo:'',
-            nome: '',
-            entrada:'',
-            modo:'',
-            saida:'',
-            modos:'',
-            lacre:''           
+    new Vue({
+        el: 'body',
+        data: {
+            lista: [],
+            motoristas: {
+                id: '',
+                cavalho: '',
+                carreta: '',
+                tipo: '',
+                nome: '',
+                entrada: '',
+                modo: '',
+                saida: '',
+                modos: '',
+                lacre: ''
+            },
+            openMotor: false
         },
-        openModal: false
-    },
-    ready: function () {
-        //conecta-se ao banco de dados
-        conexao.connect((err, result) => {
-            if (err) {
-                throw err
-                console.log("Erro ao conectar");
-            }
-            console.log("CONECTADO COM SUCESSO AO MYSQL");
+        ready: function () {
+            //conecta-se ao banco de dados
+            conexao.connect((err, result) => {
+                if (err) {
+                    throw err
+                    console.log("Erro ao conectar");
+                }
+                console.log("CONECTADO COM SUCESSO AO MYSQL");
 
-            conexao.query("SELECT * FROM dados", (err, bb) => {
-                if (err) {
-                    throw err;
-                }
-                bb.forEach((e) => {
-                    JSON.stringify(e);
-                    console.log(JSON.stringify(e));
+                conexao.query("SELECT * FROM dados", (err, bb) => {
+                    if (err) {
+                        throw err;
+                    }
+                    bb.forEach((e) => {
+                        JSON.stringify(e);
+                        console.log(JSON.stringify(e));
+                    });
+                    this.lista = bb;
                 });
-                this.lista = bb;
             });
-        });
-    },
-    methods: {
-        createMotorista:function () {
-            this.openMotor = true;
-            conexao.query('INSERT INTO dados SET ?', this.visit, (err, result) => {
-                if (err) {
-                    console.log(err);
+        },
+        methods: {
+            openModal: function () {
+                this.openMotor = true;
+            },
+            createMotorista: function () {
+                conexao.query('INSERT INTO dados SET ?', this.motoristas, (err, result) => {
+                    if (err) {
+                        console.log(err);
+                    }
+                });
+                this.motoristas = {
+                    id: '',
+                    cavalho: '',
+                    carreta: '',
+                    tipo: '',
+                    nome: '',
+                    entrada: '',
+                    modo: '',
+                    saida: '',
+                    modos: '',
+                    lacre: ''
                 }
-            });
+            }
         }
-    }
-});
+    })
+
 </script>
 
 </html>

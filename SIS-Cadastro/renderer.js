@@ -27,7 +27,7 @@ new Vue({
             modos:'',
             lacre:''           
         },
-        openModal: false
+        openMotor: false
     },
     ready: function () {
         //conecta-se ao banco de dados
@@ -51,17 +51,27 @@ new Vue({
         });
     },
     methods: {
-        createMotorista: function () {
+        openModal:function(motoristas){
             this.openMotor = true;
-            alert('ola');
-            /*
-            this.openMotor = true;
+        },
+        createMotorista:function () {
             conexao.query('INSERT INTO dados SET ?', this.visit, (err, result) => {
                 if (err) {
                     console.log(err);
                 }
             });
-            */
+            this.motoristas = {
+                id:'',
+                cavalho:'',
+                carreta:'',
+                tipo:'',
+                nome: '',
+                entrada:'',
+                modo:'',
+                saida:'',
+                modos:'',
+                lacre:''           
+            }
         }
     }
 });
