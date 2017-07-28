@@ -11,7 +11,7 @@
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Configurando sistema para carregar jquery -->
-     <script>
+    <script>
         window.$ = window.jQuery = require('./jquery-3.2.1.js');
     </script>
     <!-- JS do Bootstrap -->
@@ -33,21 +33,20 @@
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Messages</a></li>
-           
-            <i id="cat" class="fa fa-cog" onclick="a();"></i>
+
+            <i id="cat" class="fa fa-cog"></i>
             <div class="icones">
                 <form class="icones" method="POST">
-                Usuário
-                <input type="text" name="user">
-                Senha
-                <input type="text" name="senha">
-                Nome do banco de dados
-                <input type="text" name="database">
-                <input type="submit" value="Enviar" onclick="enviar();">
+                    Usuário
+                    <input type="text" name="user"> Senha
+                    <input type="text" name="senha"> Nome do banco de dados
+                    <input type="text" name="database">
+                    <input type="submit" value="Enviar" onclick="enviar();">
                 </form>
             </div>
         </ul>
-    </div>
+    </form>
+
     <!--
     <div class="dois">
         <i id="txt" class="fa fa-user-circle fa-3x">Sistema de Cadastro - SG</i>
@@ -89,42 +88,45 @@
                 Terceiros
             </button>
         </div>
+
         <div class="tbl">
-          
             <table class="table table-hover">
-                
-                <tr class="i">
-                    <th class="text-center">Cavalo</th>
-                    <th class="text-center">Carreta</th>
-                    <th class="text-center"><i class="fa fa-home"></th>
-                    <th class="text-center"><i class="fa fa-home"></th>
-
-                    <th class="text-center">Nome</th>
-                    <th class="text-center"><i class="fa fa-plus-square"></i></th>
-                    <th class="text-center"><i class="fa fa-plus-square"></i></th>
-                    <th class="text-center">Vazio</th>
-                    <th class="text-center">Saída</th>
-                    <th class="text-center">Carregado</th>
-                    <th class="text-center">Vazio</th> 
-                </tr>
-                <tr>
-                    <th class="text-center">Cavalo</th>
-                    <th class="text-center">Carreta</th>
-                    <th class="text-center"><i class="fa fa-car"></th>
-                    <th class="text-center">Terceiro</th>
-
-                    <th class="text-center">Nome</th>
-                    <th class="text-center">Entrada</th>
-                    <th class="text-center">Carregado</th>
-                    <th class="text-center">Vazio</th>
-                    <th class="text-center">Saída</th>
-                    <th class="text-center">Carregado</th>
-                    
-                    <td class="text-center">
-                        <button class="fa fa-plus-square"></button>
-                        <button class="fa fa-arrow-circle-right"></button>
-                    </td>
-                </tr>
+                <thead>
+                    <tr class="i">
+                        <th class="text-center">Cavalo</th>
+                        <th class="text-center">Carreta</th>
+                        <th class="text-center">RB</th>
+                        <th class="text-center">TR</th>
+                        <th class="text-center">Nome</th>
+                        <th class="text-center">Entrada</i>
+                        </th>
+                        <th class="text-center">V</th>
+                        <th class="text-center">C</th>
+                        <th class="text-center">Saída</i>
+                        </th>
+                        <th class="text-center">V</th>
+                        <th class="text-center">C</th>
+                        <th class="text-center">Lacre/RG</th>
+                        <th class="text-center">Opções</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="text-center">{{}}</th>
+                        <th class="text-center">{{}}</th>
+                        <th class="text-center">RB</th>
+                        <th class="text-center">TR</th>
+                        <th class="text-center">Nome</th>
+                        <th class="text-center">Entrada</th>
+                        <th class="text-center">V</th>
+                        <th class="text-center">C</th>
+                        <th class="text-center">Saída</th>
+                        <th class="text-center">V</th>
+                        <th class="text-center">C</th>
+                        <th class="text-center">Lacre/RG</th>
+                        <th class="text-center">Opções</th>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>
@@ -156,51 +158,7 @@
     </div>
 </body>
 <script>
-
-let db =require('mysql');
-
-var mdb = new loki('db.json');
-
-let conectar = db.createConnection({
-   
-    
-    host     : $(localhost),
-    user     : $('user').val(),
-    password : $('senha').val(),
-    database : $('database').val()
-
-});
-
-conectar.connect(function(err){
-    if(err){
-        return console.log(err.stack);
-    }
-    console.log("Conectado com sucesso")
-});
-
+    require('./db.js')
 </script>
 
-
-
-
-<script>
-window.Vue = require('Vue');
-
-
-new Vue({
-    el: 'body',
-    data: {
-    openVisitante:false,
-    openMotor:false,
-    openTerceiro:false,
-    openAjudante:false
-},
-  methods:{
-      editarVisitante:function(){
-
-      },
-
-  }
-});
-</script>
 </html>
