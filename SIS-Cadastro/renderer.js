@@ -16,16 +16,15 @@ new Vue({
     data: {
         lista: [],
         motoristas: {
-            id:'',
-            cavalho:'',
-            carreta:'',
-            tipo:'',
+            cavalo: '',
+            carreta: '',
+            tipo: '',
             nome: '',
-            entrada:'',
-            modo:'',
-            saida:'',
-            modos:'',
-            lacre:''           
+            entrada: '',
+            modo: '',
+            saida: '',
+            modos: '',
+            lacre: ''
         },
         openMotor: false
     },
@@ -51,43 +50,36 @@ new Vue({
         });
     },
     methods: {
-        openModal:function(motoristas){
+        openModal: function () {
             this.openMotor = true;
         },
-        createMotorista:function () {
-            conexao.query('INSERT INTO dados SET ?', this.visit, (err, result) => {
+        createMotorista: function () {
+            conexao.query('INSERT INTO dados SET ?', this.motoristas, (err, result) => {
                 if (err) {
                     console.log(err);
                 }
             });
             this.motoristas = {
-                id:'',
-                cavalho:'',
-                carreta:'',
-                tipo:'',
+                cavalo: '',
+                carreta: '',
+                tipo: '',
                 nome: '',
-                entrada:'',
-                modo:'',
-                saida:'',
-                modos:'',
-                lacre:''           
-            }
+                entrada: '',
+                modo: '',
+                saida: '',
+                modos: '',
+                lacre: ''
+            };
+            this.openMotor = false;
+        },
+        deleteMotorista:function(){
+
         }
     }
 });
 
 
 /*
-
-//inserindo dados com sucesso
-function enviar(){
-
- var info = {
-   nome:$("#nome").val(),
-   empresa:$("#empresa").val(),
-   rg:$("#rg").val(),
-   data:$("#data").val()
- };
 
 var query = conectar.query('insert into cadastro set ?', info, function(err, result){
       if(err){
