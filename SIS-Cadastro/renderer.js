@@ -89,7 +89,7 @@ new Vue({
                 lacre: input.lacre
             };
             
-            conexao.query('UPDATE dados SET ? WHERE id = ?', [sql, motoristas.id], function (err, bb) {
+            conexao.query('UPDATE dados SET nome = ? WHERE id = ?', [sql, motoristas.id], function (err, bb) {
                 if (err) {
                     throw err;
                 }
