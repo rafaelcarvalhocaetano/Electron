@@ -72,30 +72,39 @@ new Vue({
             };
             this.openMotor = false;
         },
-        editarMotor:function (motoristas) {
+        editarMotor: function (motoristas) {
             this.openMotor = true;
-            this.motoristas = motoristas;
+            var input = JSON.parse(JSON.stringify(motoristas));
+
+            this.motoristas = motoristas;            
+             let sql = {
+                cavalo: input.cavalo,
+                carreta: input.carreta,
+                tipo: input.tipo,
+                nome: input.nome,
+                entrada: input.entrada,
+                modo: input.modo,
+                saida: input.saida,
+                modos: input.modos,
+                lacre: input.lacre
+            };
             
-            conexao.query('UPDATE customers SET name = ? WHERE customer_id = ?";',[table, data], function(err,rows,fields) {
-                if(err){
-                    console.log("ERRO ...");
-                }else{
-                    console.log("OK ...");
+            conexao.query('UPDATE dados SET ? WHERE id = ?', [sql, motoristas.id], function (err, bb) {
+                if (err) {
+                    throw err;
                 }
-             });
-            
-       
+            });
         },
-            delMotor:function(motoristas) {
+        delMotor: function (motoristas) {
             let query = "DELETE FROM dados WHERE id = ?";
             conexao.query(query, [motoristas.id], function (err, res) {
-                if (err){
+                if (err) {
                     console.log("ERRO ...");
-                }else{
+                } else {
                     console.log("OK ...");
                 }
             });
-            
+
         }
 
     }
