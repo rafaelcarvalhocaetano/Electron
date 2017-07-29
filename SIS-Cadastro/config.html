@@ -99,8 +99,8 @@
                         <th class="text-center">{{l.comos}}</th>
                         <th class="text-center">{{l.lacre}}</th>
                         <th class="text-center">
-                            <input type="button" class="fa fa-user" value="X" @click="delMotor(l)">
-                            <button class="fa fa-pencil" @click="editarMotor(l)"></button>
+                        <input type="submit" value="X" @click="delMotor(l)">
+                        <button type="submit" class="fa fa-pencil" @click="editarMotor(l)"/>
                         </th>
                     </tr>
                 </tbody>
@@ -125,7 +125,8 @@
                         <input class="form-control" type="text" v-model="motoristas.lacre" placeholder="Rg ou Lacre do veículo">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-large btn-positive" @click="createMotorista">Salvar</button>
+                <button type="submit" class="btn btn-large btn-positive" @click="createMotorista()">Salvar</button>
+                <button type="submit" class="btn btn-large btn-positive" @click="editarMotor(l)">Editar</button>
                 <button type="button" class="btn btn-large btn-negative" @click="openMotor = false">Fechar</button>
             </form>
         </div>

@@ -87,35 +87,33 @@ new Vue({
                 saida: input.saida,
                 modos: input.modos,
                 lacre: input.lacre
-            };
-            // let inf = " `cavalo`='?',`carreta`='?',`tipo`='?',`nome`='?',`entrada`='?',`modo`='?',`saida`='?',`modos`='?',`lavre`='?' ";
-            let sqlUp = "UPDATE dados SET cavalo=?,carreta=?,tipo=?,nome=?,entrada=?,modo=?,saida=?,modos=?,lavre=?, WHERE id = ?";
-            //let sqlUp = "UPDATE dados SET cavalo=? WHERE id = ?";
-           // let busca = "UPDATE dados set ? WHERE id = ? ";
-           //let is = "INSERT INTO dados SET cavalo, carreta, tipo, nome, entrada, modo, saida, modos, lacre WHERE id = ?";
-            conexao.query("UPDATE dados SET nome = 'rafael 2' WHERE id = ?", [motoristas.id], (e, r)=>{
-                if(e){
-                    throw e;
+            }
+            conexao.query('UPDATE dados SET ? WHERE id = ?', [sql, motoristas.id], (err, r) => {
+                if (err) {
+                    throw err;
                 }
                 console.log("OK ...");
             });
-          /*
-            conexao.query(sqlUp, [sql, motoristas.id], function (err, bb) {
-                if(motoristas.id == sqlUp.id){
-                    conexao.query(is,[motoristas.id], (e, r) =>{
-                        if(e){
-                            throw e;
-                        }
+        //let sqlUp = "UPDATE dados SET ? WHERE id = ?";
+        //let up = " `UPDATE dados SET cavalo=?,carreta=?,tipo=?,nome=?,entrada=?,modo=?,saida=?,modos=?,lavre=? WHERE id = ?";
 
-                    });
-                }
-            
-                });
-      
-             */           
+        /*
+          conexao.query(sqlUp, [sql, motoristas.id], function (err, bb) {
+              if(motoristas.id == sqlUp.id){
+                  conexao.query(is,[motoristas.id], (e, r) =>{
+                      if(e){
+                          throw e;
+                      }
+ 
+                  });
+              }
           
-        },
-        delMotor: function (motoristas) {
+              });
+    
+           */
+
+    },
+    delMotor: function (motoristas) {
         let query = "DELETE FROM dados WHERE id = ?";
         conexao.query(query, [motoristas.id], function (err, res) {
             if (err) {
