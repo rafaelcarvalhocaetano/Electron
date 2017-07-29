@@ -74,52 +74,36 @@ new Vue({
         },
         editarMotor: function (motoristas) {
             this.openMotor = true;
-            //var input = JSON.parse(JSON.stringify(motoristas));
 
-            this.motoristas = motoristas;
-            /*
-            let sql = {
-                cavalo: input.cavalo,
-                carreta: input.carreta,
-                tipo: input.tipo,
-                nome: input.nome,
-                entrada: input.entrada,
-                modo: input.modo,
-                saida: input.saida,
-                modos: input.modos,
-                lacre: input.lacre
+            if (typeof this.lista != 'undefined') {
+                conexao.query("UPDATE dados SET nome = ' "+motoristas.nome+" ' WHERE id = ?", [motoristas.id], (err, r) => {
+                    if (err) {
+                        throw err;
+                    }
+                    console.log("OK ...");
+                });
+
+            }else{
+                console.log('erro ....');
             }
-            */
-            //let up = " `UPDATE dados SET cavalo=?,carreta=?,tipo=?,nome=?,entrada=?,modo=?,saida=?,modos=?,lavre=? WHERE id = ?";
-
-                       
-            conexao.query('UPDATE dados SET ? WHERE id = ?', [this.motoristas, motoristas.id], (err, r) => {
+        },
+        delMotor: function (motoristas) {
+            let query = "DELETE FROM dados WHERE id = ?";
+            conexao.query(query, [motoristas.id], function (err, res) {
                 if (err) {
-                    throw err;
+                    console.log("ERRO ...");
                 }
-                console.log("OK ...");
-            });
-       
 
-    },
-    delMotor: function (motoristas) {
-        let query = "DELETE FROM dados WHERE id = ?";
-        conexao.query(query, [motoristas.id], function (err, res) {
-            if (err) {
-                console.log("ERRO ...");
-            }
-           
-        });
-        
+            });
+
+
+        }
 
     }
-
-}
 });
 
 
 /*
-
 var query = conectar.query('insert into cadastro set ?', info, function(err, result){
       if(err){
         console.log(err);
@@ -130,9 +114,7 @@ var query = conectar.query('insert into cadastro set ?', info, function(err, res
  });
 conectar.end();
 }
-
   let clientes = inserir;
-
   new Vue({
     el: 'body', //recebe o conteúdo do body
       data: {
