@@ -72,22 +72,32 @@ new Vue({
             };
             this.openMotor = false;
         },
-        editMotorista:function(motoristas){
-            alert(conexao.id);
-
-        },        
-        delMotor:function(motoristas){
+        editarMotor:function (motoristas) {
+            this.openMotor = true;
             this.motoristas = motoristas;
-            conexao.query("DELETE FROM dados WHERE id = :id",{id:motoristas.id}, this.motoristas.id, (err, res)=>{
+            
+            conexao.query('UPDATE customers SET name = ? WHERE customer_id = ?";',[table, data], function(err,rows,fields) {
                 if(err){
-                    throw err;
-                    console.log("Erro ao deletar");
+                    console.log("ERRO ...");
+                }else{
+                    console.log("OK ...");
                 }
-                console.log("Linha "+motoristas.id+"Deletada com sucesso");
+             });
+            
+       
+        },
+            delMotor:function(motoristas) {
+            let query = "DELETE FROM dados WHERE id = ?";
+            conexao.query(query, [motoristas.id], function (err, res) {
+                if (err){
+                    console.log("ERRO ...");
+                }else{
+                    console.log("OK ...");
+                }
             });
-
             
         }
+
     }
 });
 
