@@ -72,8 +72,21 @@ new Vue({
             };
             this.openMotor = false;
         },
-        deleteMotorista:function(){
+        editMotorista:function(motoristas){
+            alert(conexao.id);
 
+        },        
+        delMotor:function(motoristas){
+            this.motoristas = motoristas;
+            conexao.query("DELETE FROM dados WHERE id = :id",{id:motoristas.id}, this.motoristas.id, (err, res)=>{
+                if(err){
+                    throw err;
+                    console.log("Erro ao deletar");
+                }
+                console.log("Linha "+motoristas.id+"Deletada com sucesso");
+            });
+
+            
         }
     }
 });

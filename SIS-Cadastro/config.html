@@ -98,7 +98,10 @@
                         <th class="text-center">{{l.saida}}</th>
                         <th class="text-center">{{l.comos}}</th>
                         <th class="text-center">{{l.lacre}}</th>
-                        <th class="text-center">Opções</th>
+                        <th class="text-center">
+                            <input type="button" class="fa fa-user" value="X" @click="delMotor()">
+                            <button class="fa fa-pencil" @click="editMotorista(l)"></button>
+                        </th>
                     </tr>
                 </tbody>
             </table>
