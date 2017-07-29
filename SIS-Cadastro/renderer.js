@@ -76,8 +76,8 @@ new Vue({
             this.openMotor = true;
             var input = JSON.parse(JSON.stringify(motoristas));
 
-            this.motoristas = motoristas;            
-             let sql = {
+            this.motoristas = motoristas;
+            let sql = {
                 cavalo: input.cavalo,
                 carreta: input.carreta,
                 tipo: input.tipo,
@@ -88,26 +88,46 @@ new Vue({
                 modos: input.modos,
                 lacre: input.lacre
             };
-            
-            conexao.query('UPDATE dados SET nome = ? WHERE id = ?', [sql, motoristas.id], function (err, bb) {
-                if (err) {
-                    throw err;
+            // let inf = " `cavalo`='?',`carreta`='?',`tipo`='?',`nome`='?',`entrada`='?',`modo`='?',`saida`='?',`modos`='?',`lavre`='?' ";
+            let sqlUp = "UPDATE dados SET cavalo=?,carreta=?,tipo=?,nome=?,entrada=?,modo=?,saida=?,modos=?,lavre=?, WHERE id = ?";
+            //let sqlUp = "UPDATE dados SET cavalo=? WHERE id = ?";
+           // let busca = "UPDATE dados set ? WHERE id = ? ";
+           //let is = "INSERT INTO dados SET cavalo, carreta, tipo, nome, entrada, modo, saida, modos, lacre WHERE id = ?";
+            conexao.query("UPDATE dados SET nome = 'rafael 2' WHERE id = ?", [motoristas.id], (e, r)=>{
+                if(e){
+                    throw e;
                 }
+                console.log("OK ...");
             });
+          /*
+            conexao.query(sqlUp, [sql, motoristas.id], function (err, bb) {
+                if(motoristas.id == sqlUp.id){
+                    conexao.query(is,[motoristas.id], (e, r) =>{
+                        if(e){
+                            throw e;
+                        }
+
+                    });
+                }
+            
+                });
+      
+             */           
+          
         },
         delMotor: function (motoristas) {
-            let query = "DELETE FROM dados WHERE id = ?";
-            conexao.query(query, [motoristas.id], function (err, res) {
-                if (err) {
-                    console.log("ERRO ...");
-                } else {
-                    console.log("OK ...");
-                }
-            });
-
-        }
+        let query = "DELETE FROM dados WHERE id = ?";
+        conexao.query(query, [motoristas.id], function (err, res) {
+            if (err) {
+                console.log("ERRO ...");
+            } else {
+                console.log("OK ...");
+            }
+        });
 
     }
+
+}
 });
 
 
