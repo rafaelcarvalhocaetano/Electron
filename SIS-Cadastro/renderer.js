@@ -74,9 +74,10 @@ new Vue({
         },
         editarMotor: function (motoristas) {
             this.openMotor = true;
-            var input = JSON.parse(JSON.stringify(motoristas));
+            //var input = JSON.parse(JSON.stringify(motoristas));
 
             this.motoristas = motoristas;
+            /*
             let sql = {
                 cavalo: input.cavalo,
                 carreta: input.carreta,
@@ -88,15 +89,18 @@ new Vue({
                 modos: input.modos,
                 lacre: input.lacre
             }
-            conexao.query('UPDATE dados SET ? WHERE id = ?', [sql, motoristas.id], (err, r) => {
+            */
+            let up = " `UPDATE dados SET cavalo=?,carreta=?,tipo=?,nome=?,entrada=?,modo=?,saida=?,modos=?,lavre=? WHERE id = ?";
+
+           
+            conexao.query("UPDATE dados SET ? WHERE id = ?", [this.motoristas, motoristas.id], (err, r) => {
                 if (err) {
                     throw err;
                 }
                 console.log("OK ...");
             });
         //let sqlUp = "UPDATE dados SET ? WHERE id = ?";
-        //let up = " `UPDATE dados SET cavalo=?,carreta=?,tipo=?,nome=?,entrada=?,modo=?,saida=?,modos=?,lavre=? WHERE id = ?";
-
+        
         /*
           conexao.query(sqlUp, [sql, motoristas.id], function (err, bb) {
               if(motoristas.id == sqlUp.id){
