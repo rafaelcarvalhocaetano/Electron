@@ -90,31 +90,16 @@ new Vue({
                 lacre: input.lacre
             }
             */
-            let up = " `UPDATE dados SET cavalo=?,carreta=?,tipo=?,nome=?,entrada=?,modo=?,saida=?,modos=?,lavre=? WHERE id = ?";
+            //let up = " `UPDATE dados SET cavalo=?,carreta=?,tipo=?,nome=?,entrada=?,modo=?,saida=?,modos=?,lavre=? WHERE id = ?";
 
-           
-            conexao.query("UPDATE dados SET ? WHERE id = ?", [this.motoristas, motoristas.id], (err, r) => {
+                       
+            conexao.query('UPDATE dados SET ? WHERE id = ?', [this.motoristas, motoristas.id], (err, r) => {
                 if (err) {
                     throw err;
                 }
                 console.log("OK ...");
             });
-        //let sqlUp = "UPDATE dados SET ? WHERE id = ?";
-        
-        /*
-          conexao.query(sqlUp, [sql, motoristas.id], function (err, bb) {
-              if(motoristas.id == sqlUp.id){
-                  conexao.query(is,[motoristas.id], (e, r) =>{
-                      if(e){
-                          throw e;
-                      }
- 
-                  });
-              }
-          
-              });
-    
-           */
+       
 
     },
     delMotor: function (motoristas) {
@@ -122,10 +107,10 @@ new Vue({
         conexao.query(query, [motoristas.id], function (err, res) {
             if (err) {
                 console.log("ERRO ...");
-            } else {
-                console.log("OK ...");
             }
+           
         });
+        
 
     }
 
