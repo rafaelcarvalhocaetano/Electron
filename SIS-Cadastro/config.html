@@ -24,6 +24,7 @@
 </head>
 
 <body>
+   
     <form class="um">
         <ul class="nav nav-pills nav-stacked">
             <li class="active"><a href="#">Home</a></li>
@@ -89,7 +90,7 @@
                 <tbody>
                     <tr v-for="l in lista">
                         <th class="text-center">{{l.id}}</th>
-                        <th id="ca" class="text-center">{{l.cavalo}}</th>
+                        <th class="text-center">{{l.cavalo}}</th>
                         <th class="text-center">{{l.carreta}}</th>
                         <th class="text-center">{{l.tipo}}</th>
                         <th class="text-center">{{l.nome}}</th>
@@ -100,7 +101,7 @@
                         <th class="text-center">{{l.lacre}}</th>
                         <th class="text-center">
                         <input type="submit" value="X" @click="delMotor(l)">
-                        <button type="submit" class="fa fa-pencil" @click="editarMotor(l)"/>
+                        <button type="submit" class="fa fa-pencil" @click="editarMotor(l)"></button>
                         </th>
                     </tr>
                 </tbody>

@@ -59,33 +59,37 @@ new Vue({
                     console.log(err);
                 }
             });
-            this.motoristas = {
-                cavalo: '',
-                carreta: '',
-                tipo: '',
-                nome: '',
-                entrada: '',
-                modo: '',
-                saida: '',
-                modos: '',
-                lacre: ''
-            };
+            this.motoristas;
             this.openMotor = false;
         },
         editarMotor: function (motoristas) {
             this.openMotor = true;
-            this.motoristas = motoristas;
-            let c = $("#ca").val();
            
-            
-            conexao.query('UPDATE dados SET cavalo = "'+c+'" WHERE id = ?', [motoristas.id], (err, r) => {
-                if (err) {
-                    throw err;
-                }
-                console.log("OK ...");
-            });
+            var datas = {
+               
+                cavalo: motoristas.cavalo,
+                /*
+                carreta: motoristas.carreta,
+                tipo: motoristas.tipo,
+                nome: motoristas.nome,
+                entrada: motoristas.entrada,
+                modo: motoristas.modo,
+                saida: motoristas.saida,
+                modos: motoristas.modos,
+                lacre: motoristas.lacre,
+                */
+                
 
-             
+            };
+          this.motoristas = datas;
+        
+            conexao.query("UPDATE dados SET cavalo = ? WHERE id = ? ", [datas, motoristas.id], function (err, rows) {
+
+                if (err) {
+                    console.log(err);
+                }
+
+            });
         },
         delMotor: function (motoristas) {
             conexao.query('DELETE FROM dados WHERE id = ?', [motoristas.id], function (err, res) {
