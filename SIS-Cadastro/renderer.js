@@ -64,32 +64,24 @@ new Vue({
         },
         editarMotor: function (motoristas) {
             this.openMotor = true;
-           
-            var datas = {
-               
-                cavalo: motoristas.cavalo,
-                /*
-                carreta: motoristas.carreta,
-                tipo: motoristas.tipo,
-                nome: motoristas.nome,
-                entrada: motoristas.entrada,
-                modo: motoristas.modo,
-                saida: motoristas.saida,
-                modos: motoristas.modos,
-                lacre: motoristas.lacre,
-                */
-                
-
-            };
-          this.motoristas = datas;
-        
-            conexao.query("UPDATE dados SET cavalo = ? WHERE id = ? ", [datas, motoristas.id], function (err, rows) {
-
-                if (err) {
+            this.motoristas = motoristas;
+            let m = motoristas.cavalo;
+            conexao.query('UPDATE dados SET cavalo = ? WHERE id = ?', ['m', motoristas.id], (err, rest)=>{
+                if(err){
                     console.log(err);
                 }
+                /*
+                if(rest){
+                    conexao.query('INSERT INTO dados SET ?', this.motoristas, (e,r)=>{
+                        if(err){
+                            console.log("ERRO no INSERT - UP");
+                        }
+                    });
+                    */
 
             });
+
+          
         },
         delMotor: function (motoristas) {
             conexao.query('DELETE FROM dados WHERE id = ?', [motoristas.id], function (err, res) {
