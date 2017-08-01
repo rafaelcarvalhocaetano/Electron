@@ -37,15 +37,15 @@ new Vue({
             }
             console.log("CONECTADO COM SUCESSO AO MYSQL");
 
-            conexao.query("SELECT * FROM dados", (err, bb) => {
+            conexao.query("SELECT * FROM dados", (err, re) => {
                 if (err) {
                     throw err;
                 }
-                bb.forEach((e) => {
+                re.forEach((e) => {
                     JSON.stringify(e);
                     console.log(JSON.stringify(e));
                 });
-                this.lista = bb;
+                this.lista = re;
             });
         });
     },
@@ -62,22 +62,17 @@ new Vue({
             this.motoristas;
             this.openMotor = false;
         },
-        editarMotor: function (motoristas) {
+        editarMotor: function (l) {
             this.openMotor = true;
-            this.motoristas = motoristas;
-            let m = motoristas.cavalo;
-            conexao.query('UPDATE dados SET cavalo = ? WHERE id = ?', ['m', motoristas.id], (err, rest)=>{
+            this.motoristas = l;
+                            
+            conexao.query('UPDATE dados SET nome=? WHERE id = ?', [l.nome, l.id], (err, rest)=>{
                 if(err){
                     console.log(err);
                 }
-                /*
                 if(rest){
-                    conexao.query('INSERT INTO dados SET ?', this.motoristas, (e,r)=>{
-                        if(err){
-                            console.log("ERRO no INSERT - UP");
-                        }
-                    });
-                    */
+                    console.log(rest);
+                }
 
             });
 
