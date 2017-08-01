@@ -65,7 +65,7 @@ new Vue({
         editarMotor: function (motoristas) {
             this.openMotor = true;
             this.motoristas = motoristas;
-            let m = motoristas.cavalo;
+           // let m = motoristas.cavalo;
             conexao.query('UPDATE dados SET cavalo = ? WHERE id = ?', ['m', motoristas.id], (err, rest)=>{
                 if(err){
                     console.log(err);
