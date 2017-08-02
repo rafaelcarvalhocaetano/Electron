@@ -65,10 +65,32 @@ new Vue({
         editarMotor: function (motoristas) {
             this.openMotor = true;
 
-            let input = JSON.parse(JSON.stringify(motoristas));
-            console.log(input);
-            let id = input.id;
+            let i = JSON.parse(JSON.stringify(motoristas));
+            console.log(i);
+            let id = i.id;
             console.log(id);
+            this.motoristas = motoristas;
+
+            let sql = {
+                cavalo: i.cavalo,
+                carreta: i.carreta,
+                tipo: i.tipo,
+                nome: i.nome,
+                entrada: i.entrada,
+                modo: i.modo,
+                saida: i.saida,
+                modos: i.modos,
+                lacre: i.lacre
+            };
+            console.log(sql.nome);
+
+
+            conexao.query("UPDATE dados SET ? WHERE id = ?", [[sql], motoristas.id], (e, r) => {
+                if (e) {
+                    console.log(e);
+                }
+            });
+
 
 
 
