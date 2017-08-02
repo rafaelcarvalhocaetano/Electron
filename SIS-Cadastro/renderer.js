@@ -62,27 +62,28 @@ new Vue({
             this.motoristas;
             this.openMotor = false;
         },
-        editarMotor: function (l) {
-            this.openMotor = true;
-<<<<<<< HEAD
-            this.motoristas = l;
-                            
-            conexao.query('UPDATE dados SET nome=? WHERE id = ?', [l.nome, l.id], (err, rest)=>{
-=======
-            this.motoristas = motoristas;
-           // let m = motoristas.cavalo;
-            conexao.query('UPDATE dados SET cavalo = ? WHERE id = ?', ['m', motoristas.id], (err, rest)=>{
->>>>>>> f392fe05039436b95a847d3feaa3447f6ee7b93d
-                if(err){
-                    console.log(err);
-                }
-                if(rest){
-                    console.log(rest);
-                }
+        editarMotor: function (motoristas) {
 
+            this.openMotor = true;
+            this.motoristas = motoristas;
+            let sql = motoristas.nome;
+
+
+            conexao.query("UPDATE dados SET nome = ? WHERE id = ?", [sql, motoristas.id], (err, re) => {
+                if (err) {
+                    console.log(JSON.stringify(err));
+                }
+                console.log(JSON.stringify(re));
+                /*
+                re.forEach((e) => {
+                    console.log(e);
+                });
+                this.lista = re;
+
+                console.log("------>>>>>"+JSON.stringify(this.lista));
+                */
             });
 
-          
         },
         delMotor: function (motoristas) {
             conexao.query('DELETE FROM dados WHERE id = ?', [motoristas.id], function (err, res) {
