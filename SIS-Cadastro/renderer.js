@@ -8,7 +8,7 @@ let conexao = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "q1w2e3r4",
-    database: "sisseguranca"
+    database: "db"
 });
 
 new Vue({
@@ -16,15 +16,15 @@ new Vue({
     data: {
         lista: [],
         motoristas: {
-            cavalo: '',
-            carreta: '',
-            tipo: '',
-            nome: '',
-            entrada: '',
-            modo: '',
-            saida: '',
-            modos: '',
-            lacre: ''
+            cavalo:'',
+            carreta:'',
+            ter:'',
+            nome:'',
+            entrada:'',
+            como:'',
+            saida:'',
+            comos:'',
+            lacre:''
         },
         openMotor: false
     },
@@ -37,7 +37,7 @@ new Vue({
             }
             console.log("CONECTADO COM SUCESSO AO MYSQL");
 
-            conexao.query("SELECT * FROM dados", (err, re) => {
+            conexao.query("SELECT * FROM motor", (err, re) => {
                 if (err) {
                     throw err;
                 }
@@ -54,7 +54,7 @@ new Vue({
             this.openMotor = true;
         },
         createMotorista: function () {
-            conexao.query('INSERT INTO dados SET ?', this.motoristas, (err, result) => {
+            conexao.query('INSERT INTO motor SET ?', this.motoristas, (err, result) => {
                 if (err) {
                     console.log(err);
                 }
@@ -74,32 +74,27 @@ new Vue({
             let sql = {
                 cavalo: i.cavalo,
                 carreta: i.carreta,
-                tipo: i.tipo,
+                tipo: i.ter,
                 nome: i.nome,
                 entrada: i.entrada,
-                modo: i.modo,
+                modo: i.como,
                 saida: i.saida,
-                modos: i.modos,
+                modos: i.comos,
                 lacre: i.lacre
             };
-            console.log(sql.nome);
-
-
-            conexao.query("UPDATE dados SET ? WHERE id = ?", [[sql], motoristas.id], (e, r) => {
-                if (e) {
-                    console.log(e);
+            
+                 
+           
+            conexao.query("UPDATE motor SET ? WHERE id = ?", [sql, id], (e, r) => {
+                if(e){
+                    throw e;
                 }
+            
             });
-
-
-
-
-
-
 
         },
         delMotor: function (motoristas) {
-            conexao.query('DELETE FROM dados WHERE id = ?', [motoristas.id], function (err, res) {
+            conexao.query('DELETE FROM motor WHERE id = ?', [motoristas.id], function (err, res) {
                 if (err) {
                     console.log("ERRO ...");
                 }
