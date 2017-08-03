@@ -99,7 +99,7 @@ Conteudo da pagina com VUE
 }
 #modal .wrap{
     width: 70%;
-    min-height: 52%;
+    min-height: 30%;
     margin-left: 10%;
     margin-top: 10%;
     background-color: #FFF;
@@ -117,5 +117,7 @@ input{
      background-color: #337AB7;
      margin: 0px;
      padding: 0px;
-
+}
+.btnCenter{
+    margin: 0 0 0 35%;
 }
