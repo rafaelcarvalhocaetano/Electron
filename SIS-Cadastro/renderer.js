@@ -37,7 +37,7 @@ new Vue({
             }
             console.log("CONECTADO COM SUCESSO AO MYSQL");
 
-            conexao.query("SELECT * FROM motor", (err, re) => {
+            conexao.query("SELECT id, cavalo, carreta, ter, nome, entrada, como, saida, comos, lacre FROM motor", (err, re) => {
                 if (err) {
                     throw err;
                 }
@@ -65,27 +65,23 @@ new Vue({
         editarMotor: function (motoristas) {
             this.openMotor = true;
 
-            let i = JSON.parse(JSON.stringify(motoristas));
-            console.log(i);
-            let id = i.id;
-            console.log(id);
             this.motoristas = motoristas;
-
+/*
             let sql = {
-                cavalo: i.cavalo,
-                carreta: i.carreta,
-                tipo: i.ter,
-                nome: i.nome,
-                entrada: i.entrada,
-                modo: i.como,
-                saida: i.saida,
-                modos: i.comos,
-                lacre: i.lacre
+                cavalo: cavalo,
+                carreta: carreta,
+                tipo: ter,
+                nome: nome,
+                entrada: entrada,
+                modo: como,
+                saida: saida,
+                modos: comos,
+                lacre: lacre
             };
-            
-                 
+*/
+                           
            
-            conexao.query("UPDATE motor SET ? WHERE id = ?", [sql, id], (e, r) => {
+            conexao.query("UPDATE motor SET nome = ? WHERE id = ?", [motoristas.nome, motoristas.id], (e, r) => {
                 if(e){
                     throw e;
                 }
