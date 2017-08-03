@@ -36,8 +36,9 @@ new Vue({
                 console.log("Erro ao conectar");
             }
             console.log("CONECTADO COM SUCESSO AO MYSQL");
+            //id, cavalo, carreta, ter, nome, entrada, como, saida, comos,lacre 
 
-            conexao.query("SELECT id, cavalo, carreta, ter, nome, entrada, como, saida, comos, lacre FROM motor", (err, re) => {
+            conexao.query("SELECT * FROM motor", (err, re) => {
                 if (err) {
                     throw err;
                 }
