@@ -98,14 +98,14 @@ Conteudo da pagina com VUE
     background: rgba(0, 0, 0, 0.7);
 }
 #modal .wrap{
-    width: 70%;
+    width: 90%;
     min-height: 30%;
-    margin-left: 10%;
+    margin-left: 5%;
     margin-top: 10%;
     background-color: #FFF;
 }
 #ff{
-  margin: 0 0 0 30%;
+  margin: 0 0 0 40%;
 }
 input{
     margin: 1%;

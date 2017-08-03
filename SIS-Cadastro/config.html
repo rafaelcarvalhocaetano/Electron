@@ -129,82 +129,49 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <th class="text-center" v-model="motoristas.carreta">
-                            <select class="form-control">
-                               <optgroup>
-                                   <option>
-                                       rafael
-                                   </option>
-                               </optgroup>
+                            <th class="text-center" name="cavalo">
+                                <select class="form-control" v-model="motoristas.cavalo">
+                              <option v-for="l in lista">{{l.cavalo}}</option>
                             </select>
                             </th>
-                            <th class="text-center">
-                            <select class="form-control">
-                               <optgroup>
-                                   <option>
-                                       rafael
-                                   </option>
-                               </optgroup>
+
+                            <th class="text-center" name="carreta">
+                            <select class="form-control" v-model="motoristas.carreta">
+                                    <option v-for="l in lista">{{l.carreta}}</option>
                             </select>
                             </th>
-                            <th class="text-center">
-                            <select class="form-control">
-                               <optgroup>
-                                   <option>
-                                       rafael
-                                   </option>
-                               </optgroup>
+
+                            <th class="text-center" name="ter">
+                            <select class="form-control" v-model="motoristas.ter">
+                               <option>RB</option>
+                               <option>TER</option>
                             </select>
                             </th>
-                            <th class="text-center">
-                            <select class="form-control">
-                               <optgroup>
-                                   <option>
-                                       rafael
-                                   </option>
-                               </optgroup>
+                            <th class="text-center" name="nome">
+                                <select class="form-control" v-model="motoristas.nome">
+                                <option v-for="l in lista">{{l.nome}}</option>
                             </select>
                             </th>
-                            <th class="text-center">
-                            <select class="form-control">
-                               <optgroup>
-                                   <option>
-                                       rafael
-                                   </option>
-                               </optgroup>
-                            </select>
+                            <th class="text-center" name="entrada">
+                                <input class="form-control" type="date">
                             </th>
-                            <th class="text-center">
+                            <th class="text-center" name="como">
                                 <select class="form-control">
-                               <optgroup>
-                                   <option>
-                                       rafael
-                                   </option>
-                               </optgroup>
+                                    <option class="form-control">Carregado</option>
+                                    <option>Vázio</option>
+                                </select>
+                            </th>
+                            <th class="text-center" name="saida">
+                                <input class="form-control" type="date" />
+                            </th>
+                            <th class="text-center" name="comos">
+                                <select class="form-control">
+                                <option>Carregado</option>
+                                <option>Vázio</option>
                             </select>
                             </th>
-                            <th class="text-center">
-                            <select class="form-control">
-                               <optgroup>
-                                   <option>
-                                       rafael
-                                   </option>
-                               </optgroup>
-                            </select>
-                            </th>
-                            <th class="text-center">
-                            <select class="form-control">
-                               <optgroup>
-                                   <option>
-                                       rafael
-                                   </option>
-                               </optgroup>
-                            </select>
-                            </th>
-                            <th class="text-center">
-                            <select class="form-control">
-                                    <option>rafael</option>
-                            </select>
+                            <th class="text-center" name="lacre">
+                                <input class="form-control" placeholder="Lacre ou RG" />
                             </th>
                             </tr>
                         </tbody>
