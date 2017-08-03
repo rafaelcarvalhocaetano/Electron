@@ -51,7 +51,7 @@
 
     <div class="painel">
         <div class="nav">
-            <button class="btn btn-default">
+            <button @click="createV()" class="btn btn-default" >
                 <i class="fa fa-plus"></i>
                 Visitante
             </button>
@@ -60,14 +60,11 @@
                 Motoristas
             </button>
 
-            <button class="btn btn-default">
+            <button class="btn btn-default" type="button" @click="createAjudante">
                 <i class="fa fa-plus"></i>
                 Ajudantes
             </button>
-            <button class="btn btn-default">
-                <i class="fa fa-plus"></i>
-                Terceiros
-            </button>
+            
         </div>
 
         <div class="tbl">
@@ -130,14 +127,14 @@
                         </thead>
                         <tbody>
                             <th class="text-center" name="cavalo">
-                                <select class="form-control" v-model="motoristas.cavalo">
-                              <option v-for="l in lista">{{l.cavalo}}</option>
+                            <select class="form-control" v-model="motoristas.cavalo">
+                                <option v-for="l in lista">{{l.cavalo}}</option>
                             </select>
                             </th>
 
                             <th class="text-center" name="carreta">
                             <select class="form-control" v-model="motoristas.carreta">
-                                    <option v-for="l in lista">{{l.carreta}}</option>
+                                <option v-for="l in lista">{{l.carreta}}</option>
                             </select>
                             </th>
 
@@ -225,6 +222,12 @@
                         </tbody>
                     </table>
                 </div>
+               <div v-if="modelo=='c'">
+                    <h1>Visitante</h1>
+                </div>
+                <div v-if="modelo=='d'">
+                    <h1>Ajudante</h1>
+                </div>
                 <div class="btnCenter">
                     <button type="button" class="btn btn-default" @click="createMotorista()">Salvar</button>
                     <button type="button" class="btn btn-large btn-positive" @click="editarMotor(motoristas)">Editar</button>
@@ -233,7 +236,6 @@
             </form>
         </div>
     </div>
-
 </body>
 <script>
     require('./renderer')

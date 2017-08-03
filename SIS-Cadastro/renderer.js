@@ -65,6 +65,15 @@ new Vue({
             this.motoristas;
             this.openMotor = false;
         },
+        createV:function(motoristas){
+            this.modelo = 'c';
+            this.openMotor = true;           
+        },
+        createAjudante:function(){
+            this.modelo = 'd';
+            this.openMotor = true;
+
+        },
         editarMotor: function (motoristas) {
             this.modelo = 'b';
             this.openMotor = true;
@@ -76,6 +85,7 @@ new Vue({
                 }
             });
         },
+         
         delMotor: function (motoristas) {
              
             conexao.query('DELETE FROM motor WHERE id = ?', [motoristas.id], function (err, res) {
@@ -88,29 +98,3 @@ new Vue({
         }
     }
 });
-
-
-/*
-var query = conectar.query('insert into cadastro set ?', info, function(err, result){
-      if(err){
-        console.log(err);
-      }else{
-        console.log("secesso");
-      }
-      console.log(query.sql);
- });
-conectar.end();
-}
-  let clientes = inserir;
-  new Vue({
-    el: 'body', //recebe o conteúdo do body
-      data: {
-         clientes:[],
-         mode:'',
-         client:{
-           nome:'',
-           cpf:'',
-           telefone:''
-         }
-})
-*/
