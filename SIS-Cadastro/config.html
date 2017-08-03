@@ -112,11 +112,11 @@
     <!-- Cadastrando novo MOTORISTA -->
     <div id="modal" v-if="openMotor">
         <div class="wrap">
-            <form id="ff" class="form-horizontal">
+            <form id="ff" method="POST" class="form-horizontal">
                 <div class="form-group">
                     <div class="col-sm-4">
                         <input class="form-control" type="text" v-model="motoristas.cavalo" placeholder="Placa do Cavalo">
-                        <input class="form-control" type="text" v-model="motoristas.carreta" placeholder="Placa da Carreta">
+                        <input class="form-control" type="text" v-model="motoristas.carreta" v-model="carreta" placeholder="Placa da Carreta">
                         <input class="form-control" type="text" v-model="motoristas.ter" placeholder="Terceiro ou Carregado">
                         <input class="form-control" type="text" v-model="motoristas.nome" placeholder="Nome do Motorista">
                         <input class="form-control" type="date" v-model="motoristas.entrada">
@@ -126,8 +126,8 @@
                         <input class="form-control" type="text" v-model="motoristas.lacre" placeholder="Rg ou Lacre do veículo">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-default" @click="createMotorista()">Salvar</button>
-                <button type="submit" class="btn btn-large btn-positive" @click="editarMotor()">Editar</button>
+                <button type="button" class="btn btn-default" @click="createMotorista()">Salvar</button>
+                <button type="button" class="btn btn-large btn-positive" @click="editarMotor(motoristas)">Editar</button>
                 <button type="button" class="btn btn-large btn-negative" @click="openMotor = false">Fechar</button>
             </form>
         </div>

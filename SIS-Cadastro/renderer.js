@@ -16,15 +16,15 @@ new Vue({
     data: {
         lista: [],
         motoristas: {
-            cavalo:'',
-            carreta:'',
-            ter:'',
-            nome:'',
-            entrada:'',
-            como:'',
-            saida:'',
-            comos:'',
-            lacre:''
+            cavalo: '',
+            carreta: '',
+            ter: '',
+            nome: '',
+            entrada: '',
+            como: '',
+            saida: '',
+            comos: '',
+            lacre: ''
         },
         openMotor: false
     },
@@ -66,28 +66,13 @@ new Vue({
             this.openMotor = true;
 
             this.motoristas = motoristas;
-/*
-            let sql = {
-                cavalo: cavalo,
-                carreta: carreta,
-                tipo: ter,
-                nome: nome,
-                entrada: entrada,
-                modo: como,
-                saida: saida,
-                modos: comos,
-                lacre: lacre
-            };
-*/
-                           
-           
-            conexao.query("UPDATE motor SET nome = ? WHERE id = ?", [motoristas.nome, motoristas.id], (e, r) => {
-                if(e){
+
+            conexao.query("UPDATE motor SET ? WHERE id = ?", [this.motoristas, motoristas.id], (e, r) => {
+                if (e) {
                     throw e;
                 }
-            
-            });
 
+            });
         },
         delMotor: function (motoristas) {
             conexao.query('DELETE FROM motor WHERE id = ?', [motoristas.id], function (err, res) {
