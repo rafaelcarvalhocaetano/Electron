@@ -113,124 +113,154 @@
     <div id="modal" v-if="openMotor">
         <div class="wrap">
             <form lass="form-horizontal">
-                <table class="table table-hover tblList">
-                    <thead>
-                        <tr class="tblHead">
-                            <th class="text-center">Código</th>
-                            <th class="text-center">Cavalo</th>
-                            <th class="text-center">Carreta</th>
-                            <th class="text-center">TER</th>
-                            <th class="text-center">Nome</th>
-                            <th class="text-center">Entrada</th>
-                            <th class="text-center">Como</th>
-                            <th class="text-center">Saída</th>
-                            <th class="text-center">Como</th>
-                            <th class="text-center">Lacre/RG</th>
-                            <th class="text-center">Opções</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <th class="text-center" v-model="motoristas.cavalo">
-                            
-                        </th>
-
-                        <th class="text-center" v-model="motoristas.carreta">
-                            <select>
+                <div v-if="modelo=='a'">
+                    <table class="table table-hover tblList">
+                        <thead>
+                            <tr class="tblHead">
+                                <th class="text-center">Cavalo</th>
+                                <th class="text-center">Carreta</th>
+                                <th class="text-center">TER</th>
+                                <th class="text-center">Nome</th>
+                                <th class="text-center">Entrada</th>
+                                <th class="text-center">Como</th>
+                                <th class="text-center">Saída</th>
+                                <th class="text-center">Como</th>
+                                <th class="text-center">Lacre/RG</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <th class="text-center" v-model="motoristas.carreta">
+                                <select>
                                <optgroup>
                                    <option>
                                        rafael
                                    </option>
                                </optgroup>
                            </select>
-                        </th>
-                        <th class="text-center">
-                            <select>
+                            </th>
+                            <th class="text-center">
+                                <select>
                                <optgroup>
                                    <option>
                                        rafael
                                    </option>
                                </optgroup>
                            </select>
-                        </th>
-                        <th class="text-center">
-                            <select>
+                            </th>
+                            <th class="text-center">
+                                <select>
                                <optgroup>
                                    <option>
                                        rafael
                                    </option>
                                </optgroup>
                            </select>
-                        </th>
-                        <th class="text-center">
-                            <select>
+                            </th>
+                            <th class="text-center">
+                                <select>
                                <optgroup>
                                    <option>
                                        rafael
                                    </option>
                                </optgroup>
                            </select>
-                        </th>
-                        <th class="text-center">
-                            <select>
+                            </th>
+                            <th class="text-center">
+                                <select>
                                <optgroup>
                                    <option>
                                        rafael
                                    </option>
                                </optgroup>
                            </select>
-                        </th>
-                        <th class="text-center">
-                            <select>
+                            </th>
+                            <th class="text-center">
+                                <select>
                                <optgroup>
                                    <option>
                                        rafael
                                    </option>
                                </optgroup>
                            </select>
-                        </th>
-                        <th class="text-center">
-                            <select>
+                            </th>
+                            <th class="text-center">
+                                <select>
                                <optgroup>
                                    <option>
                                        rafael
                                    </option>
                                </optgroup>
                            </select>
-                        </th>
-                        <th class="text-center">
-                            <select>
+                            </th>
+                            <th class="text-center">
+                                <select>
                                <optgroup>
                                    <option>
                                        rafael
                                    </option>
                                </optgroup>
                            </select>
-                        </th>
-                        <th class="text-center">
-                            <select>
+                            </th>
+                            <th class="text-center">
+                                <select>
                                <optgroup>
                                    <option>
                                        rafael
                                    </option>
                                </optgroup>
                            </select>
-                        </th>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="form-group">
-                    <div class="col-sm-4">
-                        <input class="form-control" type="text" v-model="motoristas.cavalo" placeholder="Placa do Cavalo">
-                        <input class="form-control" type="text" v-model="motoristas.carreta" placeholder="Placa da Carreta">
-                        <input class="form-control" type="text" v-model="motoristas.ter" placeholder="Terceiro ou Carregado">
-                        <input class="form-control" type="text" v-model="motoristas.nome" placeholder="Nome do Motorista">
-                        <input class="form-control" type="date" v-model="motoristas.entrada">
-                        <input class="form-control" type="text" v-model="motoristas.como" placeholder="Carregado ou Vázio">
-                        <input class="form-control" type="date" v-model="motoristas.saida">
-                        <input class="form-control" type="text" v-model="motoristas.comos" placeholder="Carregado ou Vázio">
-                        <input class="form-control" type="text" v-model="motoristas.lacre" placeholder="Rg ou Lacre do veículo">
-                    </div>
+                            </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="form-group" v-if="modelo=='b'">
+                    <table class="table table-hover tblList">
+                        <thead>
+                            <tr class="tblHead">
+                                <th class="text-center">Cavalo</th>
+                                <th class="text-center">Carreta</th>
+                                <th class="text-center">TER</th>
+                                <th class="text-center">Nome</th>
+                                <th class="text-center">Entrada</th>
+                                <th class="text-center">Como</th>
+                                <th class="text-center">Saída</th>
+                                <th class="text-center">Como</th>
+                                <th class="text-center">Lacre/RG</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <th class="text-center" v-model="motoristas.cavalo">
+                                <input class="form-control" type="text" v-model="motoristas.cavalo" placeholder="Placa do Cavalo">
+                            </th>
+                            <th class="text-center">
+                                <input class="form-control" type="text" v-model="motoristas.carreta" placeholder="Placa da Carreta">
+                            </th>
+                            <th class="text-center">
+                                <input class="form-control" type="text" v-model="motoristas.ter" placeholder="Terceiro ou Carregado">
+                            </th>
+                            <th class="text-center">
+                                <input class="form-control" type="text" v-model="motoristas.nome" placeholder="Nome do Motorista">
+                            </th>
+                            <th class="text-center">
+                                <input class="form-control" type="date" v-model="motoristas.entrada">
+                            </th>
+                            <th class="text-center">
+                                <input class="form-control" type="text" v-model="motoristas.como" placeholder="Carregado ou Vázio">
+                            </th>
+                            <th class="text-center">
+                                <input class="form-control" type="date" v-model="motoristas.saida">
+                            </th>
+                            <th class="text-center">
+                                <input class="form-control" type="text" v-model="motoristas.comos" placeholder="Carregado ou Vázio">
+                            </th>
+                            <th class="text-center">
+                                <input class="form-control" type="text" v-model="motoristas.lacre" placeholder="Rg ou Lacre do veículo">
+                            </th>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <button type="button" class="btn btn-default" @click="createMotorista()">Salvar</button>
                 <button type="button" class="btn btn-large btn-positive" @click="editarMotor(motoristas)">Editar</button>

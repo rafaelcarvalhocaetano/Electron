@@ -54,10 +54,9 @@ new Vue({
     methods: {
         openModal: function () {
             this.openMotor = true;
+            this.modelo = 'a';
         },
-        createMotorista: function () {
-            this.modelo = 'salvar';
-           
+        createMotorista: function () {           
             conexao.query('INSERT INTO motor SET ?', this.motoristas, (err, result) => {
                 if (err) {
                     console.log(err);
@@ -67,7 +66,7 @@ new Vue({
             this.openMotor = false;
         },
         editarMotor: function (motoristas) {
-            this.modelo = 'edicao';
+            this.modelo = 'b';
             this.openMotor = true;
             this.motoristas = motoristas;
 
@@ -78,11 +77,12 @@ new Vue({
             });
         },
         delMotor: function (motoristas) {
+             
             conexao.query('DELETE FROM motor WHERE id = ?', [motoristas.id], function (err, res) {
                 if (err) {
                     console.log("ERRO ...");
                 }
-                this.motoristas = motoristas;
+                this.motoristas = motoristas;              
 
             });
         }
