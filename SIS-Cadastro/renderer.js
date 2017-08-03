@@ -15,6 +15,7 @@ new Vue({
     el: 'body',
     data: {
         lista: [],
+        modelo: '',
         motoristas: {
             cavalo: '',
             carreta: '',
@@ -55,6 +56,8 @@ new Vue({
             this.openMotor = true;
         },
         createMotorista: function () {
+            this.modelo = 'salvar';
+           
             conexao.query('INSERT INTO motor SET ?', this.motoristas, (err, result) => {
                 if (err) {
                     console.log(err);
@@ -64,15 +67,14 @@ new Vue({
             this.openMotor = false;
         },
         editarMotor: function (motoristas) {
+            this.modelo = 'edicao';
             this.openMotor = true;
-
             this.motoristas = motoristas;
 
             conexao.query("UPDATE motor SET ? WHERE id = ?", [this.motoristas, motoristas.id], (e, r) => {
                 if (e) {
                     throw e;
                 }
-
             });
         },
         delMotor: function (motoristas) {
@@ -83,10 +85,7 @@ new Vue({
                 this.motoristas = motoristas;
 
             });
-
-
         }
-
     }
 });
 
