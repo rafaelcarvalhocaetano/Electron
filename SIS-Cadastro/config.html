@@ -105,6 +105,12 @@
             </table>
         </div>
     </div>
+    <nav aria-label="...">
+  <ul class="pagination">
+    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+    <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
+  </ul>
+</nav>
 
     <!-- Cadastrando novo MOTORISTA -->
     <div id="modal" v-if="openMotor">
@@ -239,7 +245,7 @@
                         </thead>
                         <tbody>
                             <th class="text-center" name="cavalo">
-                                <input type="text" class="form-control" placeholder="Placa">
+                                <input type="text" class="form-control" placeholder="Placa"/>
                             </th>
 
                             <th class="text-center" name="carreta">
@@ -287,6 +293,7 @@
                             <tr class="tblHead">
 
                                 <th class="text-center">Nome</th>
+                                <th class="text-center">TER</th>
                                 <th class="text-center">RG</th>
                                 <th class="text-center">EMPRESA</th>
                                 <th class="text-center">ENTRADA</th>
@@ -296,21 +303,26 @@
                         </thead>
                         <tbody>
                             <tr>
-
                                 <th class="text-center" name="nome">
-                                <input type="text" placeholder="Nome" />
+                                <input class="form-control" type="text" v-model="motoristas.nome" placeholder="Nome" />
                                 </th>
+
+                                <th class="text-center" name="ter">
+                                    <input type="text" value="Ter" disabled/>
+                                </th>
+
                                 <th class="text-center" name="rg">
-                                    <input class="form-control" type="text" placeholder="RG">
+                                    <input class="form-control" type="text" v-model="motoristas.lacre" placeholder="Informar o RG">
                                 </th>
 
-                                <th class="text-center" name="saida">
-                                    <input class="form-control" type="date" />
+                               
+                                <th class="text-center" name="entrada">
+                                    <input class="form-control" type="date" v-model="motoristas.entrada"/>
                                 </th>
+                                
                                 <th class="text-center" name="saida">
-                                    <input class="form-control" type="date" />
+                                    <input class="form-control" type="date" v-model="motoristas.saida"/>
                                 </th>
-
                             </tr>
                         </tbody>
                     </table>
