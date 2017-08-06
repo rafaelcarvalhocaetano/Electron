@@ -51,7 +51,7 @@
 
     <div class="painel">
         <div class="nav">
-            <button @click="createV()" class="btn btn-default" >
+            <button @click="createV()" class="btn btn-default">
                 <i class="fa fa-plus"></i>
                 Visitante
             </button>
@@ -64,7 +64,7 @@
                 <i class="fa fa-plus"></i>
                 Ajudantes
             </button>
-            
+
         </div>
 
         <div class="tbl">
@@ -127,19 +127,19 @@
                         </thead>
                         <tbody>
                             <th class="text-center" name="cavalo">
-                            <select class="form-control" v-model="motoristas.cavalo">
+                                <select class="form-control" v-model="motoristas.cavalo">
                                 <option v-for="l in lista">{{l.cavalo}}</option>
                             </select>
                             </th>
 
                             <th class="text-center" name="carreta">
-                            <select class="form-control" v-model="motoristas.carreta">
+                                <select class="form-control" v-model="motoristas.carreta">
                                 <option v-for="l in lista">{{l.carreta}}</option>
                             </select>
                             </th>
 
                             <th class="text-center" name="ter">
-                            <select class="form-control" v-model="motoristas.ter">
+                                <select class="form-control" v-model="motoristas.ter">
                                <option>RB</option>
                                <option>TER</option>
                             </select>
@@ -222,8 +222,8 @@
                         </tbody>
                     </table>
                 </div>
-               <div v-if="modelo=='c'">
-                     <table class="table table-hover tblList">
+                <div v-if="modelo=='c'">
+                    <table class="table table-hover tblList">
                         <thead>
                             <tr class="tblHead">
                                 <th class="text-center">Placa do Veículo</th>
@@ -247,12 +247,12 @@
                             </th>
 
                             <th class="text-center" name="ter">
-                            <select class="form-control" v-model="motoristas.ter">
+                                <select class="form-control" v-model="motoristas.ter">
                                <option>TER</option>
                             </select>
                             </th>
                             <th class="text-center" name="nome">
-                            <select class="form-control" v-model="motoristas.nome">
+                                <select class="form-control" v-model="motoristas.nome">
                                 <option v-for="l in lista">{{l.nome}}</option>
                             </select>
                             </th>
@@ -282,7 +282,39 @@
                     </table>
                 </div>
                 <div v-if="modelo=='d'">
-                    <h1>Ajudante</h1>
+                    <table class="table table-hover tblList">
+                        <thead>
+                            <tr class="tblHead">
+
+                                <th class="text-center">Nome</th>
+                                <th class="text-center">RG</th>
+                                <th class="text-center">EMPRESA</th>
+                                <th class="text-center">ENTRADA</th>
+                                <th class="text-center">SAÍDA</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                                <th class="text-center" name="nome">
+                                <input type="text" placeholder="Nome" />
+                                </th>
+                                <th class="text-center" name="rg">
+                                    <input class="form-control" type="text" placeholder="RG">
+                                </th>
+
+                                <th class="text-center" name="saida">
+                                    <input class="form-control" type="date" />
+                                </th>
+                                <th class="text-center" name="saida">
+                                    <input class="form-control" type="date" />
+                                </th>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
                 </div>
                 <div class="btnCenter">
                     <button type="button" class="btn btn-default" @click="createMotorista()">Salvar</button>
