@@ -55,6 +55,7 @@
                 <i class="fa fa-plus"></i>
                 Cadastro novo Visitante
             </button>
+            
             <button class="btn btn-default" type="button" @click="createAjudante">
                 <i class="fa fa-plus"></i>
                 Ajudantes
@@ -66,25 +67,24 @@
             <table class="table table-hover tabelaInfo">
                 <thead>
                     <tr class="i">
+                        <th class="text-center">CÓDIGO</th>
                         <th class="text-center">NOME</th>
                         <th class="text-center">RG</th>
                         <th class="text-center">EMPRESA</th>
-                       
-                        <th class="text-center">Entrada</th>
-                       
-                        <th class="text-center">Saída</th>
+                        <th class="text-center">ENTRADA</th>
+                        <th class="text-center">SAÍDA</th>
+                        <th class="text-center">EDIÇÃO</th>
                         
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="l in lista">
                         <th class="text-center">{{l.id}}</th>
-                       
                         <th class="text-center">{{l.nome}}</th>
                         <th class="text-center">{{l.rg}}</th>
+                        <th class="text-center">{{l.empresa}}</th>
                         <th class="text-center">{{l.entrada}}</th>
                         <th class="text-center">{{l.saida}}</th>
-                        
                         <th class="text-center">
                             <input type="submit" value="X" @click="delMotor()">
                             <button type="submit" class="fa fa-pencil" @click="editarMotor()" />
@@ -101,7 +101,9 @@
             <form lass="form-horizontal">
                
                 <div class="form-group" v-if="modelo=='b'">
+                   
                     <table class="table table-hover tblList">
+                        
                         <thead>
                             <tr class="tblHead">
                                 <th class="text-center">Cavalo</th>
@@ -146,7 +148,9 @@
                                 </th>
                             </tr>
                         </tbody>
+                    
                     </table>
+                    
                 </div>
                 <div v-if="modelo=='c'">
                     <table class="table table-hover tblList">
