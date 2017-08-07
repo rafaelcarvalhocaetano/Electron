@@ -6,7 +6,7 @@
 
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" media="screen,projection" />
-    <link type="text/css" rel="stylesheet" href="css/cad.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/estilo.css" media="screen,projection" />
     <link type="text/css" rel="stylesheet" href="css/font-awesome.css" media="screen,projection" />
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,8 +28,8 @@
     <form class="um">
         <ul class="nav nav-pills nav-stacked">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Veículos da Empresa</a></li>
-            <li><a href="#">Visitantes</a></li>
+            <li><a href="index.html">Veículos da Empresa</a></li>
+            <li><a href="Visitantes.html">Visitantes</a></li>
             <li class="disabled"><a href="#">Configurações</a></li>
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#">Profile</a></li>
@@ -53,13 +53,8 @@
         <div class="nav">
             <button @click="createV()" class="btn btn-default">
                 <i class="fa fa-plus"></i>
-                Visitante
+                Cadastro novo Visitante
             </button>
-            <button @click="openModal()" type="button" class="btn btn-default">
-                <i class="fa fa-plus"></i>
-                Motoristas
-            </button>
-
             <button class="btn btn-default" type="button" @click="createAjudante">
                 <i class="fa fa-plus"></i>
                 Ajudantes
@@ -71,115 +66,40 @@
             <table class="table table-hover tabelaInfo">
                 <thead>
                     <tr class="i">
-                        <th class="text-center">Código</th>
-                        <th class="text-center">Cavalo</th>
-                        <th class="text-center">Carreta</th>
-                        <th class="text-center">TER</th>
-                        <th class="text-center">Nome</th>
+                        <th class="text-center">NOME</th>
+                        <th class="text-center">RG</th>
+                        <th class="text-center">EMPRESA</th>
+                       
                         <th class="text-center">Entrada</th>
-                        <th class="text-center">Como</th>
+                       
                         <th class="text-center">Saída</th>
-                        <th class="text-center">Como</th>
-                        <th class="text-center">Lacre/RG</th>
-                        <th class="text-center">Opções</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="l in lista">
                         <th class="text-center">{{l.id}}</th>
-                        <th class="text-center">{{l.cavalo}}</th>
-                        <th class="text-center">{{l.carreta}}</th>
-                        <th class="text-center">{{l.ter}}</th>
+                       
                         <th class="text-center">{{l.nome}}</th>
+                        <th class="text-center">{{l.rg}}</th>
                         <th class="text-center">{{l.entrada}}</th>
-                        <th class="text-center">{{l.como}}</th>
                         <th class="text-center">{{l.saida}}</th>
-                        <th class="text-center">{{l.comos}}</th>
-                        <th class="text-center">{{l.lacre}}</th>
+                        
                         <th class="text-center">
-                            <input type="submit" value="X" @click="delMotor(l)">
-                            <button type="submit" class="fa fa-pencil" @click="editarMotor(l)" />
+                            <input type="submit" value="X" @click="delMotor()">
+                            <button type="submit" class="fa fa-pencil" @click="editarMotor()" />
                         </th>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-    <nav aria-label="...">
-  <ul class="pagination">
-    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-    <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
-  </ul>
-</nav>
 
     <!-- Cadastrando novo MOTORISTA -->
     <div id="modal" v-if="openMotor">
         <div class="wrap">
             <form lass="form-horizontal">
-                <div v-if="modelo=='a'">
-                    <table class="table table-hover tblList">
-                        <thead>
-                            <tr class="tblHead">
-                                <th class="text-center">Cavalo</th>
-                                <th class="text-center">Carreta</th>
-                                <th class="text-center">TER</th>
-                                <th class="text-center">Nome</th>
-                                <th class="text-center">Entrada</th>
-                                <th class="text-center">Como</th>
-                                <th class="text-center">Saída</th>
-                                <th class="text-center">Como</th>
-                                <th class="text-center">Lacre/RG</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <th class="text-center" name="cavalo">
-                                <select class="form-control" v-model="motoristas.cavalo">
-                                <option v-for="l in lista">{{l.cavalo}}</option>
-                            </select>
-                            </th>
-
-                            <th class="text-center" name="carreta">
-                                <select class="form-control" v-model="motoristas.carreta">
-                                <option v-for="l in lista">{{l.carreta}}</option>
-                            </select>
-                            </th>
-
-                            <th class="text-center" name="ter">
-                                <select class="form-control" v-model="motoristas.ter">
-                               <option>RB</option>
-                               <option>TER</option>
-                            </select>
-                            </th>
-                            <th class="text-center" name="nome">
-                                <select class="form-control" v-model="motoristas.nome">
-                                <option v-for="l in lista">{{l.nome}}</option>
-                            </select>
-                            </th>
-                            <th class="text-center" name="entrada">
-                                <input class="form-control" type="date">
-                            </th>
-                            <th class="text-center" name="como">
-                                <select class="form-control">
-                                    <option class="form-control">Carregado</option>
-                                    <option>Vázio</option>
-                                </select>
-                            </th>
-                            <th class="text-center" name="saida">
-                                <input class="form-control" type="date" />
-                            </th>
-                            <th class="text-center" name="comos">
-                                <select class="form-control">
-                                <option>Carregado</option>
-                                <option>Vázio</option>
-                            </select>
-                            </th>
-                            <th class="text-center" name="lacre">
-                                <input class="form-control" placeholder="Lacre ou RG" />
-                            </th>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+               
                 <div class="form-group" v-if="modelo=='b'">
                     <table class="table table-hover tblList">
                         <thead>
@@ -287,13 +207,12 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- CADASTRO DE VISITANTES -->
                 <div v-if="modelo=='d'">
                     <table class="table table-hover tblList">
                         <thead>
                             <tr class="tblHead">
-
                                 <th class="text-center">Nome</th>
-                                <th class="text-center">TER</th>
                                 <th class="text-center">RG</th>
                                 <th class="text-center">EMPRESA</th>
                                 <th class="text-center">ENTRADA</th>
@@ -307,15 +226,13 @@
                                 <input class="form-control" type="text" v-model="motoristas.nome" placeholder="Nome" />
                                 </th>
 
-                                <th class="text-center" name="ter">
-                                    <input type="text" value="Ter" disabled/>
-                                </th>
-
                                 <th class="text-center" name="rg">
                                     <input class="form-control" type="text" v-model="motoristas.lacre" placeholder="Informar o RG">
                                 </th>
+                                <th class="text-center" name="empresa">
+                                    <input class="form-control" type="text" v-model="motoristas.como" placeholder="Infome a empresa"/>
+                                </th>
 
-                               
                                 <th class="text-center" name="entrada">
                                     <input class="form-control" type="date" v-model="motoristas.entrada"/>
                                 </th>
@@ -326,8 +243,8 @@
                             </tr>
                         </tbody>
                     </table>
-
                 </div>
+                <!--OPÇÕES -->
                 <div class="btnCenter">
                     <button type="button" class="btn btn-default" @click="createMotorista()">Salvar</button>
                     <button type="button" class="btn btn-large btn-positive" @click="editarMotor(motoristas)">Editar</button>
@@ -338,8 +255,7 @@
     </div>
 </body>
 <script>
-    require('./renderer')
-
+    require('./visitante')
 </script>
 
 </html>
