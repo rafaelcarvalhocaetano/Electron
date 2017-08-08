@@ -26,7 +26,9 @@
 <body>
 
     <form class="um">
+
         <ul class="nav nav-pills nav-stacked">
+            <li><img src="img/pena.png"/></li>
             <li class="active"><a href="#">CADASTROS</a></li>
             <li><a href="index.html">FIRE LINE</a></li>
             <li><a href="visitantes.html">VISTANTES</a></li>
@@ -37,19 +39,14 @@
 
             <i id="cat" class="fa fa-cog"></i>
             <div class="icones">
-                <form class="icones" method="POST">
-                    Usuário
-                    <input type="text" name="user"> Senha
-                    <input type="text" name="senha"> Nome do banco de dados
-                    <input type="text" name="database">
-                    <input type="submit" value="Enviar" onclick="enviar();">
-                </form>
+             
             </div>
         </ul>
     </form>
 
 
     <div class="painel">
+        
         <div class="nav">
             <button @click="createVisitante()" class="btn btn-default">
                 <i class="fa fa-plus"></i>
@@ -64,7 +61,7 @@
                 Cadastrar novo Motoristas
             </button>
         </div>
-
+       
         <div class="tbl">
             <table class="table table-hover tabelaInfo">
                 <thead>
@@ -82,8 +79,10 @@
                         <th class="text-center">Opções</th>
                     </tr>
                 </thead>
+               
                 <tbody>
                     <tr v-for="l in lista">
+                        
                         <th class="text-center">{{l.id}}</th>
                         <th class="text-center">{{l.cavalo}}</th>
                         <th class="text-center">{{l.carreta}}</th>
@@ -98,10 +97,13 @@
                             <input type="submit" value="X" @click="delMotor(l)">
                             <button type="submit" class="fa fa-pencil" @click="editarMotor(l)" />
                         </th>
+                        
                     </tr>
                 </tbody>
+                
             </table>
         </div>
+      
     </div>
 
     <!-- Cadastrando novo MOTORISTA -->
