@@ -27,9 +27,9 @@
 
     <form class="um">
         <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="#">Cadastros</a></li>
-            <li><a href="index.html">(NOME DA EMPRESA)</a></li>
-            <li><a href="visitantes.html">Visitantes</a></li>
+            <li class="active"><a href="#">CADASTROS</a></li>
+            <li><a href="index.html">FIRE LINE</a></li>
+            <li><a href="visitantes.html">VISTANTES</a></li>
             <li class="disabled"><a href="#">Configurações</a></li>
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#">Motoristas</a></li>
@@ -51,21 +51,17 @@
 
     <div class="painel">
         <div class="nav">
-            <button @click="createV()" class="btn btn-default">
+            <button @click="createVisitante()" class="btn btn-default">
                 <i class="fa fa-plus"></i>
                 Cadastrar novo Visitante
             </button>
-            <button @click="createV()" class="btn btn-default">
+            <button @click="addVisitante()" class="btn btn-default">
                 <i class="fa "></i>
                 Visitante
             </button>
             <button @click="openModal()" type="button" class="btn btn-default">
                 <i class="fa fa-plus"></i>
                 Cadastrar novo Motoristas
-            </button>
-            <button @click="openModal()" type="button" class="btn btn-default">
-                <i class="fa "></i>
-                Motoristas
             </button>
         </div>
 
@@ -112,7 +108,7 @@
     <div id="modal" v-if="openMotor">
         <div class="wrap">
             <form lass="form-horizontal">
-                <div v-if="modelo=='a'">
+                <div v-if="modelo=='a' ">
                     <table class="table table-hover tblList">
                         <thead>
                             <tr class="tblHead">
@@ -141,7 +137,7 @@
                             </th>
 
                             <th class="text-center" name="ter">
-                                <select class="form-control" v-model="motoristas.ter">
+                            <select class="form-control" v-model="motoristas.ter">
                                <option>RB</option>
                                <option>TER</option>
                             </select>
@@ -249,35 +245,28 @@
                             </th>
 
                             <th class="text-center" name="ter">
-                                <select class="form-control" v-model="motoristas.ter">
-                               <option>TER</option>
+                                <input class="form-control" v-model="motoristas.ter" placeholder="TER ou EMP">
                             </select>
                             </th>
                             <th class="text-center" name="nome">
-                                <select class="form-control" v-model="motoristas.nome">
-                                <option v-for="l in lista">{{l.nome}}</option>
-                            </select>
+                                <input class="form-control" v-model="motoristas.nome" placeholder="Nome">
+                            </input>
                             </th>
                             <th class="text-center" name="entrada">
                                 <input class="form-control" type="date">
                             </th>
                             <th class="text-center" name="como">
-                                <select class="form-control">
-                                    <option class="form-control">Carregado</option>
-                                    <option>Vázio</option>
-                                </select>
+                                <input class="form-control" placeholder="Vazio ou Cheio">   
                             </th>
                             <th class="text-center" name="saida">
                                 <input class="form-control" type="date" />
                             </th>
                             <th class="text-center" name="comos">
-                                <select class="form-control">
-                                <option class="form-control">Carregado</option>
-                                <option>Vázio</option>
+                                <input class="form-control" placeholder="Vazio ou Cheio">
                             </select>
                             </th>
                             <th class="text-center" name="lacre">
-                                <input class="form-control" placeholder="Lacre ou RG" />
+                                <input class="form-control" placeholder="Informe o RG" />
                             </th>
                             </tr>
                         </tbody>

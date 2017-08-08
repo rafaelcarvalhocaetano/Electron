@@ -12,6 +12,7 @@ new Vue({
     el: 'body',
     data: {
         lista: [],
+        visitantes:[],
         modelo: '',
         motoristas: {
             cavalo: '',
@@ -23,6 +24,11 @@ new Vue({
             saida: '',
             comos: '',
             lacre: ''
+        },
+        visitantes:{
+            nome:'',
+            
+
         },
         openMotor: false
     },
@@ -53,7 +59,7 @@ new Vue({
             this.openMotor = true;
             this.modelo = 'a';
         },
-        createMotorista: function () {           
+        createMotorista: function () {          
             conexao.query('INSERT INTO motor SET ?', this.motoristas, (err, result) => {
                 if (err) {
                     console.log(err);
@@ -62,12 +68,12 @@ new Vue({
             this.motoristas;
             this.openMotor = false;
         },
-        createV:function(motoristas){
-            this.modelo = 'c';
+        createVisitante:function(motoristas){
+            this.modelo = 'b';
             this.openMotor = true;           
         },
-        createAjudante:function(){
-            this.modelo = 'd';
+        addVisitante:function(){
+            this.modelo = 'c';
             this.openMotor = true;
 
         },
