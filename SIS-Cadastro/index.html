@@ -28,7 +28,7 @@
     <form class="um">
 
         <ul class="nav nav-pills nav-stacked">
-            <li><img src="img/pena.png"/></li>
+            <li><img src="img/pena.png" /></li>
             <li class="active"><a href="#">CADASTROS</a></li>
             <li><a href="index.html">FIRE LINE</a></li>
             <li><a href="visitantes.html">VISTANTES</a></li>
@@ -39,16 +39,16 @@
 
             <i id="cat" class="fa fa-cog"></i>
             <div class="icones">
-             
+
             </div>
         </ul>
     </form>
 
 
     <div class="painel">
-        
+
         <div class="nav">
-            <button @click="createVisitante()" class="btn btn-default">
+            <button @click="newVisitante()" class="btn btn-default">
                 <i class="fa fa-plus"></i>
                 Cadastrar novo Visitante
             </button>
@@ -60,8 +60,11 @@
                 <i class="fa fa-plus"></i>
                 Cadastrar novo Motoristas
             </button>
+            <button @click="addMotorista()" type="button" class="btn btn-default">
+                Motoristas
+            </button>
         </div>
-       
+
         <div class="tbl">
             <table class="table table-hover tabelaInfo">
                 <thead>
@@ -79,10 +82,10 @@
                         <th class="text-center">Opções</th>
                     </tr>
                 </thead>
-               
+
                 <tbody>
                     <tr v-for="l in lista">
-                        
+
                         <th class="text-center">{{l.id}}</th>
                         <th class="text-center">{{l.cavalo}}</th>
                         <th class="text-center">{{l.carreta}}</th>
@@ -97,20 +100,17 @@
                             <input type="submit" value="X" @click="delMotor(l)">
                             <button type="submit" class="fa fa-pencil" @click="editarMotor(l)" />
                         </th>
-                        
                     </tr>
                 </tbody>
-                
             </table>
         </div>
-      
     </div>
 
     <!-- Cadastrando novo MOTORISTA -->
     <div id="modal" v-if="openMotor">
         <div class="wrap">
             <form lass="form-horizontal">
-                <div v-if="modelo=='a' ">
+                <div v-if="modelo=='addMotorista' ">
                     <table class="table table-hover tblList">
                         <thead>
                             <tr class="tblHead">
@@ -126,55 +126,63 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <th class="text-center" name="cavalo">
-                                <select class="form-control" v-model="motoristas.cavalo">
+                            <tr>
+                                <th class="text-center" name="cavalo">
+                                    <select class="form-control" v-model="motoristas.cavalo">
                                 <option v-for="l in lista">{{l.cavalo}}</option>
                             </select>
-                            </th>
+                                </th>
 
-                            <th class="text-center" name="carreta">
-                                <select class="form-control" v-model="motoristas.carreta">
+                                <th class="text-center" name="carreta">
+                                    <select class="form-control" v-model="motoristas.carreta">
                                 <option v-for="l in lista">{{l.carreta}}</option>
-                            </select>
-                            </th>
+                                </select>
+                                </th>
 
-                            <th class="text-center" name="ter">
-                            <select class="form-control" v-model="motoristas.ter">
-                               <option>RB</option>
-                               <option>TER</option>
-                            </select>
-                            </th>
-                            <th class="text-center" name="nome">
-                                <select class="form-control" v-model="motoristas.nome">
+                                <th class="text-center" name="ter">
+                                    <select class="form-control" v-model="motoristas.ter">
+                                <option>RB</option>
+                                <option>TER</option>
+                                </select>
+                                </th>
+
+                                <th class="text-center" name="nome">
+                                    <select class="form-control" v-model="motoristas.nome">
                                 <option v-for="l in lista">{{l.nome}}</option>
-                            </select>
-                            </th>
-                            <th class="text-center" name="entrada">
-                                <input class="form-control" type="date">
-                            </th>
-                            <th class="text-center" name="como">
-                                <select class="form-control">
+                                </select>
+                                </th>
+
+                                <th class="text-center" name="entrada">
+                                    <input class="form-control" type="date">
+                                </th>
+
+                                <th class="text-center" name="como">
+                                    <select class="form-control">
                                     <option class="form-control">Carregado</option>
                                     <option>Vázio</option>
                                 </select>
-                            </th>
-                            <th class="text-center" name="saida">
-                                <input class="form-control" type="date" />
-                            </th>
-                            <th class="text-center" name="comos">
-                                <select class="form-control">
-                                <option>Carregado</option>
-                                <option>Vázio</option>
-                            </select>
-                            </th>
-                            <th class="text-center" name="lacre">
-                                <input class="form-control" placeholder="Lacre ou RG" />
-                            </th>
+                                </th>
+
+                                <th class="text-center" name="saida">
+                                    <input class="form-control" type="date" />
+                                </th>
+
+                                <th class="text-center" name="comos">
+                                    <select class="form-control">
+                                    <option>Carregado</option>
+                                    <option>Vázio</option>
+                                </select>
+                                </th>
+
+                                <th class="text-center" name="lacre">
+                                    <input class="form-control" placeholder="Lacre ou RG" />
+                                </th>
+
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="form-group" v-if="modelo=='b'">
+                <div class="form-group" v-if="modelo=='cadMotorista' ">
                     <table class="table table-hover tblList">
                         <thead>
                             <tr class="tblHead">
@@ -194,27 +202,35 @@
                                 <th class="text-center" v-model="motoristas.cavalo">
                                     <input class="form-control" type="text" v-model="motoristas.cavalo" placeholder="Placa do Cavalo">
                                 </th>
+
                                 <th class="text-center">
                                     <input class="form-control" type="text" v-model="motoristas.carreta" placeholder="Placa da Carreta">
                                 </th>
+
                                 <th class="text-center">
                                     <input class="form-control" type="text" v-model="motoristas.ter" placeholder="Terceiro ou Carregado">
                                 </th>
+
                                 <th class="text-center">
                                     <input class="form-control" type="text" v-model="motoristas.nome" placeholder="Nome do Motorista">
                                 </th>
+
                                 <th class="text-center">
                                     <input class="form-control" type="date" v-model="motoristas.entrada">
                                 </th>
+
                                 <th class="text-center">
                                     <input class="form-control" type="text" v-model="motoristas.como" placeholder="Carregado ou Vázio">
                                 </th>
+
                                 <th class="text-center">
                                     <input class="form-control" type="date" v-model="motoristas.saida">
                                 </th>
+
                                 <th class="text-center">
                                     <input class="form-control" type="text" v-model="motoristas.comos" placeholder="Carregado ou Vázio">
                                 </th>
+
                                 <th class="text-center">
                                     <input class="form-control" type="text" v-model="motoristas.lacre" placeholder="Rg ou Lacre do veículo">
                                 </th>
@@ -222,7 +238,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div v-if="modelo=='c'">
+                <div v-if="modelo=='newVisitante'">
                     <table class="table table-hover tblList">
                         <thead>
                             <tr class="tblHead">
@@ -239,7 +255,7 @@
                         </thead>
                         <tbody>
                             <th class="text-center" name="cavalo">
-                                <input type="text" class="form-control" placeholder="Placa"/>
+                                <input type="text" class="form-control" placeholder="Placa" />
                             </th>
 
                             <th class="text-center" name="carreta">
@@ -248,27 +264,74 @@
 
                             <th class="text-center" name="ter">
                                 <input class="form-control" v-model="motoristas.ter" placeholder="TER ou EMP">
-                            </select>
+
                             </th>
                             <th class="text-center" name="nome">
                                 <input class="form-control" v-model="motoristas.nome" placeholder="Nome">
-                            </input>
                             </th>
                             <th class="text-center" name="entrada">
-                                <input class="form-control" type="date">
+                                <input class="form-control" type="date" v-model="motoristas.entrada">
                             </th>
                             <th class="text-center" name="como">
-                                <input class="form-control" placeholder="Vazio ou Cheio">   
+                                <input class="form-control" placeholder="Vazio ou Cheio" v-model="motoristas.como">
                             </th>
                             <th class="text-center" name="saida">
-                                <input class="form-control" type="date" />
+                                <input class="form-control" type="date" v-model="motoristas.saida"/>
                             </th>
                             <th class="text-center" name="comos">
-                                <input class="form-control" placeholder="Vazio ou Cheio">
-                            </select>
+                                <input class="form-control" placeholder="Vazio ou Cheio" v-model="motoristas.comos" />
                             </th>
                             <th class="text-center" name="lacre">
-                                <input class="form-control" placeholder="Informe o RG" />
+                                <input class="form-control" placeholder="Informe o RG" v-model="motoristas.lacre" />
+                            </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div v-if="modelo=='addVisitante'">
+                    <table class="table table-hover tblList">
+                        <thead>
+                            <tr class="tblHead">
+                                <th class="text-center">Placa do Veículo</th>
+                                <th class="text-center">Modelo</th>
+                                <th class="text-center">Terceiro</th>
+                                <th class="text-center">Nome</th>
+                                <th class="text-center">Entrada</th>
+                                <th class="text-center">Como</th>
+                                <th class="text-center">Saída</th>
+                                <th class="text-center">Como</th>
+                                <th class="text-center">RG</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <th class="text-center" name="cavalo">
+                                <input type="text" class="form-control" v-model="motoristas.cavalo" placeholder="Placa" />
+                            </th>
+
+                            <th class="text-center" name="carreta">
+                                <input type="text" class="form-control" v-model="motoristas.carreta" placeholder="Modelo">
+                            </th>
+
+                            <th class="text-center" name="ter">
+                                <input class="form-control" v-model="motoristas.ter" placeholder="Terceiro">
+                            </th>
+                            <th class="text-center" name="nome">
+                                <input class="form-control" v-model="motoristas.nome" placeholder="Nome">
+                            </th>
+                            <th class="text-center" name="entrada">
+                                <input class="form-control" type="date" v-model="motoristas.entrada">
+                            </th>
+                            <th class="text-center" name="como">
+                                <input class="form-control" placeholder="Vazio ou Cheio" v-model="motoristas.como">
+                            </th>
+                            <th class="text-center" name="saida">
+                                <input class="form-control" type="date" v-model="motoristas.saida"/>
+                            </th>
+                            <th class="text-center" name="comos">
+                                <input class="form-control" placeholder="Vazio ou Cheio" v-model="motoristas.comos">
+                            </th>
+                            <th class="text-center" name="lacre">
+                                <input class="form-control" placeholder="Informe o RG" v-model="motoristas.lacre" />
                             </th>
                             </tr>
                         </tbody>
@@ -286,6 +349,7 @@
 </body>
 <script>
     require('./renderer')
+
 </script>
 
 </html>

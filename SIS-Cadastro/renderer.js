@@ -50,8 +50,8 @@ new Vue({
     },
     methods: {
         openModal: function () {
+            this.modelo = 'cadMotorista';
             this.openMotor = true;
-            this.modelo = 'a';
         },
         createMotorista: function () {          
             conexao.query('INSERT INTO motoristas SET ?', this.motoristas, (err, result) => {
@@ -62,9 +62,17 @@ new Vue({
             this.motoristas;
             this.openMotor = false;
         },
-        createVisitante:function(motoristas){
-            this.modelo = 'b';
+        newVisitante:function(){
+            this.modelo = 'newVisitante'
+            this.openMotor = true;
+        },
+        addMotorista:function(){
+            this.modelo = 'addMotorista';
             this.openMotor = true;           
+        },
+        addVisitante:function(){
+           this.modelo = 'addVisitante';
+           this.openMotor = true;
         },
         editarMotor: function (motoristas) {
             this.modelo = 'b';
