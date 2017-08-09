@@ -75,7 +75,7 @@ new Vue({
            this.openMotor = true;
         },
         editarMotor: function (motoristas) {
-            this.modelo = 'b';
+            this.modelo = 'cadMotorista';
             this.openMotor = true;
             this.motoristas = motoristas;
 
