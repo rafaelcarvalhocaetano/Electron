@@ -13,7 +13,8 @@ new Vue({
     data: {
         visitantes:[],
         modelo: '',
-        visit:{
+        visitant:{
+            id:'',
             nome:'',
             rg:'',
             empresa:'',
@@ -45,48 +46,37 @@ new Vue({
         });
     },
     methods: {
-        openModal: function () {
-            this.openMotor = true;
-            this.modelo = 'a';
-        },
-        createMotorista: function () {          
-            conexao.query('INSERT INTO visitantes SET ?', this.visit, (err, result) => {
+        createVisitante: function () {          
+            conexao.query('INSERT INTO visitantes SET ?', this.visitant, (err, result) => {
                 if (err) {
                     console.log(err);
                 }
             });
-            this.visit;
+            this.visitant;
             this.openMotor = false;
         },
-        createVisitante:function(visit){
-            this.modelo = 'b';
+        newAjudante:function(){
+            this.modelo = 'newAjudante';
             this.openMotor = true;           
         },
-        addVisitante:function(){
-           this.modelo = "oldVisitante";
+        editarAjudante: function (visitant) {
+            this.modelo = 'newAjudante';
+            this.openMotor = true;
+            this.visitant = visitant;
            
 
-        },
-        
-        editarMotor: function (motoristas) {
-            this.modelo = 'b';
-            this.openMotor = true;
-            this.motoristas = motoristas;
-
-            conexao.query("UPDATE motor SET ? WHERE id = ?", [this.motoristas, motoristas.id], (e, r) => {
+            conexao.query("UPDATE visitantes SET ? WHERE id = ?", [this.visitant, visitant.id], (e, r) => {
                 if (e) {
                     throw e;
                 }
             });
         },
-         
-        delMotor: function (motoristas) {
-             
-            conexao.query('DELETE FROM motor WHERE id = ?', [motoristas.id], function (err, res) {
+        delMotor: function (visitant) {
+            conexao.query('DELETE FROM visitantes WHERE id = ?', [visitant.id], function (err, res) {
                 if (err) {
                     console.log("ERRO ...");
                 }
-                this.motoristas = motoristas;              
+                this.visitant = visitant;              
 
             });
         }
