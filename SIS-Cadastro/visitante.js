@@ -11,18 +11,14 @@ let conexao = mysql.createConnection({
 new Vue({
     el: 'body',
     data: {
-        lista: [],
+        visitantes:[],
         modelo: '',
-        motoristas: {
-            cavalo: '',
-            carreta: '',
-            ter: '',
-            nome: '',
-            entrada: '',
-            como: '',
-            saida: '',
-            comos: '',
-            lacre: ''
+        visit:{
+            nome:'',
+            rg:'',
+            empresa:'',
+            entrada:'',
+            saida:''         
         },
         openMotor: false
     },
@@ -36,7 +32,7 @@ new Vue({
             console.log("CONECTADO COM SUCESSO AO MYSQL");
             //id, cavalo, carreta, ter, nome, entrada, como, saida, comos,lacre 
 
-            conexao.query("SELECT * FROM motoristas", (err, re) => {
+            conexao.query("SELECT * FROM visitantes", (err, re) => {
                 if (err) {
                     throw err;
                 }
@@ -44,7 +40,7 @@ new Vue({
                     JSON.stringify(e);
                     console.log(JSON.stringify(e));
                 });
-                this.lista = re;
+                this.visitantes = re;
             });
         });
     },
@@ -54,24 +50,30 @@ new Vue({
             this.modelo = 'a';
         },
         createMotorista: function () {          
-            conexao.query('INSERT INTO motoristas SET ?', this.motoristas, (err, result) => {
+            conexao.query('INSERT INTO visitantes SET ?', this.visit, (err, result) => {
                 if (err) {
                     console.log(err);
                 }
             });
-            this.motoristas;
+            this.visit;
             this.openMotor = false;
         },
-        createVisitante:function(motoristas){
+        createVisitante:function(visit){
             this.modelo = 'b';
             this.openMotor = true;           
         },
+        addVisitante:function(){
+           this.modelo = "oldVisitante";
+           
+
+        },
+        
         editarMotor: function (motoristas) {
             this.modelo = 'b';
             this.openMotor = true;
             this.motoristas = motoristas;
 
-            conexao.query("UPDATE motoristas SET ? WHERE id = ?", [this.motoristas, motoristas.id], (e, r) => {
+            conexao.query("UPDATE motor SET ? WHERE id = ?", [this.motoristas, motoristas.id], (e, r) => {
                 if (e) {
                     throw e;
                 }
@@ -80,7 +82,7 @@ new Vue({
          
         delMotor: function (motoristas) {
              
-            conexao.query('DELETE FROM motoristas WHERE id = ?', [motoristas.id], function (err, res) {
+            conexao.query('DELETE FROM motor WHERE id = ?', [motoristas.id], function (err, res) {
                 if (err) {
                     console.log("ERRO ...");
                 }
