@@ -50,7 +50,7 @@
                 Cadastro novo Visitante
             </button>
 
-            <button class="btn btn-default" type="button">
+            <button class="btn btn-default" type="button" @click="addVisitante(visitant)">
                 <i class="fa fa-plus"></i>
                 Visitante
             </button>
@@ -116,6 +116,49 @@
                                 </th>
                                 <th class="text-center">
                                     <input class="form-control" type="text" v-model="visitant.empresa">
+                                </th>
+                                <th class="text-center">
+                                    <input class="form-control" type="date" v-model="visitant.entrada"/>
+                                </th>
+                                <th class="text-center">
+                                    <input class="form-control" type="date" v-model="visitant.saida"/>
+                                </th>
+                                <th class="text-center">
+                                    
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="form-group" v-if="modelo=='addVisitante'">
+                    <table class="table table-hover tblList">
+                        <thead>
+                            <tr class="tblHead">
+                                <th class="text-center">NOME</th>
+                                <th class="text-center">RG</th>
+                                <th class="text-center">EMPRESA</th>
+                                <th class="text-center">ENTRADA</th>
+                                <th class="text-center">SAÍDA</th>
+                                <th class="text-center">EDIÇÃO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th class="text-center">
+                                    <select class="form-control" v-model="visitant.nome">
+                                        <option v-for="l in visitantes">{{l.nome}}</option>
+                                    </select>
+                                </th>
+                            
+                                <th class="text-center">
+                                    <select class="form-control" v-model="visitant.rg">
+                                        <option v-for="l in visitantes">{{l.rg}}</option>
+                                    </select>
+                                </th>
+                                <th class="text-center">
+                                     <select class="form-control" v-model="visitant.empresa">
+                                        <option v-for="l in visitantes">{{l.empresa}}</option>
+                                    </select>
                                 </th>
                                 <th class="text-center">
                                     <input class="form-control" type="date" v-model="visitant.entrada"/>

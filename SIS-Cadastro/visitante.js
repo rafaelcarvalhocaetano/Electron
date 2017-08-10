@@ -59,12 +59,23 @@ new Vue({
             this.modelo = 'newAjudante';
             this.openMotor = true;           
         },
+        addVisitante:function(visitant){
+            this.modelo = 'addVisitante';
+            this.openMotor = true;
+
+            conexao.query('SELEC * FROM visitantes WHERE id = ?',[this.visitant.id], (err, result) =>{
+                if(err){
+                    throw err;
+                }
+               console.log(this.visitant.id);
+            });
+            
+        },
         editarAjudante: function (visitant) {
             this.modelo = 'newAjudante';
             this.openMotor = true;
             this.visitant = visitant;
-           
-
+        
             conexao.query("UPDATE visitantes SET ? WHERE id = ?", [this.visitant, visitant.id], (e, r) => {
                 if (e) {
                     throw e;
