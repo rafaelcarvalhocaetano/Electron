@@ -136,6 +136,16 @@ Esta aplicação de Controle de Acesso, envolve a integração de elementos como
 A aplicação busca fornecer uma usabilidade ao usuário, simples e dinâmica, sem a necessidade de muitos processos como de busca, cadastramentos e verificação.
 A aplicão tem como foco principal, o controle de acesso, para portarias de empresa do ramo logistico, em específico transportadoras.
 
+Resumo:
+Introdução:
+Objetivos Gerais e objetivos Específicos:
+Base bibliográfica:
+Justificativa:
+Hipóteses:
+Metodologia de pesquisa:
+
+
+
 Para ter esta aplicação em sua máquina, exigirá alguns requisitos para roda-la:
 
 - 1° Ter o MySql instalado em sua máquina.
