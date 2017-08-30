@@ -133,7 +133,7 @@ Aplicação ainda em processo de construção.
 
 - Tema: SIS - Sistema Integrado de Segurança
 
-#### Resumo:
+Resumo:
 <br>
 Esta aplicação de Controle de Acesso, envolve a integração de elementos como html, css, js, vue e mysql, buscando forcener ao usuário final um melhor funcionamento e desempenho.
 <br>
