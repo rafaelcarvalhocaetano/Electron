@@ -131,14 +131,15 @@ Aplicação ainda em processo de construção.
 
 ### SIS-Sistema Integrado de Segurança
 
-- Tema: SIS - Sistema Integrado de Segurança
+- Tema:
+ <p>SIS - Sistema Integrado de Segurança</p>
 
 - Resumo:
 
-<p>Esta aplicação de Controle de Acesso, envolve a integração de elementos como html, css, js, vue e mysql, buscando forcener ao usuário final um melhor funcionamento e desempenho.</p>
+ <p>Esta aplicação de Controle de Acesso, envolve a integração de elementos como html, css, js, vue e mysql, buscando forcener ao   usuário final um melhor funcionamento e desempenho.</p>
 
-<p>A aplicação busca fornecer uma usabilidade ao usuário, simples e dinâmica, sem a necessidade de muitos processos como de busca, cadastramentos e verificação.
-A aplicão tem como foco principal, o controle de acesso, para portarias de empresa do ramo logistico, em específico transportadoras.</p>
+ <p>A aplicação busca fornecer uma usabilidade ao usuário, simples e dinâmica, sem a necessidade de muitos processos como de busca, cadastramentos e verificação. A aplicão tem como foco principal, o controle de acesso, para portarias de empresa do ramo logistico, em específico transportadoras.</p>
+
 - Introdução:
 - Objetivos Gerais e objetivos Específicos:
 - Base bibliográfica:
